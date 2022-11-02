@@ -10,7 +10,7 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-md-5">
                         <div class="did-floating-label-content">
-                            <input class="did-floating-input" type="mail" placeholder="">
+                            <input class="did-floating-input" type="email" placeholder="">
                             <label class="did-floating-label">Enter your e-mail adress</label>
                         </div>
                     </div>
@@ -153,6 +153,24 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
+<script>
+let scrollpos = window.scrollY
+const header = document.querySelector(".header")
+const header_height = header.offsetHeight
+
+const add_class_on_scroll = () => header.classList.add("my-class")
+const remove_class_on_scroll = () => header.classList.remove("my-class")
+
+window.addEventListener('scroll', function() { 
+  scrollpos = window.scrollY
+
+  if (scrollpos >= header_height) { add_class_on_scroll() }
+  else { remove_class_on_scroll() }
+
+  console.log(scrollpos)
+})
+
+</script>
 <script>
     const triggerNav = document.querySelector('.burger');
     const nav = document.querySelector('.main-nav');

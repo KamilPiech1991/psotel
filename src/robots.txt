@@ -1,0 +1,6 @@
+User-agent: Googlebot
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://psotelgracja.pl/sitemap.xml

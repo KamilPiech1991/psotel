@@ -466,11 +466,11 @@ ol li {
 }
 
 .site-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 13px;
     z-index: 999
 }
 
@@ -1744,15 +1744,19 @@ input[type="checkbox"] {
     z-index: 9
 }
 
-input[type="mail"],
+input[type="email"],
 input[type="phone"],
 input[type="text"],
 textarea {
-    padding: 1.3em;
+    padding: 1em;
     width: 100%;
     font-size: 17px;
     border-radius: 50px;
     border: none;
+}
+
+.hidden {
+    display: none!important
 }
 
 .did-floating-label-content {
@@ -1765,7 +1769,7 @@ textarea {
     position: absolute;
     pointer-events: none;
     left: 15px;
-    top: 20px;
+    top: 15px;
     padding: 3px 8px;
     background: #fff;
     transition: 0.2s ease all;

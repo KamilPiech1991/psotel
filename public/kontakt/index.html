@@ -9,7 +9,7 @@
    <meta name="robots" content="noindex">
 
    <title>Kontakt - Psotel Gracja</title>
-   <meta name="description" content="<?php the_description(); ?>">
+   <meta name="description" content="Opis dla google">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
    <meta content="telephone=no" name="format-detection" />
    <meta name="HandheldFriendly" content="true" />
@@ -24,7 +24,7 @@
    <!-- Opengraph -->
    <meta property="og:title" content="Psotel Gracja" />
    <meta property="og:url" content="https://psotelgracja.pl/" />
-   <meta property="og:image" content="assets/img/general/opengraph.png" />
+   <meta property="og:image" content="/assets/img/general/opengraph.png" />
    <!-- Favicons & App Icons -->
    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png" />
    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png" />
@@ -256,31 +256,59 @@
 
    <main>
 
+    <section class="hero-page pt-large pb-large">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="xl color-accent-1">
+          Kontakt
+        </h1>
+      </div>
+      <div class="col-md-6">
+        <div>
+            <img src="/assets/img/page/gallery/hero.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     
 <section class="section py-xlarge">
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-6">
-                <form class="netform" name="Contact form" method="POST" data-netlify="true">
-                    <div class="did-floating-label-content">
-                        <input class="did-floating-input" type="text" name="name" placeholder="">
-                        <label class="did-floating-label">Imie i nazwisko</label>
+                <h2>Formularz kontaktowy</h2>
+                <form class="netform" name="Contact form" method="POST" data-netlify="true" netlify-honeypot="hpfield">
+                    <input class="hidden" name="hpfield">
+                    <div class="d-flex flec-wrap">
+                        <div class="col-md-6">
+                            <div class="did-floating-label-content">
+                                <input class="did-floating-input" type="text" name="name" placeholder="">
+                                <label class="did-floating-label">Imie i nazwisko</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="did-floating-label-content">
+                                <input class="did-floating-input" type="email" name="email" placeholder="">
+                                <label class="did-floating-label">Adres email</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="did-floating-label-content">
-                        <input class="did-floating-input" type="email" name="email" placeholder="">
-                        <label class="did-floating-label">Adres email</label>
+                        <textarea class="did-floating-input" name="message" placeholder="" rows="7"></textarea>
+                        <label class="did-floating-label">Wiadomość</label>
                     </div>
-                    <div class="did-floating-label-content">
-                        <textarea class="did-floating-input" name="message" placeholder=""></textarea>
-                        <label class="did-floating-label">Imie i nazwisko</label>
-                    </div>
+                    <p>
+                        <small>Wysyłając formularz wyrażasz zgodę na przetwarzanie moich danych osobowych przez Psotel Gracja w celu przesłania na wskazany przeze mnie e-mail informacji handlowych.</small>
+                    </p>
                     <p>
                         <button class="pt-button" type="submit">Wyślij</button>
                     </p>
                 </form>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.427968954283!2d21.050398315790147!3d52.0537305797286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192f2ade2a2a63%3A0x711d4f8d7aa6a23d!2sPsotel%20Gracja%20-%20hotel%20dla%20ps%C3%B3w!5e0!3m2!1spl!2spl!4v1667380861781!5m2!1spl!2spl"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -304,7 +332,7 @@
                 <div class="row gx-4 justify-content-center">
                     <div class="col-md-5">
                         <div class="did-floating-label-content">
-                            <input class="did-floating-input" type="mail" placeholder="">
+                            <input class="did-floating-input" type="email" placeholder="">
                             <label class="did-floating-label">Enter your e-mail adress</label>
                         </div>
                     </div>
@@ -447,6 +475,24 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
+<script>
+let scrollpos = window.scrollY
+const header = document.querySelector(".header")
+const header_height = header.offsetHeight
+
+const add_class_on_scroll = () => header.classList.add("my-class")
+const remove_class_on_scroll = () => header.classList.remove("my-class")
+
+window.addEventListener('scroll', function() { 
+  scrollpos = window.scrollY
+
+  if (scrollpos >= header_height) { add_class_on_scroll() }
+  else { remove_class_on_scroll() }
+
+  console.log(scrollpos)
+})
+
+</script>
 <script>
     const triggerNav = document.querySelector('.burger');
     const nav = document.querySelector('.main-nav');
