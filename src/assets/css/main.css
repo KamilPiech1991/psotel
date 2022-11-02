@@ -3,7 +3,7 @@
 }
 
 :root {
-    --color-background: #F5FBFF;
+    --color-background: #226d9e;
     --color-light: #fff;
     --color-black: #000;
     --color-gray: #DCDFFF;
@@ -12,6 +12,7 @@
     --color-text: #002D4C;
     --border-image: 50px;
     --animation-easing: ease-in-out;
+    --shadow-card: 0 5px 60px #11105
 }
 
 html {
@@ -275,6 +276,10 @@ hr {
 
 .p-relative {
     position: relative
+}
+
+.gap-1 div:first-child {
+    padding-right: 5px;
 }
 
 .section {
@@ -1666,7 +1671,8 @@ input[type="checkbox"] {
     max-width: 100%;
     aspect-ratio: 5/4;
     object-fit: cover;
-    object-position: center
+    object-position: center;
+    border-radius: var(--border-image);
 }
 
 @media screen and (max-width: 768px) {
@@ -1733,6 +1739,20 @@ input[type="checkbox"] {
     }
 }
 
+/* Contact
+-------------------------------------- */
+
+.contact-card {
+    padding: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: var(--color-light);
+    border-radius: 25px;
+    box-shadow: var(--shadow-card);
+}
+
 .site-footer {
     position: relative;
     background: url("../img/footer/footer.svg");
@@ -1753,6 +1773,25 @@ textarea {
     font-size: 17px;
     border-radius: 50px;
     border: none;
+    box-shadow: var(--shadow-card);
+    transition: .2s var(--animation-easing)
+}
+
+@supports selector(:focus-visible) {
+	:focus {
+		outline: none;
+	}
+
+	:focus-visible {
+        outline: 1px solid var(--color-accent-1);
+	}
+}
+
+input[type="email"]:focus,
+input[type="phone"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+    outline: 1px solid var(--color-accent-1)!important
 }
 
 .hidden {
