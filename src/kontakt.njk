@@ -3,10 +3,37 @@ title: Kontakt
 layout: base.njk
 ---
 
-<section class="section py-xlarge ">
+<section class="section py-xlarge">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <form class="netform" name="Contact form" method="POST" netlify data-netlify="true">
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input" type="text" name="name" placeholder="">
+                        <label class="did-floating-label">Imie i nazwisko</label>
+                    </div>
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input" type="mail" name="mail" placeholder="">
+                        <label class="did-floating-label">Adres email</label>
+                    </div>
+                    <div class="did-floating-label-content">
+                        <textarea class="did-floating-input" type="text" name="message" placeholder=""></textarea>
+                        <label class="did-floating-label">Imie i nazwisko</label>
+                    </div>
+                    <p>
+                        <button class="pt-button" type="submit">Wyślij</button>
+                    </p>
+                </form>
 
+            </div>
+            <div class="col-md-6">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.427968954283!2d21.050398315790147!3d52.0537305797286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47192f2ade2a2a63%3A0x711d4f8d7aa6a23d!2sPsotel%20Gracja%20-%20hotel%20dla%20ps%C3%B3w!5e0!3m2!1spl!2spl!4v1667380861781!5m2!1spl!2spl"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
 </section>
-
-
 
 </main>

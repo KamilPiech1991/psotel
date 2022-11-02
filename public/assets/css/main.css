@@ -631,6 +631,7 @@ ol li {
     background: linear-gradient(80deg, #8ED1FF 4.42%, #D9EFFF 55.46%, #A9DCFF 90.5%);
     color: var(--color-text);
     border-radius: 100px;
+    border: none;
     transition: .5s background-color var(--animation-easing)
 }
 
@@ -1743,11 +1744,15 @@ input[type="checkbox"] {
     z-index: 9
 }
 
-.newsletter-form input[type="mail"] {
+input[type="mail"],
+input[type="phone"],
+input[type="text"],
+textarea {
     padding: 1.3em;
     width: 100%;
-    font-weight: 600;
+    font-size: 17px;
     border-radius: 50px;
+    border: none;
 }
 
 .did-floating-label-content {
@@ -1760,7 +1765,7 @@ input[type="checkbox"] {
     position: absolute;
     pointer-events: none;
     left: 15px;
-    top: 27%;
+    top: 20px;
     padding: 3px 8px;
     background: #fff;
     transition: 0.2s ease all;
