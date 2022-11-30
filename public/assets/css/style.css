@@ -1392,6 +1392,11 @@ input[type=checkbox] {
   display: none;
 }
 
+.pricing-dog {
+  width: 64px;
+  height: auto;
+}
+
 .price-content {
   background: url("../img/page/hotel/why-us.svg");
   background-repeat: no-repeat;
