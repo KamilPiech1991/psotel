@@ -1,0 +1,100 @@
+.pt-button {
+    position: relative;
+    display: inline-block;
+    padding: 1em 2em;
+    font-weight: 600;
+    background: linear-gradient(80deg, #8ED1FF 4.42%, #D9EFFF 55.46%, #A9DCFF 90.5%);
+    color: var(--color-text);
+    border-radius: 100px;
+    border: none;
+    transition: .5s background-color var(--animation-easing)
+}
+
+.pt-button::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: inherit;
+    border-radius: 100px;
+    box-shadow: 0px 2px 6px rgba(17, 17, 17, 0.15);
+    transition: .5s var(--animation-easing);
+    z-index: -1
+}
+
+.pt-button:hover {
+    background: linear-gradient(110deg, #8ED1FF 4.42%, #D9EFFF 55.46%, #A9DCFF 90.5%);
+    box-shadow: none;
+}
+
+.pt-button:hover::before {
+    left: -10px;
+    right: -10px;
+    top: 0;
+    bottom: 0
+}
+
+.pt-button svg {
+    margin-bottom: -5px;
+    margin-right: 8px;
+    transition: .5s ease-in-out
+}
+
+.pt-button:hover svg {
+    transform: rotate(45deg);
+}
+
+.btn-nobg {
+    margin: 1em;
+    padding: 0;
+    background: transparent;
+    text-transform: uppercase;
+    box-shadow: none
+}
+
+.btn-nobg::before {
+    box-shadow: none
+}
+
+.btn-nobg:hover {
+    background: none;
+}
+
+.btn-nobg svg {
+    margin-bottom: 0
+}
+
+.btn-nobg span {
+    display: inline-block;
+    transition: .3s var(--animation-easing);
+}
+
+.btn-nobg .second-arrow {
+    opacity: 0
+}
+
+.btn-nobg:hover .first-arrow {
+    opacity: 0
+}
+
+.btn-nobg:hover .second-arrow {
+    opacity: 1
+}
+
+.btn-nobg:hover span {
+    transform: translateX(-10px);
+}
+
+@media(min-width:767px) {
+    .pt-button {
+        min-width: 200px;
+        padding: 1em 3em
+    }
+
+    .btn-nobg {
+        margin: 1em 3em;
+        padding: 0
+    }
+}
