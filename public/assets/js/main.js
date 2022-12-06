@@ -17,23 +17,81 @@ lazyLoad();
 function lazyLoad() {
 	var card_images = document.querySelectorAll('.lazy-image');
 	
-	// loop over each card image
+// loop over each card image
 	card_images.forEach(function(card_image) {
-		var image_url = card_image.getAttribute('data-image-full');
-		var content_image = card_image.querySelector('img');
-		
-		// change the src of the content image to load the new high res photo
-		content_image.src = image_url;
-		
-		// listen for load event when the new photo is finished loading
-		content_image.addEventListener('load', function() {
-			// swap out the visible background image with the new fully downloaded photo
-			card_image.style.backgroundImage = 'url(' + image_url + ')';
-			// add a class to remove the blur filter to smoothly transition the image change
-			card_image.className = card_image.className + ' is-loaded';
-		});
+	var image_url = card_image.getAttribute('data-image-full');
+	var content_image = card_image.querySelector('img');
+// change the src of the content image to load the new high res photo
+	content_image.src = image_url;
+// listen for load event when the new photo is finished loading
+	content_image.addEventListener('load', function() {
+// swap out the visible background image with the new fully downloaded photo
+	card_image.style.backgroundImage = 'url(' + image_url + ')';
+// add a class to remove the blur filter to smoothly transition the image change
+	card_image.className = card_image.className + ' is-loaded';
+});
 		
 	});
 	
 }
+
+// Sticky nav
+
+let scrollpos = window.scrollY
+const header = document.querySelector(".site-header")
+const header_height = header.offsetHeight
+
+const add_class_on_scroll = () => header.classList.add("shrink")
+const remove_class_on_scroll = () => header.classList.remove("shrink")
+
+window.addEventListener('scroll', function() { 
+  scrollpos = window.scrollY
+
+  if (scrollpos >= header_height) { add_class_on_scroll() }
+  else { remove_class_on_scroll() }
+
+  console.log(scrollpos)
+});
+
+// Mobile nav
+
+    const triggerNav = document.querySelector('.burger');
+    const nav = document.querySelector('.main-nav');
+
+    triggerNav.addEventListener('click', () => {
+        triggerNav.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+// Tabs
+
+	const tabs = document.querySelectorAll(".tab");
+	const tabContent = document.querySelectorAll(".tab-content");
+ 
+	let tabNo = 0;
+	let contentNo = 0;
+ 
+	tabs.forEach((tab) => {
+	   tab.dataset.id = tabNo;
+	   tabNo++;
+	   tab.addEventListener("click", function () {
+		  tabs.forEach((tab) => {
+			 tab.classList.remove("active");
+			 tab.classList.add("non-active");
+		  });
+		  this.classList.remove("non-active");
+		  this.classList.add("active");
+		  tabContent.forEach((content) => {
+			 content.classList.add("hidden");
+			 if (content.dataset.id === tab.dataset.id) {
+				content.classList.remove("hidden");
+			 }
+		  });
+	   });
+	});
+ 
+	tabContent.forEach((content) => {
+	   content.dataset.id = contentNo;
+	   contentNo++;
+	});
 

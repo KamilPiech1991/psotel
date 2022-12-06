@@ -1,0 +1,19 @@
+.breadcrumbs {
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.breadcrumbs svg {
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 5px;
+}
+
+.breadcrumbs span {
+  opacity: 0.6;
+}

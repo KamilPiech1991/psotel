@@ -15,7 +15,7 @@
                </figure>
 
                <figure class="gallery-image-three hide">
-                  <img src="/assets/img/section/about/section/about-1.png" alt="" />
+                  <img src="/assets/img/section/about/about-1.png" alt="" />
                </figure>
 
                </div>
@@ -121,41 +121,5 @@
             </div>
         </div>
         </div>
-        <script>
-           const galleryThumbOne    = document.querySelector('.gallery-thumb-one');
-           const galleryThumbTwo    = document.querySelector('.gallery-thumb-two');
-           const galleryThumbThree  = document.querySelector('.gallery-thumb-three');
-           const galleryImageOne    = document.querySelector('.gallery-image-one');
-           const galleryImageTwo    = document.querySelector('.gallery-image-two');
-           const galleryImageThree  = document.querySelector('.gallery-image-three');
-
-           galleryThumbOne.addEventListener('click', () => {
-               galleryImageOne.classList.add("active");
-               galleryImageOne.classList.remove("hide");
-               galleryImageTwo.classList.remove("active");
-               galleryImageTwo.classList.add("hide");
-               galleryImageThree.classList.remove("active");
-               galleryImageThree.classList.add("hide");
-            })
-
-           galleryThumbTwo.addEventListener('click', () => {
-               galleryImageTwo.classList.add("active");
-               galleryImageTwo.classList.remove("hide");
-               galleryImageOne.classList.remove("active");
-               galleryImageOne.classList.add("hide");
-               galleryImageThree.classList.remove("active");
-               galleryImageThree.classList.add("hide");
-            })
-            
-           galleryThumbThree.addEventListener('click', () => {
-               galleryImageThree.classList.add("active");
-               galleryImageThree.classList.remove("hide");
-               galleryImageOne.classList.remove("active");
-               galleryImageOne.classList.add("hide");
-               galleryImageTwo.classList.remove("active");
-               galleryImageTwo.classList.add("hide");
-            })
-
-        </script>
     </div>
 </section>

@@ -351,17 +351,45 @@ ol li {
     padding-top: 100px;
     padding-bottom: 100px;
   }
+  .px-md-medium {
+    padding-left: 8em;
+    padding-right: 8em;
+  }
   .px-md-xlarge {
     padding-left: 16em;
     padding-right: 16em;
   }
 }
 @media (min-width: 1200px) {
+  .px-lg-medium {
+    padding-left: 8em;
+    padding-right: 8em;
+  }
   .px-lg-xlarge {
     padding-left: 16em;
     padding-right: 16em;
   }
 }
+.breadcrumbs {
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.breadcrumbs svg {
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 5px;
+}
+
+.breadcrumbs span {
+  opacity: 0.6;
+}
+
 .glide {
   position: relative;
   width: 100%;
@@ -398,6 +426,7 @@ ol li {
 .glide__slide {
   width: 100%;
   height: 100%;
+  padding: 25px;
   flex-shrink: 0;
   white-space: initial;
   user-select: none;
@@ -558,7 +587,13 @@ ol li {
   left: 0;
   width: 100%;
   padding-top: 13px;
+  transition: 0.2s ease-in-out;
   z-index: 999;
+}
+
+.site-header.shrink {
+  background-color: rgba(232, 245, 255, 0.9411764706);
+  padding-top: 0;
 }
 
 .logo {
@@ -572,6 +607,7 @@ ol li {
   position: relative;
   width: 34px;
   height: 36px;
+  margin-top: 20px;
   float: right;
   text-align: end;
   cursor: pointer;
@@ -626,9 +662,8 @@ ol li {
   transform: translatex(-100%);
   transition: 0.3s ease-in-out;
   z-index: 1;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  flex-direction: column;
   justify-content: center;
   opacity: 0;
   overflow: hidden;
@@ -640,15 +675,13 @@ ol li {
 }
 
 .main-nav ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-left: 0;
 }
 
 .main-nav ul li {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 15px;
   list-style: none;
 }
 
@@ -692,6 +725,7 @@ ol li {
   .main-nav {
     position: relative;
     display: block;
+    margin-top: 40px;
     height: auto;
     background: none;
     opacity: 1;
@@ -700,9 +734,15 @@ ol li {
   .main-nav ul {
     flex-direction: row;
   }
+  .main-nav ul li {
+    display: inline-block;
+  }
   .main-nav ul li a {
     margin-left: 30px;
     font-size: 16px;
+  }
+  .site-header .pt-button {
+    margin-top: 25px;
   }
 }
 .hero {
@@ -1040,13 +1080,14 @@ ol li {
   margin: 0 40px 40px;
   background: #fff;
   border-radius: 25px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
 .why-us-card::before {
   position: absolute;
   content: url("../img/section/why-us/why-us-card-arrow.svg");
   top: 5em;
-  right: -3.5em;
+  right: -4.5em;
 }
 
 .why-us-card svg {
@@ -1340,6 +1381,7 @@ input[type=checkbox] {
 }
 
 .line-up-card {
+  position: relative;
   padding: 2em;
   margin-bottom: 20px;
   background: var(--color-gray);
@@ -1348,19 +1390,31 @@ input[type=checkbox] {
   text-align: center;
 }
 
+.line-up-card::before {
+  position: absolute;
+  content: url("../img/section/line-up/arrow.svg");
+  top: 5em;
+  right: -3.5em;
+}
+
+.line-up-card.last::before {
+  content: "";
+}
+
 .line-up-card img {
   width: 100px;
   height: auto;
 }
 
 .wegive .tabs {
-  display: flex;
   padding-top: 40px;
 }
 
 .wegive .tabs button {
   padding: 15px 30px;
   margin-right: 20px;
+  width: 100%;
+  margin-bottom: 10px;
   cursor: pointer;
   font-size: 15px;
   font-weight: 500;
@@ -1433,6 +1487,13 @@ input[type=checkbox] {
 }
 
 @media (min-width: 767px) {
+  .wegive .tabs {
+    display: flex;
+  }
+  .wegive .tabs button {
+    width: auto;
+    margin-bottom: 0;
+  }
   .price-content .tabs {
     display: flex;
   }

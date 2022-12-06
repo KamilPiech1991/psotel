@@ -6,17 +6,17 @@
             <h2 class="color-light text-center">
                 Zapisz się do newsletttera
             </h2>
-            <form class="newsletter-form" action="">
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-md-5">
                         <div class="did-floating-label-content">
-                            <input class="did-floating-input" type="email" placeholder="">
+                            <input class="did-floating-input" type="email" placeholder="" name="email" required>
                             <label class="did-floating-label">Enter your e-mail adress</label>
                         </div>
                     </div>
                     <div class="col-md-2">
                             <div class="submit-wrap mx-auto">
-                                <input class="submit-btn" type="submit" value="Subscribe">
+                                <button class="submit-btn" type="submit">Subscribe</button>
                             </div>
                     </div>
                 </div>
@@ -153,33 +153,7 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
-<script>
-let scrollpos = window.scrollY
-const header = document.querySelector(".site-header")
-const header_height = header.offsetHeight
 
-const add_class_on_scroll = () => header.classList.add("my-class")
-const remove_class_on_scroll = () => header.classList.remove("my-class")
-
-window.addEventListener('scroll', function() { 
-  scrollpos = window.scrollY
-
-  if (scrollpos >= header_height) { add_class_on_scroll() }
-  else { remove_class_on_scroll() }
-
-  console.log(scrollpos)
-})
-
-</script>
-<script>
-    const triggerNav = document.querySelector('.burger');
-    const nav = document.querySelector('.main-nav');
-
-    triggerNav.addEventListener('click', () => {
-        triggerNav.classList.toggle('active');
-        nav.classList.toggle('active');
-    })
-</script>
 <script>
     var glide = new Glide('.multi1', {
         type: 'carousel',
@@ -201,7 +175,7 @@ window.addEventListener('scroll', function() {
         type: 'carousel',
         autoplay: 5500,
         perView: 4,
-        gap: 60,
+        gap: 20,
         breakpoints: {
         1200: {
 			perView: 3
@@ -254,35 +228,7 @@ window.addEventListener('scroll', function() {
 </script>
 
 <script>
-   const tabs = document.querySelectorAll(".tab");
-   const tabContent = document.querySelectorAll(".tab-content");
 
-   let tabNo = 0;
-   let contentNo = 0;
-
-   tabs.forEach((tab) => {
-      tab.dataset.id = tabNo;
-      tabNo++;
-      tab.addEventListener("click", function () {
-         tabs.forEach((tab) => {
-            tab.classList.remove("active");
-            tab.classList.add("non-active");
-         });
-         this.classList.remove("non-active");
-         this.classList.add("active");
-         tabContent.forEach((content) => {
-            content.classList.add("hidden");
-            if (content.dataset.id === tab.dataset.id) {
-               content.classList.remove("hidden");
-            }
-         });
-      });
-   });
-
-   tabContent.forEach((content) => {
-      content.dataset.id = contentNo;
-      contentNo++;
-   });
 </script>
 
 </body>

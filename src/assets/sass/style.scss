@@ -3,6 +3,7 @@
 @use 'base/typography.scss';
 @use 'base/spacing.scss';
 
+@use 'components/breadcrumbs.scss';
 @use 'components/glide.scss';
 @use 'components/button.scss';
 
@@ -38,10 +39,16 @@
 .site-header {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0; 
     width: 100%;
     padding-top: 13px;
+    transition: .2s ease-in-out;
     z-index: 999
+}
+
+.site-header.shrink {
+    background-color: #e8f5fff0;
+    padding-top: 0;
 }
 
 .logo {
@@ -55,6 +62,7 @@
     position: relative;
     width: 34px;
     height: 36px;
+    margin-top: 20px;
     float: right;
     text-align: end;
     cursor: pointer;
@@ -109,9 +117,8 @@
     transform: translatex(-100%);
     transition: .3s ease-in-out;
     z-index: 1;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+    flex-direction: column;
     justify-content: center;
     opacity: 0;
     overflow: hidden
@@ -123,15 +130,13 @@
 }
 
 .main-nav ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-left: 0
 }
 
 .main-nav ul li {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 15px;
     list-style: none
 }
 
@@ -177,6 +182,7 @@
     .main-nav {
         position: relative;
         display: block;
+        margin-top: 40px;
         height: auto;
         background: none;
         opacity: 1;
@@ -186,10 +192,15 @@
     .main-nav ul {
         flex-direction: row
     }
-
+    .main-nav ul li {
+        display: inline-block
+    }
     .main-nav ul li a {
         margin-left: 30px;
-        font-size: 16px;
+        font-size: 16px
+    }
+    .site-header .pt-button {
+        margin-top: 25px
     }
 }
 
@@ -536,13 +547,14 @@
     margin: 0 40px 40px;
     background: #fff;
     border-radius: 25px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
 .why-us-card::before {
     position: absolute;
     content: url("../img/section/why-us/why-us-card-arrow.svg");
     top: 5em;
-    right: -3.5em
+    right: -4.5em
 }
 
 .why-us-card svg {
@@ -846,6 +858,7 @@ input[type="checkbox"] {
 }
 
 .line-up-card {
+    position: relative;
     padding: 2em;
     margin-bottom: 20px;
     background: var(--color-gray);
@@ -854,19 +867,32 @@ input[type="checkbox"] {
     text-align: center
 }
 
+.line-up-card::before {
+    position: absolute;
+    content: url("../img/section/line-up/arrow.svg");
+    top: 5em;
+    right: -3.5em
+}
+
+.line-up-card.last::before {
+    content: '';
+}
+
+
 .line-up-card img {
     width: 100px;
     height: auto
 }
 
 .wegive .tabs {
-    display: flex;
     padding-top: 40px;
 }
 
 .wegive .tabs button {
     padding: 15px 30px;
     margin-right: 20px;
+    width: 100%;
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
@@ -939,6 +965,13 @@ input[type="checkbox"] {
 }
 
 @media(min-width:767px) {
+    .wegive .tabs {
+        display: flex;
+    }
+    .wegive .tabs button {
+        width: auto;
+        margin-bottom: 0
+    }
     .price-content .tabs {
         display: flex;
     }

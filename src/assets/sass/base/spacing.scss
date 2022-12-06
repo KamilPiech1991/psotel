@@ -155,7 +155,10 @@
         padding-top: 100px;
         padding-bottom: 100px;
     }
-
+    .px-md-medium {
+        padding-left: 8em;
+        padding-right: 8em
+    }
     .px-md-xlarge {
         padding-left: 16em;
         padding-right: 16em
@@ -163,6 +166,10 @@
 }
 
 @media(min-width:1200px) {
+    .px-lg-medium {
+        padding-left: 8em;
+        padding-right: 8em
+    }
     .px-lg-xlarge {
         padding-left: 16em;
         padding-right: 16em

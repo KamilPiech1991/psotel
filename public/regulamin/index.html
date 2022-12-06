@@ -94,11 +94,68 @@
    </script>
 
    <style>
-   @font-face {
+
+/* quicksand-regular - latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+
+/* quicksand-500 - latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
     font-display: swap;
-    font-family: "Quicksand";
-    src: url('/assets/fonts/quicksand/Quicksand-VariableFont_wght.ttf') format("truetype")
-   }
+  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+
+/* quicksand-600 - latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 600;
+    font-display: swap;
+  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+/* quicksand-600 - latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+    font-display: swap;
+  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+
+
+
    </style>
 </head>
 
@@ -110,7 +167,7 @@
 
    <header class="site-header">
       <div class="container">
-         <div class="row align-items-center">
+         <div class="row">
             <div class="col-8 col-md-2">
                <a href="/">
                   <img src="/assets/img/logo/gracja-logo.png" class="logo" alt="">
@@ -262,6 +319,18 @@
         <h1 class="xl color-accent-1">
           Regulamin
         </h1>
+        <div class="breadcrumbs">
+    <svg width="30" height="5" viewBox="0 0 30 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M29.6702 1.75758C29.5673 1.65965 29.484 1.59109 29.3983 1.51274L29.1534 1.29482C28.8203 1.01324 28.5141 0.763491 28.2496 0.560266C27.7206 0.161161 27.3581 -0.0543048 27.2846 0.0118046C27.2111 0.0779141 27.4462 0.410911 27.8822 0.900611C28.1002 1.14546 28.3721 1.42704 28.6733 1.7331L29.0603 2.11506C28.2618 2.03916 26.5376 1.97795 22.871 1.9706C19.0135 1.9706 13.2896 2.04406 8.53562 2.21545C6.15741 2.29625 4.02412 2.38684 2.48354 2.47989C0.942967 2.57293 -0.0024445 2.65128 4.74734e-06 2.71005C0.00245399 2.76881 0.950317 2.7933 2.49334 2.80309H8.54787C13.3019 2.80309 19.0159 2.80309 22.8686 2.80309C26.638 2.80309 28.35 2.7884 29.1215 2.72229C29.0578 2.80309 28.9819 2.88879 28.906 2.96714C28.7566 3.13609 28.6072 3.29524 28.4602 3.4446C28.1688 3.74086 27.8895 3.99796 27.6471 4.20853C27.1572 4.63212 26.8462 4.89166 26.9001 4.97491C26.9539 5.05816 27.3728 4.93573 27.9679 4.5856C28.3149 4.38121 28.6428 4.14602 28.9476 3.88288C29.1191 3.73597 29.2905 3.57437 29.4595 3.39318C29.5452 3.30259 29.6236 3.21934 29.7044 3.1116C29.8076 2.99303 29.8904 2.85816 29.9494 2.7125C30.0169 2.53 30.0169 2.32939 29.9494 2.1469C29.8861 1.9939 29.7909 1.85616 29.6702 1.74289" fill="#002D4C"/>
+    </svg>
+    <a href="/">
+       Home
+    </a>
+    <svg width="30" height="5" viewBox="0 0 30 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M29.6702 1.75758C29.5673 1.65965 29.484 1.59109 29.3983 1.51274L29.1534 1.29482C28.8203 1.01324 28.5141 0.763491 28.2496 0.560266C27.7206 0.161161 27.3581 -0.0543048 27.2846 0.0118046C27.2111 0.0779141 27.4462 0.410911 27.8822 0.900611C28.1002 1.14546 28.3721 1.42704 28.6733 1.7331L29.0603 2.11506C28.2618 2.03916 26.5376 1.97795 22.871 1.9706C19.0135 1.9706 13.2896 2.04406 8.53562 2.21545C6.15741 2.29625 4.02412 2.38684 2.48354 2.47989C0.942967 2.57293 -0.0024445 2.65128 4.74734e-06 2.71005C0.00245399 2.76881 0.950317 2.7933 2.49334 2.80309H8.54787C13.3019 2.80309 19.0159 2.80309 22.8686 2.80309C26.638 2.80309 28.35 2.7884 29.1215 2.72229C29.0578 2.80309 28.9819 2.88879 28.906 2.96714C28.7566 3.13609 28.6072 3.29524 28.4602 3.4446C28.1688 3.74086 27.8895 3.99796 27.6471 4.20853C27.1572 4.63212 26.8462 4.89166 26.9001 4.97491C26.9539 5.05816 27.3728 4.93573 27.9679 4.5856C28.3149 4.38121 28.6428 4.14602 28.9476 3.88288C29.1191 3.73597 29.2905 3.57437 29.4595 3.39318C29.5452 3.30259 29.6236 3.21934 29.7044 3.1116C29.8076 2.99303 29.8904 2.85816 29.9494 2.7125C30.0169 2.53 30.0169 2.32939 29.9494 2.1469C29.8861 1.9939 29.7909 1.85616 29.6702 1.74289" fill="#002D4C"/>
+    </svg>
+    <span>Regulamin
+</div>
       </div>
       <div class="col-md-6">
         <div>
@@ -326,29 +395,26 @@
                             d="M49.4503 2.81214C49.2788 2.65543 49.14 2.54574 48.9972 2.42038L48.5889 2.0717C48.0338 1.62118 47.5235 1.22159 47.0827 0.896425C46.2009 0.257857 45.5968 -0.0868877 45.4743 0.0188874C45.3519 0.124662 45.7437 0.657458 46.4703 1.44098C46.8336 1.83274 47.2868 2.28326 47.7888 2.77296L48.4338 3.3841C47.1031 3.26266 44.2293 3.16472 38.1184 3.15297C31.6891 3.15297 22.1493 3.27049 14.226 3.54472C10.2623 3.67401 6.70686 3.81895 4.13924 3.96782C1.57161 4.11669 -0.00407416 4.24205 7.91223e-06 4.33607C0.00408999 4.4301 1.58386 4.46928 4.15557 4.48495H14.2465C22.1698 4.48495 31.6932 4.48495 38.1143 4.48495C44.3967 4.48495 47.25 4.46145 48.5359 4.35567C48.4297 4.48495 48.3032 4.62207 48.1767 4.74743C47.9276 5.01774 47.6786 5.27238 47.4337 5.51135C46.9479 5.98538 46.4826 6.39674 46.0785 6.73365C45.262 7.4114 44.7436 7.82665 44.8334 7.95985C44.9232 8.09305 45.6213 7.89717 46.6132 7.33696C47.1915 7.00993 47.738 6.63364 48.246 6.21261C48.5318 5.97755 48.8175 5.71899 49.0992 5.42909C49.2421 5.28414 49.3727 5.15094 49.5074 4.97857C49.6794 4.78885 49.8173 4.57306 49.9156 4.34C50.0281 4.048 50.0281 3.72702 49.9156 3.43503C49.8102 3.19024 49.6515 2.96986 49.4503 2.78863"
                             fill="#8F9AFF" />
                     </svg>
-                    najlepszy hotel dla psów w polsce
+                    Ważne informacje
                 </div>
                 <h2 class="mt-1 mb-0">
                     Walizka zwierzaka
                 </h2>
                 <ul class="gr-list">
                     <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
+                    Kazdy piesek na pobyt powienien zabrac przede wszystkim swoją karmę do której jest przyzwyczajony.
                     </li>
                     <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
+                    Nasz psiak powinien zabrać ze swoją swoje posłanko z zapachami domowymi. Dzieki temu będzie czuł się dosłownie jak w domu.  
                     </li>
                     <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
+                    Warto wziąć tez miseczki z których na codzień piesek jje i pije. jezeli włascicel zapomni to w razie czego pomożemy i damy hotelowe. 
                     </li>
                     <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
+                    Warto zabrać tez jakieś zabawki pasiaka, bo wtedy tesknto bedzie mniejsza i bedzie się czuł jeszcze lepiej w naszym towarzystwie. 
                     </li>
                     <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
-                    </li>
-                    <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fames elementum, integer leo blandit. Ullamcorper ultrices odio neque, enim. 
+                   Ważne zeby na pobyt zabrać ze sobą księżeczkę zdrowia oraz lepki z instrukcją podawania jezeli piesek takowych wymaga.. 
                     </li>
                 </ul>
             </div>
@@ -465,17 +531,17 @@
             <h2 class="color-light text-center">
                 Zapisz się do newsletttera
             </h2>
-            <form class="newsletter-form" action="">
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-md-5">
                         <div class="did-floating-label-content">
-                            <input class="did-floating-input" type="email" placeholder="">
+                            <input class="did-floating-input" type="email" placeholder="" name="email" required>
                             <label class="did-floating-label">Enter your e-mail adress</label>
                         </div>
                     </div>
                     <div class="col-md-2">
                             <div class="submit-wrap mx-auto">
-                                <input class="submit-btn" type="submit" value="Subscribe">
+                                <button class="submit-btn" type="submit">Subscribe</button>
                             </div>
                     </div>
                 </div>
@@ -612,33 +678,7 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
-<script>
-let scrollpos = window.scrollY
-const header = document.querySelector(".site-header")
-const header_height = header.offsetHeight
 
-const add_class_on_scroll = () => header.classList.add("my-class")
-const remove_class_on_scroll = () => header.classList.remove("my-class")
-
-window.addEventListener('scroll', function() { 
-  scrollpos = window.scrollY
-
-  if (scrollpos >= header_height) { add_class_on_scroll() }
-  else { remove_class_on_scroll() }
-
-  console.log(scrollpos)
-})
-
-</script>
-<script>
-    const triggerNav = document.querySelector('.burger');
-    const nav = document.querySelector('.main-nav');
-
-    triggerNav.addEventListener('click', () => {
-        triggerNav.classList.toggle('active');
-        nav.classList.toggle('active');
-    })
-</script>
 <script>
     var glide = new Glide('.multi1', {
         type: 'carousel',
@@ -660,7 +700,7 @@ window.addEventListener('scroll', function() {
         type: 'carousel',
         autoplay: 5500,
         perView: 4,
-        gap: 60,
+        gap: 20,
         breakpoints: {
         1200: {
 			perView: 3
@@ -713,35 +753,7 @@ window.addEventListener('scroll', function() {
 </script>
 
 <script>
-   const tabs = document.querySelectorAll(".tab");
-   const tabContent = document.querySelectorAll(".tab-content");
 
-   let tabNo = 0;
-   let contentNo = 0;
-
-   tabs.forEach((tab) => {
-      tab.dataset.id = tabNo;
-      tabNo++;
-      tab.addEventListener("click", function () {
-         tabs.forEach((tab) => {
-            tab.classList.remove("active");
-            tab.classList.add("non-active");
-         });
-         this.classList.remove("non-active");
-         this.classList.add("active");
-         tabContent.forEach((content) => {
-            content.classList.add("hidden");
-            if (content.dataset.id === tab.dataset.id) {
-               content.classList.remove("hidden");
-            }
-         });
-      });
-   });
-
-   tabContent.forEach((content) => {
-      content.dataset.id = contentNo;
-      contentNo++;
-   });
 </script>
 
 </body>
