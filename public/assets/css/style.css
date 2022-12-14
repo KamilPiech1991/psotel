@@ -1797,6 +1797,7 @@ textarea {
   border-radius: 50px;
   border: none;
   box-shadow: var(--shadow-card);
+  outline: 1px solid var(--color-accent-2) !important;
   transition: 0.2s var(--animation-easing);
 }
 
