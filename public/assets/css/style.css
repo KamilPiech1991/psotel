@@ -1179,6 +1179,13 @@ ol li {
   transition: 0.4s ease-in-out;
 }
 
+.multi1 .glide__slide img {
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 25px;
+}
+
 .multi1 .glide__slide--active {
   transform: scale(1.15);
 }
