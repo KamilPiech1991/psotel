@@ -17,6 +17,7 @@
 
 html {
   background-color: var(--color-light);
+  overflow-x: hidden;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
   font-family: "Quicksand", sans-serif;
   background-color: var(--color-light);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 a {

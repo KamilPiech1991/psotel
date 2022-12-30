@@ -17,6 +17,7 @@
 
 html {
   background-color: var(--color-light);
+  overflow-x: hidden;
 }
 
 body {
@@ -25,6 +26,7 @@ body {
   font-family: "Quicksand", sans-serif;
   background-color: var(--color-light);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 a {
@@ -593,7 +595,7 @@ ol li {
 
 .site-header.shrink {
   background-color: rgba(232, 245, 255, 0.9411764706);
-  padding-top: 0;
+  padding-top: 13px;
 }
 
 .logo {
@@ -608,9 +610,19 @@ ol li {
   width: 34px;
   height: 36px;
   margin-top: 20px;
+  margin-right: 20px;
   float: right;
   text-align: end;
   cursor: pointer;
+  z-index: 999;
+}
+
+.menu-title {
+  position: relative;
+  display: inline-block;
+  margin-top: 25px;
+  margin-right: 10px;
+  font-weight: 600;
   z-index: 999;
 }
 
