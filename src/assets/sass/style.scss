@@ -394,8 +394,8 @@
 }
 
 .tabs button {
-    padding: 15px 30px;
-    margin-right: 20px;
+    padding: 15px 15px;
+    margin-right: 5px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
@@ -419,6 +419,13 @@
 .tab-content {
     padding: 20px 0;
     transition: 1s ease-in-out
+}
+
+@media(min-width:767px) {
+    .tabs button {
+        padding: 15px 30px;
+        margin-right: 20px
+    }
 }
 
 .hidden {
