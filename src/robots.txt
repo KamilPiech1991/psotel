@@ -1,6 +1,7 @@
-User-agent: Googlebot
+---
+permalink: '/robots.txt'
+eleventyExcludeFromCollections: true
+---
 
-User-agent: *
-Disallow: /
+User-agent: * Allow: / Sitemap: https://psotelgracja.pl/sitemap.xml
 
-Sitemap: https://psotelgracja.pl/sitemap.xml
