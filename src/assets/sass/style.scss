@@ -337,6 +337,7 @@
 
 .about-gallery-main figure {
     margin: 0;
+    aspect-ratio: 3/3;
     transition: .3s ease-in-out;
 }
 
@@ -345,6 +346,9 @@
 }
 
 .about-gallery-main figure img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 45px;
     transition: .3s ease-in-out;
 }
 
@@ -368,8 +372,15 @@
     width: 25%;
     margin: 0;
     margin-left: 12px;
+    aspect-ratio: 6/7;
     border-radius: 25px;
     border: 5px solid #dedede;
+}
+
+.about-gallery-thumb figure img {
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .gallery-image .active {
@@ -819,6 +830,7 @@
 }
 
 .nav-accordion__content-wrapper {
+    padding: 0 25px;
     font-size: 15px;
     line-height: 1.4;
     max-height: 0px;
@@ -861,7 +873,7 @@
 }
 
 .nav-accordion__trigger:checked+.nav-accordion__title+.nav-accordion__content-wrapper {
-    max-height: 150px;
+    max-height: min-content;
     opacity: 1
 }
 
