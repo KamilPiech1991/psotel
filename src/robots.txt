@@ -3,5 +3,7 @@ permalink: '/robots.txt'
 eleventyExcludeFromCollections: true
 ---
 
-User-agent: * Allow: / Sitemap: https://psotelgracja.pl/sitemap.xml
+User-agent: * 
+Allow: / 
+Sitemap: https://psotelgracja.pl/sitemap.xml
 
