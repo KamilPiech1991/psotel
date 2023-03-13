@@ -546,6 +546,39 @@ ol li {
   transform: translateX(-10px);
 }
 
+.fixed-button {
+  position: fixed;
+  top: calc(100vh - 80px);
+  right: 1em;
+  z-index: 999;
+}
+
+.fixed-button a {
+  width: 63px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(79.74deg, #8ED1FF 4.42%, #D9EFFF 55.46%, #A9DCFF 90.5%);
+  box-shadow: 0px 2px 6px rgba(17, 17, 17, 0.15);
+  border-radius: 50%;
+}
+
+.fixed-button svg {
+  animation: rotateVertical 1s infinite forwards;
+}
+
+@keyframes rotateVertical {
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
 @media (min-width: 767px) {
   .pt-button {
     min-width: 200px;
@@ -554,6 +587,9 @@ ol li {
   .btn-nobg {
     margin: 1em 3em;
     padding: 0;
+  }
+  .fixed-button {
+    display: none;
   }
 }
 .color-accent-1 {
