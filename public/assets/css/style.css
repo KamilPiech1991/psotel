@@ -554,13 +554,13 @@ ol li {
 }
 
 .fixed-button a {
-  width: 63px;
-  height: 54px;
+  width: 69px;
+  height: 59px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(79.74deg, #8ED1FF 4.42%, #D9EFFF 55.46%, #A9DCFF 90.5%);
-  box-shadow: 0px 2px 6px rgba(17, 17, 17, 0.15);
+  background: linear-gradient(79.74deg, #5cb4ef 4.42%, #bcdff9 55.46%, #68bbf2 90.5%);
+  box-shadow: 0px 2px 30px rgba(17, 17, 17, 0.25);
   border-radius: 50%;
 }
 
@@ -570,13 +570,13 @@ ol li {
 
 @keyframes rotateVertical {
   0% {
-    transform: rotate(45deg);
+    transform: rotate(35deg);
   }
   50% {
     transform: rotate(0);
   }
   100% {
-    transform: rotate(45deg);
+    transform: rotate(35deg);
   }
 }
 @media (min-width: 767px) {
