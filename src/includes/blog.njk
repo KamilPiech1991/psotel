@@ -1,0 +1,11 @@
+{% include 'header.njk' %}
+
+{% include 'hero-page.njk' %}
+
+<section class="section blog pb-xlarge">
+    <div class="container">
+        {{ content | safe }}
+    </div>
+</section>
+
+{% include 'footer.njk' %}

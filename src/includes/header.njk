@@ -1,339 +1,380 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 
-<head>
-   <!-- Google Tag Manager -->
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   })(window,document,'script','dataLayer','GTM-WP2HC3B');</script>
-   <!-- End Google Tag Manager -->
-   <meta charset="utf-8" />
-   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-   
-   <meta name="robots" content="index">
+   <head>
+      <!-- Google Tag Manager -->
+      <script>
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s),
+               dl = l != 'dataLayer'
+                  ? '&l=' + l
+                  : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f
+               .parentNode
+               .insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-WP2HC3B');
+      </script>
+      <!-- End Google Tag Manager -->
+      <meta charset="utf-8"/>
+      <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 
-   <title>{{ title }} - Psotel Gracja</title>
-   <meta name="description" content="{{ description }}">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   <meta content="telephone=no" name="format-detection" />
-   <meta name="HandheldFriendly" content="true" />
+      <meta name="robots" content="index">
 
-   <meta name="google-site-verification" content="AxNosh4C0Lf61ppwCO2CpV7OBZ01W26r4y1qERzgyPE" />
+      <title>{{ title }} - Psotel Gracja</title>
+      <meta name="description" content="{{ description }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <meta content="telephone=no" name="format-detection"/>
+      <meta name="HandheldFriendly" content="true"/>
 
-   <link rel="preload" href="/assets/js/main.js" as="script" />
-   <link rel="preload" href="/assets/css/style.css" as="style" />
+      <meta name="google-site-verification" content="AxNosh4C0Lf61ppwCO2CpV7OBZ01W26r4y1qERzgyPE"/>
 
-   <!-- Stylesheet -->
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
-   <!-- Opengraph -->
-   <meta property="og:title" content="Psotel Gracja" />
-   <meta property="og:url" content="https://psotelgracja.pl/" />
-   <meta property="og:image" content="/assets/img/general/opengraph.png" />
-   <!-- Favicons & App Icons -->
-   <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png" />
-   <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png" />
-   <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png" />
-   <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png" />
-   <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png" />
-   <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png" />
-   <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png" />
-   <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png" />
-   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png" />
-   <link rel="icon" type="image/png" sizes="192x192"
-      href="assets/img/favicons/android-icon-192x192.png" />
-   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png" />
-   <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png" />
-   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png" />
-   <link rel="manifest" href="/assets/img/favicons/manifest.json" />
-   <meta name="msapplication-TileColor" content="#ffffff" />
-   <meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png" />
-   <meta name="theme-color" content="#ffffff" />
-   <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico" />
+      <link rel="preload" href="/assets/js/main.js" as="script"/>
+      <link rel="preload" href="/assets/css/style.css" as="style"/>
 
-   <script>
-      function fadeInPage() {
-         if (!window.AnimationEvent) {
-            return;
-         }
+      <!-- Stylesheet -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}"/>
+      <!-- Opengraph -->
+      <meta property="og:title" content="Psotel Gracja"/>
+      <meta property="og:url" content="https://psotelgracja.pl/"/>
+      <meta property="og:image" content="/assets/img/general/opengraph.png"/>
+      <!-- Favicons & App Icons -->
+      <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"/>
+      <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"/>
+      <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"/>
+      <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"/>
+      <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"/>
+      <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"/>
+      <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"/>
+      <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"/>
+      <link rel="icon" type="image/png" sizes="192x192"
+      href="assets/img/favicons/android-icon-192x192.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"/>
+      <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"/>
+      <link rel="manifest" href="/assets/img/favicons/manifest.json"/>
+      <meta name="msapplication-TileColor" content="#ffffff"/>
+      <meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"/>
+      <meta name="theme-color" content="#ffffff"/>
+      <link rel="icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico"/>
 
-         var fader = document.getElementById('fader');
-         fader.classList.add('fade-out');
-      }
-
-      document.addEventListener('DOMContentLoaded', function () {
-         if (!window.AnimationEvent) {
-            return;
-         }
-         var anchors = document.getElementsByTagName('a');
-
-         for (var idx = 0; idx < anchors.length; idx += 1) {
-            if (anchors[idx].hostname !== window.location.hostname ||
-               anchors[idx].pathname === window.location.pathname) {
-               continue;
+      <script>
+         function fadeInPage() {
+            if (!window.AnimationEvent) {
+               return;
             }
 
-            anchors[idx].addEventListener('click', function (event) {
-               var fader = document.getElementById('fader'),
-                  anchor = event.currentTarget;
-
-               var listener = function () {
-                  window.location = anchor.href;
-                  fader.removeEventListener('animationend', listener);
-               };
-               fader.addEventListener('animationend', listener);
-
-               event.preventDefault();
-               fader.classList.add('fade-in');
-            });
+            var fader = document.getElementById('fader');
+            fader
+               .classList
+               .add('fade-out');
          }
-      });
 
-      window.addEventListener('pageshow', function (event) {
-         if (!event.persisted) {
-            return;
+         document.addEventListener('DOMContentLoaded', function () {
+            if (!window.AnimationEvent) {
+               return;
+            }
+            var anchors = document.getElementsByTagName('a');
+
+            for (var idx = 0; idx < anchors.length; idx += 1) {
+               if (anchors[idx].hostname !== window.location.hostname || anchors[idx].pathname === window.location.pathname) {
+                  continue;
+               }
+
+               anchors[idx].addEventListener('click', function (event) {
+                  var fader = document.getElementById('fader'),
+                     anchor = event.currentTarget;
+
+                  var listener = function () {
+                     window.location = anchor.href;
+                     fader.removeEventListener('animationend', listener);
+                  };
+                  fader.addEventListener('animationend', listener);
+
+                  event.preventDefault();
+                  fader
+                     .classList
+                     .add('fade-in');
+               });
+            }
+         });
+
+         window.addEventListener('pageshow', function (event) {
+            if (!event.persisted) {
+               return;
+            }
+            var fader = document.getElementById('fader');
+            fader
+               .classList
+               .remove('fade-in');
+         });
+      </script>
+
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J1Y7PZX7L"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+            dataLayer.push(arguments);
          }
-         var fader = document.getElementById('fader');
-         fader.classList.remove('fade-in');
-      });
-   </script>
+         gtag('js', new Date());
+         gtag('config', 'G-4J1Y7PZX7L');
+      </script>
 
-   <!-- Google tag (gtag.js) --> 
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J1Y7PZX7L"></script> 
-   <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-4J1Y7PZX7L'); 
-   </script>
+      <style>
 
+         /* quicksand-regular - latin-ext */
+         @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot");
+            /* IE9 Compat Modes */
+            src:local(''), url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot?#iefix') format('embedded-opentype'),
+            /* IE6-IE8 */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff') format('woff'),
+            /* Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url( '/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.svg#Quicksand') format('svg'))
+            /* Legacy iOS */
+         }
 
+         /* quicksand-500 - latin-ext */
+         @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot");
+            /* IE9 Compat Modes */
+            src:local(''), url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot?#iefix') format('embedded-opentype'),
+            /* IE6-IE8 */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff') format('woff'),
+            /* Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url( '/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.svg#Quicksand') format('svg'))
+            /* Legacy iOS */
+         }
 
-   <style>
+         /* quicksand-600 - latin-ext */
+         @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url("/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot");
+            /* IE9 Compat Modes */
+            src:local(''), url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot?#iefix') format('embedded-opentype'),
+            /* IE6-IE8 */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff') format('woff'),
+            /* Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url( '/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.svg#Quicksand') format('svg'))
+            /* Legacy iOS */
+         }
+         /* quicksand-600 - latin-ext */
+         @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot");
+            /* IE9 Compat Modes */
+            src:local(''), url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot?#iefix') format('embedded-opentype'),
+            /* IE6-IE8 */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff2') format('woff2'),
+            /* Super Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff') format('woff'),
+            /* Modern Browsers */
+            url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.ttf') format('truetype'),
+            /* Safari, Android, iOS */
+            url( '/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.svg#Quicksand') format('svg'))
+            /* Legacy iOS */
+         }
+      </style>
+   </head>
 
-/* quicksand-regular - latin-ext */
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.woff') format('woff'), /* Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-regular.svg#Quicksand') format('svg'); /* Legacy iOS */
-}
-
-/* quicksand-500 - latin-ext */
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 500;
-    font-display: swap;
-  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.woff') format('woff'), /* Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-500.svg#Quicksand') format('svg'); /* Legacy iOS */
-}
-
-/* quicksand-600 - latin-ext */
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 600;
-    font-display: swap;
-  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.woff') format('woff'), /* Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-600.svg#Quicksand') format('svg'); /* Legacy iOS */
-}
-/* quicksand-600 - latin-ext */
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 700;
-    font-display: swap;
-  src: url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.woff') format('woff'), /* Modern Browsers */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/assets/fonts/quicksand-latin-ext/quicksand-v30-latin-ext-700.svg#Quicksand') format('svg'); /* Legacy iOS */
-}
-   </style>
-</head>
-
-<body>
-   <!-- Google Tag Manager (noscript) -->
-   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WP2HC3B"
-   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-   <!-- End Google Tag Manager (noscript) -->
-   <svg id="fader"></svg>
-   <script>
-      fadeInPage();
-   </script>
-   <header class="site-header">
-      <div class="container">
-         <div class="row">
-            <div class="col-6 col-md-1">
-               <a href="/" title="Logo">
-                  <img src="/assets/img/logo/gracja-logo.png" class="logo" alt="">
-               </a>
-            </div>
-            <div class="col-6 col-md-8 text-end text-md-center">
-               <span class="menu-title d-md-none">Menu</span>
-               <div class="burger d-md-none">
-                  <span class="burger-line"></span>
-                  <span class="burger-line"></span>
-                  <span class="burger-line"></span>
+   <body>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WP2HC3B"
+   height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      <svg id="fader"></svg>
+      <script>
+         fadeInPage();
+      </script>
+      <header class="site-header">
+         <div class="container">
+            <div class="row">
+               <div class="col-6 col-md-1">
+                  <a href="/" title="Logo">
+                     <img src="/assets/img/logo/gracja-logo.png" class="logo" alt="">
+                  </a>
                </div>
-               <nav class="main-nav">
-                  <ul>
-                     <li>
-                        <a href="/" title="Strona główna">Home</a>
-                     </li>
-                     <li>
-                        <a href="/o-hotelu" title="O hotelu">O hotelu</a>
-                     </li>
-                     <li>
-                        <a href="/regulamin" title="Regulamin">Regulamin</a>
-                     </li>
-                     <li>
-                        <a href="/cennik" title="Cennik">Cennik</a>
-                     </li>
-                     <li>
-                        <a href="/galeria" title="Galeria">Galeria</a>
-                     </li>
-                     <li>
-                        <a href="https://www.studio-gracja.pl/" title="Groomer" target="_blank">Groomer</a>
-                     </li>
-                     <li>
-                        <a href="/kontakt" title="Kontakt">Kontakt</a>
-                     </li>
-                  </ul>
-                  <div class="contact-nav d-md-none">
-                     <div>
-                        <ul>
-                           <li>
-                              <a href="tel:+48 502 194 180" title="Zadzwoń">
+               <div class="col-6 col-md-8 text-end text-md-center">
+                  <span class="menu-title d-md-none">Menu</span>
+                  <div class="burger d-md-none">
+                     <span class="burger-line"></span>
+                     <span class="burger-line"></span>
+                     <span class="burger-line"></span>
+                  </div>
+                  <nav class="main-nav">
+                     <ul>
+                        <li>
+                           <a href="/o-hotelu" title="O hotelu">O hotelu</a>
+                        </li>
+                        <li>
+                           <a href="/regulamin" title="Regulamin">Regulamin</a>
+                        </li>
+                        <li>
+                           <a href="/cennik" title="Cennik">Cennik</a>
+                        </li>
+                        <li>
+                           <a href="/galeria" title="Galeria">Galeria</a>
+                        </li>
+                        <li>
+                           <a href="https://www.studio-gracja.pl/" title="Groomer" target="_blank">Groomer</a>
+                        </li>
+                        <li>
+                           <a href="/ciekawostki" title="Ciekawostki">Ciekawostki</a>
+                        </li>
+                        <li>
+                           <a href="/kontakt" title="Kontakt">Kontakt</a>
+                        </li>
+                     </ul>
+                     <div class="contact-nav d-md-none">
+                        <div>
+                           <ul>
+                              <li>
+                                 <a href="tel:+48 502 194 180" title="Zadzwoń">
                                  +48 502 194 180
                               </a>
-                           </li>
-                           <li>
-                              <a href="mailto:psotelgracja@gmail.com" title="Wyślij wiadomość">
+                              </li>
+                              <li>
+                                 <a href="mailto:psotelgracja@gmail.com" title="Wyślij wiadomość">
                                  psotelgracja@gmail.com
                               </a>
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="contact-nav-social">
-                        <a href="#" title="">
-                           <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="contact-nav-social">
+                           <a href="#" title="">
+                              <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
-                              <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2" />
-                              <path
+                                 <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2"/>
+                                 <path
                                  d="M15.0047 8.44171C17.1434 8.44171 17.3967 8.45109 18.2378 8.48862C19.0195 8.52301 19.4417 8.65434 19.7231 8.76378C20.0952 8.90761 20.3641 9.08271 20.6424 9.361C20.9238 9.64242 21.0958 9.9082 21.2396 10.2803C21.349 10.5617 21.4804 10.987 21.5148 11.7655C21.5523 12.6098 21.5617 12.8631 21.5617 14.9987C21.5617 17.1374 21.5523 17.3907 21.5148 18.2318C21.4804 19.0135 21.349 19.4357 21.2396 19.7171C21.0958 20.0892 20.9207 20.3581 20.6424 20.6364C20.361 20.9178 20.0952 21.0898 19.7231 21.2336C19.4417 21.343 19.0164 21.4743 18.2378 21.5087C17.3936 21.5463 17.1403 21.5556 15.0047 21.5556C12.8659 21.5556 12.6127 21.5463 11.7715 21.5087C10.9898 21.4743 10.5677 21.343 10.2863 21.2336C9.91421 21.0898 9.6453 20.9146 9.36701 20.6364C9.0856 20.3549 8.91362 20.0892 8.76979 19.7171C8.66035 19.4357 8.52902 19.0104 8.49463 18.2318C8.4571 17.3876 8.44772 17.1343 8.44772 14.9987C8.44772 12.8599 8.4571 12.6067 8.49463 11.7655C8.52902 10.9838 8.66035 10.5617 8.76979 10.2803C8.91362 9.9082 9.08872 9.63929 9.36701 9.361C9.64843 9.07959 9.91421 8.90761 10.2863 8.76378C10.5677 8.65434 10.993 8.52301 11.7715 8.48862C12.6127 8.45109 12.8659 8.44171 15.0047 8.44171ZM15.0047 7.00024C12.8315 7.00024 12.5595 7.00962 11.7059 7.04715C10.8554 7.08467 10.2707 7.22225 9.76412 7.41924C9.23568 7.62561 8.78855 7.89764 8.34454 8.34478C7.8974 8.78879 7.62537 9.23593 7.419 9.76124C7.22201 10.2709 7.08442 10.8525 7.0469 11.703C7.00938 12.5598 7 12.8318 7 15.0049C7 17.1781 7.00938 17.4501 7.0469 18.3037C7.08442 19.1542 7.22201 19.739 7.419 20.2455C7.62537 20.7739 7.8974 21.2211 8.34454 21.6651C8.78855 22.1091 9.23568 22.3843 9.76099 22.5875C10.2707 22.7845 10.8523 22.9221 11.7028 22.9596C12.5564 22.9971 12.8284 23.0065 15.0016 23.0065C17.1747 23.0065 17.4467 22.9971 18.3004 22.9596C19.1509 22.9221 19.7356 22.7845 20.2421 22.5875C20.7674 22.3843 21.2146 22.1091 21.6586 21.6651C22.1026 21.2211 22.3778 20.7739 22.581 20.2486C22.778 19.739 22.9156 19.1574 22.9531 18.3069C22.9906 17.4532 23 17.1812 23 15.0081C23 12.8349 22.9906 12.5629 22.9531 11.7093C22.9156 10.8588 22.778 10.274 22.581 9.76749C22.384 9.23593 22.112 8.78879 21.6648 8.34478C21.2208 7.90077 20.7737 7.62561 20.2484 7.42237C19.7387 7.22538 19.1571 7.0878 18.3066 7.05027C17.4499 7.00962 17.1778 7.00024 15.0047 7.00024Z"
-                                 fill="#002D4C" />
-                              <path
+                                 fill="#002D4C"/>
+                                 <path
                                  d="M15.0024 10.8931C12.7323 10.8931 10.8906 12.7348 10.8906 15.0049C10.8906 17.2749 12.7323 19.1166 15.0024 19.1166C17.2725 19.1166 19.1142 17.2749 19.1142 15.0049C19.1142 12.7348 17.2725 10.8931 15.0024 10.8931ZM15.0024 17.672C13.5297 17.672 12.3352 16.4776 12.3352 15.0049C12.3352 13.5321 13.5297 12.3377 15.0024 12.3377C16.4751 12.3377 17.6696 13.5321 17.6696 15.0049C17.6696 16.4776 16.4751 17.672 15.0024 17.672Z"
-                                 fill="#002D4C" />
-                              <path
+                                 fill="#002D4C"/>
+                                 <path
                                  d="M20.2402 10.7304C20.2402 11.262 19.8087 11.6904 19.2803 11.6904C18.7487 11.6904 18.3203 11.2589 18.3203 10.7304C18.3203 10.1989 18.7518 9.77051 19.2803 9.77051C19.8087 9.77051 20.2402 10.202 20.2402 10.7304Z"
-                                 fill="#002D4C" />
-                           </svg>
-                        </a>
-                        <a href="#" title="">
-                           <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 fill="#002D4C"/>
+                              </svg>
+                           </a>
+                           <a href="#" title="">
+                              <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
-                              <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2" />
-                              <path
+                                 <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2"/>
+                                 <path
                                  d="M19.0006 9.65709V7.11292C18.294 7.03534 17.5836 6.99776 16.8728 7.00037C14.7669 7.00037 13.3237 8.32443 13.3237 10.76V13.0003H11V15.847H13.3237V23.0002H16.1704V15.8451H18.4001L18.7543 12.9983H16.1724V11.0387C16.1724 10.2165 16.3942 9.65378 17.5395 9.65378H18.9999L19.0006 9.65709Z"
-                                 fill="#002D4C" />
-                           </svg>
-                        </a>
-                        <a href="#" title="">
-                           <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 fill="#002D4C"/>
+                              </svg>
+                           </a>
+                           <a href="#" title="">
+                              <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
-                              <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2" />
-                              <path
+                                 <rect x="1" y="1.00024" width="28" height="28" rx="8" stroke="#002D4C" stroke-width="2"/>
+                                 <path
                                  d="M12.4043 21.0002C17.686 21.0002 20.5757 16.383 20.5757 12.3802C20.5757 12.2504 20.5729 12.1177 20.5675 11.9879C21.1296 11.559 21.6147 11.0279 22 10.4193C21.4765 10.665 20.9206 10.8255 20.3514 10.8952C20.9507 10.5163 21.3995 9.92095 21.6145 9.21962C21.0507 9.57209 20.4341 9.82073 19.7912 9.95488C19.358 9.46933 18.7852 9.14784 18.1615 9.04011C17.5377 8.93238 16.8977 9.04442 16.3403 9.35889C15.783 9.67337 15.3394 10.1728 15.0781 10.7799C14.8168 11.387 14.7523 12.068 14.8947 12.7177C13.7531 12.6572 12.6363 12.3444 11.6167 11.7994C10.597 11.2545 9.69732 10.4895 8.9759 9.55422C8.60923 10.2211 8.49703 11.0102 8.6621 11.7613C8.82717 12.5123 9.25712 13.1688 9.86457 13.5974C9.40853 13.5822 8.96249 13.4526 8.56328 13.2196V13.2571C8.56287 13.9569 8.79222 14.6353 9.21235 15.1769C9.63247 15.7186 10.2174 16.09 10.8678 16.2281C10.4454 16.35 10.002 16.3678 9.57199 16.28C9.75552 16.8819 10.1126 17.4083 10.5934 17.7858C11.0741 18.1633 11.6547 18.373 12.2539 18.3857C11.2366 19.2287 9.97993 19.6859 8.68633 19.6838C8.45692 19.6834 8.22773 19.6686 8 19.6393C9.31417 20.5287 10.8429 21.0011 12.4043 21.0002Z"
-                                 fill="#002D4C" />
-                           </svg>
-                        </a>
-                     </div>
-                     <div class="contact-nav-adress full-width mt-4">
-                        <div class="row">
-                           <div class="col-6">
-                              <p class="d-flex align-items-center">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                 fill="#002D4C"/>
+                              </svg>
+                           </a>
+                        </div>
+                        <div class="contact-nav-adress full-width mt-4">
+                           <div class="row">
+                              <div class="col-6">
+                                 <p class="d-flex align-items-center">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
+                                       <path
                                        d="M16.825 8.09919C16.825 7.68498 16.4892 7.34919 16.075 7.34919C15.6608 7.34919 15.325 7.68498 15.325 8.09919H16.825ZM4.67499 8.09919C4.67499 7.68498 4.33921 7.34919 3.92499 7.34919C3.51078 7.34919 3.17499 7.68498 3.17499 8.09919H4.67499ZM12.0944 17.2559L11.9219 16.526H11.9219L12.0944 17.2559ZM7.90561 17.2559L8.07804 16.526L7.90561 17.2559ZM12.357 4.17852L11.8248 4.70697L12.357 4.17852ZM16.9678 9.88653C17.2596 10.1805 17.7345 10.1821 18.0284 9.89029C18.3224 9.59844 18.3241 9.12357 18.0322 8.82964L16.9678 9.88653ZM7.64298 4.17852L8.17518 4.70697L8.17518 4.70697L7.64298 4.17852ZM1.96779 8.82964C1.67594 9.12357 1.67762 9.59844 1.97155 9.89029C2.26548 10.1821 2.74035 10.1805 3.03221 9.88653L1.96779 8.82964ZM8.09869 15.2669L7.36156 15.1286V15.1286L8.09869 15.2669ZM8.1148 15.1811L8.85193 15.3194L8.85193 15.3194L8.1148 15.1811ZM11.8852 15.1811L11.1481 15.3194L11.1481 15.3194L11.8852 15.1811ZM11.9013 15.2669L12.6384 15.1286L12.6384 15.1286L11.9013 15.2669ZM11.6598 17.1266L10.9826 16.8043L10.9826 16.8043L11.6598 17.1266ZM10.8853 17.0088C10.7073 17.3828 10.8662 17.8303 11.2402 18.0083C11.6142 18.1863 12.0617 18.0274 12.2397 17.6534L10.8853 17.0088ZM8.34019 17.1266L7.66296 17.4489L7.66296 17.4489L8.34019 17.1266ZM7.76028 17.6534C7.93827 18.0274 8.38577 18.1863 8.75979 18.0083C9.13381 17.8303 9.29272 17.3828 9.11472 17.0088L7.76028 17.6534ZM9.46755 13.7021L9.26702 12.9794L9.46755 13.7021ZM10.5325 13.7021L10.733 12.9794L10.5325 13.7021ZM15.325 8.09919V12.1978H16.825V8.09919H15.325ZM4.67499 12.1978V8.09919H3.17499V12.1978H4.67499ZM11.9219 16.526C10.6578 16.8247 9.34221 16.8247 8.07804 16.526L7.73318 17.9858C9.22413 18.3381 10.7759 18.3381 12.2668 17.9858L11.9219 16.526ZM8.07804 16.526C6.08787 16.0559 4.67499 14.2657 4.67499 12.1978H3.17499C3.17499 14.9545 5.05948 17.3542 7.73318 17.9858L8.07804 16.526ZM12.2668 17.9858C14.9405 17.3542 16.825 14.9545 16.825 12.1978H15.325C15.325 14.2657 13.9121 16.0559 11.9219 16.526L12.2668 17.9858ZM11.8248 4.70697L16.9678 9.88653L18.0322 8.82964L12.8892 3.65008L11.8248 4.70697ZM7.11077 3.65008L1.96779 8.82964L3.03221 9.88653L8.17518 4.70697L7.11077 3.65008ZM12.8892 3.65008C12.3486 3.10565 11.8911 2.64258 11.4777 2.32492C11.0472 1.99414 10.5767 1.75 10 1.75V3.25C10.1136 3.25 10.2661 3.28561 10.5638 3.51434C10.8785 3.75619 11.2543 4.13238 11.8248 4.70697L12.8892 3.65008ZM8.17518 4.70697C8.74571 4.13238 9.1215 3.75619 9.43624 3.51434C9.7339 3.28562 9.88638 3.25 10 3.25V1.75C9.42326 1.75 8.95278 1.99414 8.5223 2.32492C8.1089 2.64258 7.65135 3.10565 7.11077 3.65008L8.17518 4.70697ZM8.83581 15.4053L8.85193 15.3194L7.37768 15.0427L7.36156 15.1286L8.83581 15.4053ZM11.1481 15.3194L11.1642 15.4053L12.6384 15.1286L12.6223 15.0427L11.1481 15.3194ZM10.9826 16.8043L10.8853 17.0088L12.2397 17.6534L12.337 17.4489L10.9826 16.8043ZM7.66296 17.4489L7.76028 17.6534L9.11472 17.0088L9.01741 16.8043L7.66296 17.4489ZM11.1642 15.4053C11.2532 15.8794 11.1894 16.3696 10.9826 16.8043L12.337 17.4489C12.6805 16.7272 12.7859 15.9144 12.6384 15.1286L11.1642 15.4053ZM7.36156 15.1286C7.21406 15.9144 7.31953 16.7272 7.66296 17.4489L9.01741 16.8043C8.81057 16.3696 8.74682 15.8794 8.83581 15.4053L7.36156 15.1286ZM9.66807 14.4248C9.88534 14.3645 10.1147 14.3645 10.3319 14.4248L10.733 12.9794C10.2533 12.8463 9.7467 12.8463 9.26702 12.9794L9.66807 14.4248ZM12.6223 15.0427C12.4362 14.0512 11.7051 13.2492 10.733 12.9794L10.3319 14.4248C10.7482 14.5403 11.0667 14.8857 11.1481 15.3194L12.6223 15.0427ZM8.85193 15.3194C8.93333 14.8857 9.2518 14.5403 9.66807 14.4248L9.26702 12.9794C8.29491 13.2492 7.56378 14.0512 7.37768 15.0427L8.85193 15.3194Z"
-                                       fill="#8F9AFF" />
-                                 </svg>
+                                       fill="#8F9AFF"/>
+                                    </svg>
                                  Lokalizacja
                               </p>
-                              <p>
-                                 <small>
+                                 <p>
+                                    <small>
                                  Leśna 27 
                                  Żabieniec
                                  </small>
-                              </p>
-                           </div>
-                           <div class="col-6">
-                              <p class="d-flex align-items-center">
-                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                 </p>
+                              </div>
+                              <div class="col-6">
+                                 <p class="d-flex align-items-center">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
+                                       <path
                                        d="M2.79406 7.45869C3.33698 5.14417 5.14417 3.33698 7.45869 2.79406C9.13021 2.40198 10.8698 2.40198 12.5413 2.79406C14.8558 3.33698 16.663 5.14417 17.2059 7.4587C17.598 9.13021 17.598 10.8698 17.2059 12.5413C16.663 14.8558 14.8558 16.663 12.5413 17.2059C10.8698 17.598 9.13021 17.598 7.4587 17.2059C5.14418 16.663 3.33698 14.8558 2.79406 12.5413C2.40198 10.8698 2.40198 9.13021 2.79406 7.45869Z"
-                                       stroke="#8F9AFF" stroke-width="1.5" />
-                                    <path d="M12.0842 12.0833L9.71875 10.5783V7.5" stroke="#8F9AFF" stroke-width="1.5"
-                                       stroke-linecap="round" stroke-linejoin="round" />
-                                 </svg>
+                                       stroke="#8F9AFF" stroke-width="1.5"/>
+                                       <path d="M12.0842 12.0833L9.71875 10.5783V7.5" stroke="#8F9AFF" stroke-width="1.5"
+                                       stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                  Godziny pracy
                               </p>
-                              <p>
-                                 <small>
+                                 <p>
+                                    <small>
                                  Pon - Nd: 8.30 - 20.30
                                  </small>
-                              </p>
+                                 </p>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-               </nav>
-            </div>
-            <div class="col-md-3 text-end d-none d-md-block">
-               <a href="tel:+48 502 194 180" class="pt-button" title="Zadzwoń">
-<svg width="21" height="21" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1323_4111)">
-<path d="M80 16H16C11.6 16 8.04 19.6 8.04 24L8 72C8 76.4 11.6 80 16 80H80C84.4 80 88 76.4 88 72V24C88 19.6 84.4 16 80 16ZM80 72H16V32L48 52L80 32V72ZM48 44L16 24H80L48 44Z" fill="#002D4C"/>
-</g>
-<defs>
-<clipPath id="clip0_1323_4111">
-<rect width="96" height="96" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-                  <span>Zarezerwuj pobyt</span>
-               </a>
+                  </nav>
+               </div>
+               <div class="col-md-3 text-end d-none d-md-block">
+                  <a href="tel:+48 502 194 180" class="pt-button" title="Zadzwoń">
+                     <svg width="21" height="21" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1323_4111)">
+                           <path d="M80 16H16C11.6 16 8.04 19.6 8.04 24L8 72C8 76.4 11.6 80 16 80H80C84.4 80 88 76.4 88 72V24C88 19.6 84.4 16 80 16ZM80 72H16V32L48 52L80 32V72ZM48 44L16 24H80L48 44Z" fill="#002D4C"/>
+                        </g>
+                        <defs>
+                           <clipPath id="clip0_1323_4111">
+                              <rect width="96" height="96" fill="white"/>
+                           </clipPath>
+                        </defs>
+                     </svg>
+                     <span>Zarezerwuj pobyt</span>
+                  </a>
+               </div>
             </div>
          </div>
+      </header>
+      <div class="fixed-button">
+         <a href="tel:+48502194180">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M13.1653 18.8835C14.0469 19.0388 14.9531 19.0388 15.8347 18.8835C17.2516 18.6338 18.3929 17.6826 18.786 16.4236L18.8694 16.1565C18.956 15.879 19 15.5919 19 15.3034C19 14.0313 17.8623 13 16.4589 13H12.5411C11.1377 13 10 14.0313 10 15.3034C10 15.5919 10.044 15.879 10.1306 16.1565L10.214 16.4236C10.6071 17.6826 11.7484 18.6338 13.1653 18.8835ZM13.1653 18.8835C7.04195 17.7489 2.25108 12.958 1.1165 6.83468M1.1165 6.83468C0.961165 5.95315 0.961166 5.04686 1.1165 4.16532C1.36618 2.74842 2.31744 1.60713 3.57641 1.21402L3.84345 1.13063C4.12103 1.04396 4.40813 1 4.69661 1C5.96874 1 7.00001 2.13768 7 3.54106L7 7.45894C7.00001 8.86233 5.96874 10 4.69661 10C4.40813 10 4.12103 9.95604 3.84345 9.86937L3.57641 9.78598C2.31744 9.39287 1.36618 8.25159 1.1165 6.83468Z" stroke="#002D4C" stroke-width="1.5"></path>
+            </svg>
+         </a>
       </div>
-   </header>
-   <div class="fixed-button">
-      <a href="tel:+48502194180">
-         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.1653 18.8835C14.0469 19.0388 14.9531 19.0388 15.8347 18.8835C17.2516 18.6338 18.3929 17.6826 18.786 16.4236L18.8694 16.1565C18.956 15.879 19 15.5919 19 15.3034C19 14.0313 17.8623 13 16.4589 13H12.5411C11.1377 13 10 14.0313 10 15.3034C10 15.5919 10.044 15.879 10.1306 16.1565L10.214 16.4236C10.6071 17.6826 11.7484 18.6338 13.1653 18.8835ZM13.1653 18.8835C7.04195 17.7489 2.25108 12.958 1.1165 6.83468M1.1165 6.83468C0.961165 5.95315 0.961166 5.04686 1.1165 4.16532C1.36618 2.74842 2.31744 1.60713 3.57641 1.21402L3.84345 1.13063C4.12103 1.04396 4.40813 1 4.69661 1C5.96874 1 7.00001 2.13768 7 3.54106L7 7.45894C7.00001 8.86233 5.96874 10 4.69661 10C4.40813 10 4.12103 9.95604 3.84345 9.86937L3.57641 9.78598C2.31744 9.39287 1.36618 8.25159 1.1165 6.83468Z" stroke="#002D4C" stroke-width="1.5"></path>
-         </svg>
-      </a>
-   </div>
-   <main>
+      <main>

@@ -1,0 +1,17 @@
+---
+title: Ciekawostki
+layout: blog.njk
+description: Opis
+heroImage: /assets/img/page/gallery/hero.png
+---
+
+<div class="row">
+  {% for post in collections.posts %}
+    <div class="col-md-4">
+      <a href="{{ post.url }}">
+        <img src="{{ post.data.postThumb }}" class="post-thumb">
+        <h2 class="h4">{{ post.data.title }}</h2>
+      </a>
+    </div>
+  {% endfor %}
+</div>

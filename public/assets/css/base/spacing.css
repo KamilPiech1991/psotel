@@ -122,6 +122,7 @@
 
 .section {
   position: relative;
+  background: #f3f9ff;
   z-index: 1;
 }
 

@@ -1434,6 +1434,20 @@ textarea:focus {
     right: -1em
 }
 
+.sidebar {
+    padding: 1em;
+    margin-top: -10px;
+    border-radius: 12px;
+    background: #fff
+}
+
+.post-thumb {
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 21px
+}
+
 .footer-card h4 {
     text-transform: uppercase
 }

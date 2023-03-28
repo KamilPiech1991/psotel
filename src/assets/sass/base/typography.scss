@@ -68,13 +68,15 @@ ol li {
     margin-bottom: 13px;
 }
 
-.gr-list li {
+.gr-list li,
+.post ul li {
     position: relative;
     margin-bottom: 18px;
     list-style: none;
 }
 
-.gr-list li::before {
+.gr-list li::before,
+.post ul li::before {
     position: absolute;
     content: url("../img/general/list.svg");
     top: 0;

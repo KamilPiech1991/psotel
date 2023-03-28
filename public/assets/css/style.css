@@ -163,13 +163,15 @@ ol li {
   margin-bottom: 13px;
 }
 
-.gr-list li {
+.gr-list li,
+.post ul li {
   position: relative;
   margin-bottom: 18px;
   list-style: none;
 }
 
-.gr-list li::before {
+.gr-list li::before,
+.post ul li::before {
   position: absolute;
   content: url("../img/general/list.svg");
   top: 0;
@@ -324,6 +326,7 @@ ol li {
 
 .section {
   position: relative;
+  background: #f3f9ff;
   z-index: 1;
 }
 
@@ -1976,6 +1979,20 @@ textarea:focus {
 .submit-wrap:hover::before {
   left: -1em;
   right: -1em;
+}
+
+.sidebar {
+  padding: 1em;
+  margin-top: -10px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.post-thumb {
+  aspect-ratio: 5/3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 21px;
 }
 
 .footer-card h4 {

@@ -1,0 +1,26 @@
+{% include 'header.njk' %}
+
+{% include 'hero-post.njk' %}
+
+<section class="section post pb-xlarge">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                {{ content | safe }}
+            </div>
+            <div class="offset-md-1 col-md-4 d-none d-md-block">
+                <div class="sidebar">
+                    {% for post in collections.posts %}
+                        <div class="">
+                            <a href="{{ post.url }}">
+                                <h2 class="h4">{{ post.data.title }}</h2>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.njk' %}
