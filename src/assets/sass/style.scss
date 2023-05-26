@@ -7,6 +7,9 @@
 @use 'components/glide.scss';
 @use 'components/button.scss';
 
+* {
+    box-sizing: border-box
+}
 
 .color-accent-1 {
     color: var(--color-accent-1);
@@ -1435,17 +1438,59 @@ textarea:focus {
 }
 
 .sidebar {
-    padding: 1em;
+    padding: 2.2em 1.3em 1em;
     margin-top: -10px;
     border-radius: 12px;
     background: #fff
 }
 
-.post-thumb {
+.sticky {
+    position: sticky;
+    top: 180px;
+}
+
+.post-thumb,
+.post-image {
     aspect-ratio: 5 / 3;
     object-fit: cover;
     object-position: center;
     border-radius: 21px
+}
+
+.sidebar .post-thumb {
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 11px
+}
+
+#fb-share-button {
+    background: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 20px 28px;
+    display: inline-block;
+    margin-bottom: 40px;
+    transition: .2s ease-in-out
+}
+
+#fb-share-button:hover {
+    cursor: pointer;
+    background: var(--color-accent-2)
+}
+
+#fb-share-button svg {
+    width: 18px;
+    fill: #245da5;
+    vertical-align: middle;
+    border-radius: 2px
+}
+
+#fb-share-button span {
+    vertical-align: middle;
+    color: var(--color-text);
+    font-size: 16px;
+    padding: 0 3px
 }
 
 .footer-card h4 {

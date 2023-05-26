@@ -210,7 +210,7 @@
       </style>
    </head>
 
-   <body>
+   <body class="page-{% if page.fileSlug %}{{ page.fileSlug }}{% else %}home{% endif %}">
       <!-- Google Tag Manager (noscript) -->
       <noscript>
          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WP2HC3B"

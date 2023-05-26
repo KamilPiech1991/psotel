@@ -1,11 +1,16 @@
-<section class="hero-page pt-large pb-large">
+<section class="hero-page pt-large pb-small">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-8">
+    <div class="row gx-5 align-items-center">
+      <div class="col-md-7">
         <h1 class="color-accent-1">
           {{ title }}
         </h1>
         {% include 'breadcrumbs.njk' %}
+      </div>
+      <div class="offset-md-1 col-md-4">
+        <div class="post-thumb-wrap pt-small">
+            <img src="{{ postThumb | url }}" alt="" class="post-image"/>
+        </div>
       </div>
     </div>
   </div>

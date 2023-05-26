@@ -17,7 +17,6 @@
 
 html {
   background-color: var(--color-light);
-  overflow-x: hidden;
 }
 
 body {
@@ -26,9 +25,13 @@ body {
   font-family: "Quicksand", sans-serif;
   background-color: var(--color-light);
   color: var(--color-text);
-  overflow-x: hidden;
 }
 
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -130,6 +133,11 @@ h4,
   font-size: 20px;
 }
 
+h5,
+.h5 {
+  font-size: 18px;
+}
+
 p,
 li {
   font-size: 16px;
@@ -197,6 +205,10 @@ ol li {
   h4,
   .h4 {
     font-size: 20px;
+  }
+  h5,
+  .h5 {
+    font-size: 18px;
   }
   .up-heading {
     font-size: 14px;
@@ -595,6 +607,10 @@ ol li {
     display: none;
   }
 }
+* {
+  box-sizing: border-box;
+}
+
 .color-accent-1 {
   color: var(--color-accent-1);
 }
@@ -1982,17 +1998,59 @@ textarea:focus {
 }
 
 .sidebar {
-  padding: 1em;
+  padding: 2.2em 1.3em 1em;
   margin-top: -10px;
   border-radius: 12px;
   background: #fff;
 }
 
-.post-thumb {
+.sticky {
+  position: sticky;
+  top: 180px;
+}
+
+.post-thumb,
+.post-image {
   aspect-ratio: 5/3;
   object-fit: cover;
   object-position: center;
   border-radius: 21px;
+}
+
+.sidebar .post-thumb {
+  aspect-ratio: 5/3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 11px;
+}
+
+#fb-share-button {
+  background: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 20px 28px;
+  display: inline-block;
+  margin-bottom: 40px;
+  transition: 0.2s ease-in-out;
+}
+
+#fb-share-button:hover {
+  cursor: pointer;
+  background: var(--color-accent-2);
+}
+
+#fb-share-button svg {
+  width: 18px;
+  fill: #245da5;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+#fb-share-button span {
+  vertical-align: middle;
+  color: var(--color-text);
+  font-size: 16px;
+  padding: 0 3px;
 }
 
 .footer-card h4 {
