@@ -4,13 +4,15 @@ backend:
   publish_mode: editorial_workflow
 
 
-media_folder: "blog/img" # Media files will be stored in the repo under images/uploads
+media_folder: "src/blog/img" # Media files will be stored in the repo under images/uploads
 
 collections:
   # Our blog posts
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
     label: "Posty" # Used in the UI
     folder: "src/blog" # The path to the folder where the documents are stored
+    media_folder: "img/"
+    public_folder: "/blog/img/"
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
