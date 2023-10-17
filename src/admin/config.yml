@@ -21,3 +21,14 @@ collections:
       - { label: "Data", name: "date", widget: "datetime" }
       - { label: "Autor", name: "author", widget: "string", default: "Psotel Gracja" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+
+  # Faq
+  - name: "faq" # To musi pasować do nazwy, którą używasz w konfiguracji Netlify CMS
+    label: "FAQ"
+    label_singular: "FAQ"
+    folder: "src/faq" # Ścieżka do folderu, gdzie będą przechowywane dane FAQ
+    create: true
+    fields:
+      - { label: "FAQ", name: "faq", widget: "list", fields: fields }
+      
