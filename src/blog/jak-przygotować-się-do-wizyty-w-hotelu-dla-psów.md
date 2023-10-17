@@ -6,15 +6,15 @@ author: Psotel Gracja
 ---
 Przygotowanie swojego pupila do wizyty w hotelu dla psów jest ważne zarówno dla zwierzęcia, jak i dla właściciela. Właściciele często odczuwają niepokój i troskę związaną z oddaniem swojego ukochanego psa w ręce profesjonalistów, ale odpowiednie przygotowanie może znacząco zredukować stres i zapewnić zarówno właścicielowi, jak i psu spokojne doświadczenie. W poniższym artykule omówimy, jak skutecznie przygotować się do wizyty w hotelu dla psów.
 
-### 1. Wybór odpowiedniego hotelu
+### Wybór odpowiedniego hotelu
 
 Pierwszym krokiem jest znalezienie odpowiedniego hotelu dla psa. Upewnij się, że wybierasz miejsce o dobrej reputacji, które jest licencjonowane i przestrzega standardów opieki nad zwierzętami. Przeczytaj recenzje, zapytaj innych właścicieli psów o ich doświadczenia, i odwiedź hotel osobiście, aby ocenić warunki.
 
-### 2. Aktualne szczepienia i dokumenty
+### Aktualne szczepienia i dokumenty
 
 Upewnij się, że twój pies ma aktualne szczepienia i dokumentację zdrowotną. Większość hoteli dla psów wymaga, aby psy były zaszczepione przeciwko chorobom zakaźnym, takim jak wścieklizna, parwowiroza czy kennel cough. Przynosząc swojego psa do hotelu, przygotuj kartę szczepień i wszelkie inne dokumenty potwierdzające stan zdrowia zwierzęcia.
 
-### 3. Zarezerwuj z wyprzedzeniem
+### Zarezerwuj z wyprzedzeniem
 
 Hotele dla psów często mają ograniczoną liczbę miejsc, zwłaszcza w sezonach wakacyjnych. Rezerwacja z wyprzedzeniem pozwoli ci upewnić się, że znajdziesz odpowiednie miejsce dla swojego psa w dogodnym terminie.
 
