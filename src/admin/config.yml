@@ -31,6 +31,11 @@ collections:
     create: true
     widget: "list"
     fields:
-      - { label: "Pytanie", name: "pytanie", widget: "string" }
-      - { label: "Odpowiedź", name: "odpowiedz", widget: "text" }
-
+      - { label: "Faq - element", name: "faq_element", widget: "string" }
+      - label: Nazwa
+        name: Nazwa
+        widget: object
+        fields:
+          - {label: Pytanie, name: pytanie, widget: string }
+          - {label: Odpowiedź, name: odpowiedz, widget: text }
+      
