@@ -24,11 +24,11 @@ collections:
 
 
   # Faq
-  - label: "Galeria"
-    name: gallery
+  - label: "FAQ"
+    name: faq
     folder: "src/faq"
     create: true
-    fields:
+    fields: 
       - name: faq_item
         label: Faq element
         widget: list
