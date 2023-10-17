@@ -13,7 +13,11 @@ module.exports = function (eleventyConfig) {
   // Collections
   eleventyConfig.addCollection('posts', function(collectionApi) {
     return collectionApi.getFilteredByGlob('src/blog/**/*.md').reverse();
-  })
+  });
+
+  eleventyConfig.addCollection("faq", function(collection) {
+    return collection.getFilteredByGlob("src/faq/*.md");
+  });
 
   return {
     dir: {
