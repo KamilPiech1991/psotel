@@ -1,6 +1,6 @@
 ---
 title: Zabawki i rozrywka dla psów podczas pobytu w hotelu
-postThumb: "#"
+postThumb: /blog/img/ai-generated-labrador-retriever-dog-picture_23-2150644793.jpg
 date: 2023-10-17T09:50:15.010Z
 author: Psotel Gracja
 ---
