@@ -32,8 +32,20 @@ collections:
     fields:
       - label: Pytanie i odpowiedź
         name: faq_element
-        widget: list
+        widget: object
         fields:
           - {label: Pytanie, name: pytanie, widget: string }
           - {label: Odpowiedź, name: odpowiedz, widget: text }
       
+
+  - label: "Testimonials"
+    name: "testimonials"
+    widget: "list"
+    fields:
+      - {label: Quote, name: quote, widget: string, default: "Everything is awesome!"}
+      - label: Author
+        name: author
+        widget: object
+        fields:
+          - {label: Name, name: name, widget: string, default: "Emmet"}
+          - {label: Avatar, name: avatar, widget: image, default: "/img/emmet.jpg"}
