@@ -29,10 +29,10 @@ collections:
     folder: "src/faq"
     create: true
     fields: 
-      - name: faq_item
-        label: Faq element
+      - name: Pytanie i odpowiedź
+        label: Pytanie i odpowiedź
         widget: list
         fields:
-          - {label: Pytanie, name: pytanie, widget: string}
-          - {label: Odpowiedź, name: odpowiedz, widget: text}
+          - {label: "Pytanie", name: "pytanie", widget: "string"}
+          - {label: "Odpowiedź", name: "odpowiedz", widget: "text"}
 
