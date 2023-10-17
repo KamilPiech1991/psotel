@@ -1,0 +1,24 @@
+---
+title: Faq
+layout: base.njk
+description: Odpowiedzi na najczęściej zadawane pytania
+heroImage: /assets/img/page/gallery/hero.png
+---
+
+
+
+    <h1>Faq</h1>
+    
+    <div class="faq-container">
+        {% for faqItem in collections.gallery[0].data.faq_item %}
+            <div class="nav-accordion">
+                <input class="nav-accordion__trigger" id="{{ faqItem.pytanie | slugify }}" type="checkbox"/>
+                <label class="nav-accordion__title" for="{{ faqItem.pytanie | slugify }}">{{ faqItem.pytanie }}</label>
+                <div class="nav-accordion__content-wrapper">
+                    <div class="nav-accordion__content">
+                        <p>{{ faqItem.odpowiedz }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>

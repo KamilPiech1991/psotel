@@ -29,7 +29,6 @@ collections:
     folder: "src/faq"
     create: true
     fields:
-      - {label: Title, name: title, widget: string, tagname: h1}
       - name: faq_item
         label: Faq element
         widget: list
