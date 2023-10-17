@@ -24,16 +24,16 @@ collections:
 
 
   # Faq
-  - name: "faq" # To musi pasować do nazwy, którą używasz w konfiguracji Netlify CMS
-    label: "FAQ"
-    folder: "src/faq" # Ścieżka do folderu, gdzie będą przechowywane dane FAQ
+  - label: "Galeria"
+    name: gallery
+    folder: "src/faq"
     create: true
-    widget: "list"
     fields:
-      - label: Pytanie i odpowiedź
-        name: faq_element
-        widget: object
+      - {label: Title, name: title, widget: string, tagname: h1}
+      - name: faq_item
+        label: Faq element
+        widget: list
         fields:
-          - {label: Pytanie, name: pytanie, widget: string }
-          - {label: Odpowiedź, name: odpowiedz, widget: text }
-      
+          - {label: Pytanie, name: pytanie, widget: string}
+          - {label: Odpowiedź, name: odpowiedz, widget: text}
+
