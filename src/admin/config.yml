@@ -28,11 +28,8 @@ collections:
     name: faq
     folder: "src/faq"
     create: true
-    fields: 
-      - label: Pytanie i odpowiedź
-        name: Pytanie i odpowiedź
-        widget: list
-        fields:
-          - {label: "Pytanie", name: "pytanie", widget: "string"}
-          - {label: "Odpowiedź", name: "odpowiedz", widget: "markdown"}
+    widget: "list"
+    fields:
+      - {label: "Pytanie", name: "pytanie", widget: "string"}
+      - {label: "Odpowiedź", name: "odpowiedz", widget: "markdown"}
 
