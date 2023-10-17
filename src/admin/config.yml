@@ -28,7 +28,6 @@ collections:
     name: faq
     folder: "src/faq"
     create: true
-    widget: "list"
     fields:
       - {label: "Pytanie", name: "pytanie", widget: "string"}
       - {label: "Odpowiedź", name: "odpowiedz", widget: "markdown"}
