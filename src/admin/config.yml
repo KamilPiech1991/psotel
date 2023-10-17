@@ -30,5 +30,5 @@ collections:
     folder: "src/faq" # Ścieżka do folderu, gdzie będą przechowywane dane FAQ
     create: true
     fields:
-      - { label: "FAQ", name: "faq", widget: "list", fields: fields }
-      
+      - { label: "FAQ", name: "faq", widget: "list" }
+
