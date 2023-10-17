@@ -29,6 +29,8 @@ collections:
     label_singular: "FAQ"
     folder: "src/faq" # Ścieżka do folderu, gdzie będą przechowywane dane FAQ
     create: true
+    widget: "list"
     fields:
-      - { label: "FAQ", name: "faq", widget: "list" }
+      - { label: "Pytanie", name: "pytanie", widget: "string" }
+      - { label: "Odpowiedź", name: "odpowiedz", widget: "text" }
 
