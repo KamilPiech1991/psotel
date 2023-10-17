@@ -1,0 +1,16 @@
+
+    <h1>FAQ</h1>
+
+    <div class="faq-container">
+        {% for faq_element in collections.faq %}
+            <div class="nav-accordion">
+                <input class="nav-accordion__trigger" id="{{ faq_element.data.name.pytanie | slugify }}" type="checkbox"/>
+                <label class="nav-accordion__title" for="{{ faq_element.data.name.pytanie | slugify }}">{{ faq_element.data.name.pytanie }}</label>
+                <div class="nav-accordion__content-wrapper">
+                    <div class="nav-accordion__content">
+                        <p>{{ faq_element.data.name.odpowiedz }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
