@@ -18,23 +18,23 @@ Upewnij się, że twój pies ma aktualne szczepienia i dokumentację zdrowotną.
 
 Hotele dla psów często mają ograniczoną liczbę miejsc, zwłaszcza w sezonach wakacyjnych. Rezerwacja z wyprzedzeniem pozwoli ci upewnić się, że znajdziesz odpowiednie miejsce dla swojego psa w dogodnym terminie.
 
-### 4. Przygotowanie psa emocjonalne
+### Przygotowanie psa emocjonalne
 
 Zwierzęta czują nasze emocje, dlatego ważne jest, abyś był spokojny i pewny siebie, gdy przygotowujesz psa do pobytu w hotelu. Unikaj nadmiernego okazywania lęku czy troski, gdy pozostawiasz swojego pupila w hotelu. To pomoże psu czuć się bardziej komfortowo.
 
-### 5. Zabawki i komfort
+### Zabawki i komfort
 
 Przygotuj rzeczy, które pomogą psu poczuć się jak w domu. Zabawki, ulubione koce czy inne przedmioty zapewnią mu poczucie bezpieczeństwa. Jeśli twój pies ma dietę specjalną, dostarcz odpowiednią ilość jedzenia i instrukcje dotyczące karmienia.
 
-### 6. Informacje o psie
+### Informacje o psie
 
 Przed oddaniem psa w hotelu, przekaż personelowi ważne informacje dotyczące zachowań i potrzeb zwierzęcia. Czy jest alergiczny, czy ma specjalne zachcianki, jakie ma preferencje co do zabawek – to wszystko pomaga w dostosowaniu opieki do indywidualnych potrzeb psa.
 
-### 7. Pozostaw kontakt
+### Pozostaw kontakt
 
 Podaj numer kontaktowy, pod którym można cię osiągnąć, w razie potrzeby. Warto też zostawić informacje o weterynarzu, który opiekuje się psem, aby hotel miał dostęp do opieki zdrowotnej, jeśli zajdzie taka potrzeba.
 
-### 8. Pozostaw czas na aklimatyzację
+### Pozostaw czas na aklimatyzację
 
 Jeśli to możliwe, pozostaw psa na krótki okres próbny w hotelu przed głównym pobytem. To pozwoli psu przyzwyczaić się do nowego otoczenia i zminimalizuje stres.
 
