@@ -1,5 +1,5 @@
 ---
-title: Behawiorysta zwierzęcy
+title: "Behawiorystyka zwierząt: Dlaczego Twój pies wyje i bywa nieposłuszny?"
 postThumb: /blog/img/behawiorystyka_psa-1.jpeg.jpg
 date: 2023-11-07T09:53:40.246Z
 author: Psotel Gracja
@@ -108,8 +108,6 @@ ogólnego dobrostanu i harmonii zwierzęcia. Terapeuci pomagają zwierzętom rad
 ze stresem, lękiem i problemami behawioralnymi, co ma pozytywny wpływ na zdrowie
 fizyczne i psychiczne czworonogów.
 
-[](https://ethoplanet.com/blog/systematyczna-desensytyzacja-vs-zatapianie-czyli-dlaczego-warto-poswiecic-wiecej-czasu-na-efekt-terapeutyczny/ "https\://ethoplanet.com/blog/systematyczna-desensytyzacja-vs-zatapianie-czyli-dlaczego-warto-poswiecic-wiecej-czasu-na-efekt-terapeutyczny/")
-
 Dla przykładu, jeśli pies ma lęk przed wizytami u weterynarza, behawiorysta może pomóc,
 by wizyta stała się mniej stresująca. Ponadto, terapeuci pomagają w budowaniu
 pewności siebie u psów i ich relacji z opiekunami.
@@ -123,7 +121,7 @@ dotyczących różnych aspektów zachowania psów:
    Budapeszcie odkryli, że czworonogi, reagując na odpowiednie słowa i intonację głosu,
    używają tych samych półkuli mózgowych co człowiek.
 
-\##Podsumowanie
+## Podsumowanie
 
 Behawiorystyka zwierząt jest nieocenionym źródłem pomocy dla właścicieli psów, którzy
 zmagają się z problemami behawioralnymi swoich pupili. Zrozumienie, dlaczego pies
