@@ -79,18 +79,20 @@ dodatkowe kursy i szkolenia z zakresu behawiorystyki zwierząt. Powinien także 
 kwalifikacje i umiejętności poprzez uczestnictwo w konferencjach, warsztatach,
 seminariach i webinariach z zakresu behawiorystyki zwierząt, być na bieżąco z
 najnowszymi badaniami i publikacjami naukowymi w tej dziedzinie.
-Pies Wyje – Przyczyny i Rozwiązania
+
+### Pies wyje – przyczyny i rozwiązania
+
 Najczęstszym problemem, z jakim zmagają się właściciele psów, jest wyjący pies.
 Dlaczego nasz czworonóg tak robi?
 Przyczyn może być wiele, od separacyjnej niepewności po ból lub strach. Behawiorysta
 zwierząt jest w stanie zidentyfikować źródło problemu i zaproponować odpowiednie
-rozwiązania.
-Dla przykładu, jeśli pies wyje z powodu separacji, behawiorysta może zalecić stopniowe
-przyzwyczajanie go do samotności, korzystając z ww. technik desensytyzacji i
-kontrkondycjonowania.
+rozwiązania. Dla przykładu, jeśli pies wyje z powodu separacji, behawiorysta może zalecić stopniowe
+przyzwyczajanie go do samotności, korzystając z ww. technik desensytyzacji i kontrkondycjonowania.
 W przypadku bólu lub strachu behawiorysta może wskazać odpowiednie formy terapii lub
 leczenia.
-Nieposłuszeństwo i Brak Uczestnictwa
+
+### Nieposłuszeństwo i brak uczestnictwa
+
 Innym częstym problemem jest sytuacja, w której pies nie słucha poleceń opiekuna. To
 źródło frustracji i stresu zarówno dla czworonoga, jak i właściciela. Behawiorysta zwierząt
 jest w stanie zdiagnozować, dlaczego pies nie reaguje na komendy, i pomóc w
@@ -98,7 +100,9 @@ rozwiązaniu problemu.
 Wielu psów może nie rozumieć komend lub potrzebuje bardziej konsekwentnej i
 pozytywnej metody szkolenia. Behawiorysta może dostosować trening i dostarczyć
 właścicielowi narzędzi do efektywnego komunikowania się z psem.
-Terapia Behawioralna dla Zdrowia i Harmonii
+
+### Terapia behawioralna dla zdrowia i harmonii
+
 Behawiorystyka zwierząt to nie tylko rozwiązywanie problemów, ale również promowanie
 ogólnego dobrostanu i harmonii zwierzęcia. Terapeuci pomagają zwierzętom radzić sobie
 ze stresem, lękiem i problemami behawioralnymi, co ma pozytywny wpływ na zdrowie
