@@ -22,6 +22,8 @@ prowadzące do ich poprawy. Terapia ma na celu zmniejszenie stresu u zwierzęcia
 leczenie dolegliwości, nauczenie go zachowań społecznych i pożądanych przez
 opiekuna. 
 
+![Behawiorysta zwierzęcy](/blog/img/behawiorystyka_psa-2.jpeg)
+
 Behawiorysta zwierzęcy może pomóc w rozwiązywaniu problemów takich jak:
 
 * agresja wobec ludzi lub innych zwierząt
