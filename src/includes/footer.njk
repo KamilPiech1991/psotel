@@ -154,6 +154,7 @@
 <script src="/assets/js/main.js"></script>
 
 <script>
+   if (document.querySelector('.glide')) {
     var glide = new Glide('.multi1', {
         type: 'carousel',
         autoplay: 4500,
@@ -188,9 +189,11 @@
 	}
     });
     glide.mount();
+   }
 </script>
 
 <script>
+   if (document.querySelector('.gallery-thumb-one')) {
     const galleryThumbOne = document.querySelector('.gallery-thumb-one');
     const galleryThumbTwo = document.querySelector('.gallery-thumb-two');
     const galleryThumbThree = document.querySelector('.gallery-thumb-three');
@@ -224,6 +227,7 @@
         galleryImageTwo.classList.remove("active");
         galleryImageTwo.classList.add("hide");
     })
+   }
 </script>
 
 <script>
