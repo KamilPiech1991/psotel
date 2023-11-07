@@ -1,6 +1,6 @@
 ---
 title: Behawiorysta zwierzęcy
-postThumb: "#"
+postThumb: /blog/img/behawiorystyka_psa-1.jpeg.jpg
 date: 2023-11-07T09:53:40.246Z
 author: Psotel Gracja
 ---
