@@ -4,22 +4,12 @@ postThumb: /blog/img/behawiorystyka_psa-1.jpeg.jpg
 date: 2023-11-07T09:53:40.246Z
 author: Psotel Gracja
 ---
-Pies to najlepszy przyjaciel człowieka, ale czasem jego zachowanie może nas zaskoczyć i
-zaniepokoić. Dlaczego pies wyje, nie słucha się opiekuna lub wykazuje inne nietypowe
-zachowania? Odpowiedziami na te pytania zajmuje się behawiorystyka zwierząt, nauka,
-która zajmuje się badaniem zachowań zwierząt, ich przyczyn, funkcji i konsekwencji.
-W tym artykule przyjrzymy się, dlaczego nasze pupile zachowują się w określony sposób i
+Pies to najlepszy przyjaciel człowieka, ale czasem jego zachowanie może nas zaskoczyć i zaniepokoić. Dlaczego pies wyje, nie słucha się opiekuna lub wykazuje inne nietypowe zachowania? Odpowiedziami na te pytania zajmuje się behawiorystyka zwierząt, nauka, która zajmuje się badaniem zachowań zwierząt, ich przyczyn, funkcji i konsekwencji. W tym artykule przyjrzymy się, dlaczego nasze pupile zachowują się w określony sposób i
 jak behawiorystka może pomóc zarówno psom, jak i ich właścicielom.
 
 ## Czym się zajmuje behawiorysta zwierzęcy?
 
-Behawiorysta zwierzęcy to specjalista, który potrafi analizować, oceniać i modyfikować
-zachowania zwierząt, zarówno domowych, jak i dzikich.
-Zajmuje się tzw. terapią zachowań zwierząt, która ma na celu poprawę jakości życia
-zarówno zwierząt, jak i ich opiekunów. Behawiorysta zwierzęcy ocenia zachowania
-zwierząt pod kątem relacji z człowiekiem i środowiskiem, oraz wyznacza metody
-prowadzące do ich poprawy. Terapia ma na celu zmniejszenie stresu u zwierzęcia,
-leczenie dolegliwości, nauczenie go zachowań społecznych i pożądanych przez
+Behawiorysta zwierzęcy to specjalista, który potrafi analizować, oceniać i modyfikować zachowania zwierząt, zarówno domowych, jak i dzikich. Zajmuje się tzw. terapią zachowań zwierząt, która ma na celu poprawę jakości życia zarówno zwierząt, jak i ich opiekunów. Behawiorysta zwierzęcy ocenia zachowania zwierząt pod kątem relacji z człowiekiem i środowiskiem, oraz wyznacza metody prowadzące do ich poprawy. Terapia ma na celu zmniejszenie stresu u zwierzęcia, leczenie dolegliwości, nauczenie go zachowań społecznych i pożądanych przez
 opiekuna. 
 
 ![Behawiorysta zwierzęcy](/blog/img/behawiorystyka_psa-2.jpeg)
@@ -41,7 +31,7 @@ zasadach uczenia się klasycznego i sprawczego. Niektóre z tych technik to:
 nieprzyjemną reakcję, np. lęk, stres, ból lub agresję. Celem jest osłabienie lub
 wygaszenie tej reakcji poprzez zwiększanie tolerancji na bodziec.
 
-**Kontrkondycjonowanie** - polega na zastąpieniu nieprzyjemnej reakcji na bodziec
+**Kontr-kondycjonowanie** - polega na zastąpieniu nieprzyjemnej reakcji na bodziec
 przyjemną lub obojętną reakcją. Celem jest stworzenie nowego skojarzenia między
 bodźcem a reakcją, które będzie sprzeczne z poprzednim skojarzeniem.
 Kontrkondycjonowanie może być prowadzone za pomocą pozytywnego lub
