@@ -15,8 +15,8 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByGlob('src/blog/**/*.md').reverse();
   });
 
-  eleventyConfig.addCollection("faq", function(collection) {
-    return collection.getFilteredByGlob("src/faq/*.md");
+  eleventyConfig.addCollection("faq", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/faq/**/*.md");
   });
 
   return {
