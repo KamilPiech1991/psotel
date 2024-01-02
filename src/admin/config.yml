@@ -30,5 +30,5 @@ collections:
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Odpowiedź", name: "odpowiedz", widget: "text"}
+      - {label: "Odpowiedź", name: "answear", widget: "text"}
 
