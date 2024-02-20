@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/admin");
   eleventyConfig.addPassthroughCopy("./src/static");
   eleventyConfig.addPassthroughCopy("./src/blog/img");
+  eleventyConfig.addPassthroughCopy("./src/galeria/img");
   eleventyConfig.addWatchTarget("./src/assets/sass/");
 
   // Collections
@@ -18,6 +19,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("faq", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/faq/**/*.md");
   });
+
+  // Gallery
+  eleventyConfig.addCollection('gallery', function(collectionApi) {
+    return collectionApi.getFilteredByGlob('src/galeria/**/*.md').reverse();
+  });
+  
 
   return {
     dir: {
