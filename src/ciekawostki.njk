@@ -1,7 +1,7 @@
 ---
 title: Ciekawostki
 layout: blog.njk
-description: Opis
+description: Ciekawostki i porady na temat psów
 heroImage: /assets/img/page/gallery/hero.png
 ---
 
@@ -9,7 +9,7 @@ heroImage: /assets/img/page/gallery/hero.png
   {% for post in collections.posts %}
     <div class="col-md-4 mb-5">
       <a href="{{ post.url }}">
-        <img src="{{ post.data.postThumb }}" class="post-thumb">
+        <img src="{{ post.data.postThumb }}" class="post-thumb" loading="lazy" width="416" height="250">
         <h2 class="h4">{{ post.data.title }}</h2>
       </a>
     </div>

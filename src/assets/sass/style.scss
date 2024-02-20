@@ -212,7 +212,11 @@
     }
     .main-nav ul li a {
         margin-left: 30px;
-        font-size: 16px
+        font-size: 16px;
+        transition: .2s ease-in-out;
+    }
+    .main-nav ul li a:hover {
+        color: var(--color-accent-1);
     }
     .site-header .pt-button {
         margin-top: 25px
