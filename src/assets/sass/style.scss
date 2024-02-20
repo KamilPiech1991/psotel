@@ -6,6 +6,8 @@
 @use 'components/breadcrumbs.scss';
 @use 'components/glide.scss';
 @use 'components/button.scss';
+@use 'components/accordion.scss';
+@use 'components/footer.scss';
 
 * {
     box-sizing: border-box
@@ -828,66 +830,6 @@
     }
 }
 
-.nav-accordion {
-    margin-bottom: 30px;
-}
-
-.nav-accordion__content-wrapper {
-    padding: 0 25px;
-    font-size: 15px;
-    line-height: 1.4;
-    max-height: 0px;
-    opacity: 0;
-    overflow: hidden;
-    transition: 0.5s var(--animation-easing)
-}
-
-.nav-accordion__title {
-    padding: 20px;
-    position: relative;
-    margin-bottom: 0;
-    display: block;
-    font-size: 19px;
-    font-weight: 700;
-    background: var(--color-accent-2);
-    border: 1px solid #F5FBFF;
-    box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.5s var(--animation-easing)
-}
-
-.nav-accordion__title::after,
-.nav-accordion__title::before {
-    position: absolute;
-    content: "";
-    display: inline-block;
-    right: 15px;
-    top: 32px;
-    height: 2px;
-    width: 13px;
-    transition: 0.5s var(--animation-easing);
-    vertical-align: top;
-    background: var(--color-text);
-}
-
-.nav-accordion__title::after {
-    transform: rotate(90deg)
-}
-
-.nav-accordion__trigger:checked+.nav-accordion__title+.nav-accordion__content-wrapper {
-    max-height: min-content;
-    opacity: 1
-}
-
-.nav-accordion__trigger:checked+.nav-accordion__title::after {
-    transform: rotate(180deg) translateX(6px);
-    transition: 0.5s var(--animation-easing);
-}
-
-input[type="checkbox"] {
-    display: none;
-}
 
 .wegive {
     background: url("../img/page/hotel/why-us.svg");
@@ -1446,7 +1388,7 @@ textarea:focus {
 
 .sticky {
     position: sticky;
-    top: 180px;
+    top: 180px
 }
 
 .post-thumb,
@@ -1493,39 +1435,3 @@ textarea:focus {
     padding: 0 3px
 }
 
-.footer-card h4 {
-    text-transform: uppercase
-}
-
-.footer-card svg {
-    margin-bottom: -1px
-}
-
-.footer-card ul {
-    padding: 0
-}
-
-.footer-card li {
-    margin-bottom: 12px;
-    list-style: none
-}
-
-.footer-card a {
-    font-weight: 600;
-    transition: .3s var(--animation-easing)
-}
-
-.footer-card a:hover {
-    color: var(--color-accent-1)
-}
-
-.footer-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-@media(min-width:767px) {
-    .footer-card h4 {
-        margin-left: -34px
-    }
-}

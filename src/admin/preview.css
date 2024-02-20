@@ -6,3 +6,21 @@ img {
     width: 100%;
     height: auto
 }
+
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.gallery div {
+    max-width: calc(25% - 30px);
+    margin: 15px;
+    transition: opacity 200ms;
+    cursor: pointer;
+}
+
+.gallery figure {
+    border-radius: 12px
+}

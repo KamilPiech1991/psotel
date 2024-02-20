@@ -1,0 +1,29 @@
+.footer-card h4 {
+    text-transform:uppercase
+  }
+  .footer-card svg {
+    margin-bottom:-1px
+  }
+  .footer-card ul {
+    padding:0
+  }
+  .footer-card li {
+    margin-bottom:12px;
+    list-style:none
+  }
+  .footer-card a {
+    transition:.3s var(--animation-easing);
+    font-weight:600
+  }
+  .footer-card a:hover {
+    color:var(--color-accent-1)
+  }
+  .footer-nav {
+    grid-template-columns:1fr 1fr;
+    display:grid
+  }
+  @media (min-width:767px) {
+    .footer-card h4 {
+      margin-left:-34px
+    }
+  }
