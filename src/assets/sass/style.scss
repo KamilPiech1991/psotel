@@ -68,7 +68,6 @@
     position: relative;
     width: 34px;
     height: 36px;
-    margin-top: 20px;
     margin-right: 20px;
     float: right;
     text-align: end;
@@ -198,7 +197,6 @@
     .main-nav {
         position: relative;
         display: block;
-        margin-top: 40px;
         height: auto;
         background: none;
         opacity: 1;
@@ -209,7 +207,8 @@
         flex-direction: row
     }
     .main-nav ul li {
-        display: inline-block
+        display: inline-block;
+        margin-bottom: 0;
     }
     .main-nav ul li a {
         margin-left: 30px;
@@ -218,9 +217,6 @@
     }
     .main-nav ul li a:hover {
         color: var(--color-accent-1);
-    }
-    .site-header .pt-button {
-        margin-top: 25px
     }
 }
 
