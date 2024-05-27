@@ -110,3 +110,79 @@ if (document.querySelector(".accordion")) {
 	  });
 	};
   
+
+
+    const modal = document.getElementById('myModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    openModalBtn.onclick = function() {
+        modal.style.display = "flex";
+    }
+
+    closeModalBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function selectButton(button, group) {
+        const buttons = document.querySelectorAll(`#${group}-buttons button`);
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+
+    function calculateCost() {
+        const sizeButton = document.querySelector('#size-buttons button.active');
+        const accommodationButton = document.querySelector('#accommodation-buttons button.active');
+		const resultDesc = document.querySelector('.result-desc');
+        let size, accommodation;
+
+        if (sizeButton) {
+            size = sizeButton.value;
+        }
+
+        if (accommodationButton) {
+            accommodation = accommodationButton.value;
+        }
+
+        if (!size || !accommodation) {
+            alert('Proszę wybrać wielkość pieska i miejsce zakwaterowania.');
+            return;
+        }
+
+        const arrival = new Date(document.getElementById('arrival').value + 'T' + document.getElementById('arrival-time').value);
+        const departure = new Date(document.getElementById('departure').value + 'T' + document.getElementById('departure-time').value);
+        
+        const msInDay = 24 * 60 * 60 * 1000;
+        let numberOfDays = Math.floor((departure - arrival) / msInDay);
+        
+        const arrivalHour = arrival.getHours();
+        const departureHour = departure.getHours();
+        
+        if ((departureHour - arrivalHour) >= 4) {
+            numberOfDays += 1;
+        }
+        
+        let dailyCost;
+        if (accommodation === 'box') {
+            if (size === 'mały') dailyCost = 60;
+            else if (size === 'średni') dailyCost = 70;
+            else if (size === 'duży') dailyCost = 80;
+        } else if (accommodation === 'pokoj') {
+            if (size === 'mały') dailyCost = 80;
+            else if (size === 'średni') dailyCost = 90;
+            else if (size === 'duży') dailyCost = 100;
+        }
+        
+        const totalCost = numberOfDays * dailyCost;
+        
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = `Koszt pobytu: ${totalCost} PLN`;
+        resultDiv.classList.add('show');
+		resultDesc.classList.add('show');
+    }
