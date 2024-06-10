@@ -139,7 +139,8 @@ if (document.querySelector(".accordion")) {
     function calculateCost() {
         const sizeButton = document.querySelector('#size-buttons button.active');
         const accommodationButton = document.querySelector('#accommodation-buttons button.active');
-		const resultDesc = document.querySelector('.result-desc');
+        const resultDesc = document.querySelector('.result-desc');
+        
         let size, accommodation;
 
         if (sizeButton) {
@@ -155,19 +156,27 @@ if (document.querySelector(".accordion")) {
             return;
         }
 
-        const arrival = new Date(document.getElementById('arrival').value + 'T' + document.getElementById('arrival-time').value);
-        const departure = new Date(document.getElementById('departure').value + 'T' + document.getElementById('departure-time').value);
-        
-        const msInDay = 24 * 60 * 60 * 1000;
-        let numberOfDays = Math.floor((departure - arrival) / msInDay);
-        
-        const arrivalHour = arrival.getHours();
-        const departureHour = departure.getHours();
-        
-        if ((departureHour - arrivalHour) >= 4) {
-            numberOfDays += 1;
+        const arrivalDate = document.getElementById('arrival').value;
+        const arrivalTime = document.getElementById('arrival-time').value;
+        const departureDate = document.getElementById('departure').value;
+        const departureTime = document.getElementById('departure-time').value;
+
+        if (!arrivalDate || !arrivalTime || !departureDate || !departureTime) {
+            alert('Proszę wprowadzić pełne daty i godziny przybycia oraz odbioru.');
+            return;
         }
-        
+
+        const arrival = new Date(arrivalDate + 'T' + arrivalTime);
+        const departure = new Date(departureDate + 'T' + departureTime);
+
+        if (departure <= arrival) {
+            alert('Data i godzina odbioru muszą być późniejsze niż data i godzina przybycia.');
+            return;
+        }
+
+        const msInDay = 24 * 60 * 60 * 1000;
+        let numberOfDays = Math.ceil((departure - arrival) / msInDay);
+
         let dailyCost;
         if (accommodation === 'box') {
             if (size === 'mały') dailyCost = 60;
@@ -178,11 +187,11 @@ if (document.querySelector(".accordion")) {
             else if (size === 'średni') dailyCost = 90;
             else if (size === 'duży') dailyCost = 100;
         }
-        
-        const totalCost = numberOfDays * dailyCost;
+
+  const totalCost = numberOfDays * dailyCost;
         
         const resultDiv = document.getElementById('result');
         resultDiv.textContent = `Koszt pobytu: ${totalCost} PLN`;
         resultDiv.classList.add('show');
-		resultDesc.classList.add('show');
+        resultDesc.classList.add('show');
     }
