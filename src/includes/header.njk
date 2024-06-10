@@ -313,9 +313,16 @@
               <input type="date" id="departure">
               <label for="departure-time">Godzina Odbioru:</label>
               <input type="time" id="departure-time">
-              <button onclick="calculateCost()">Oblicz Koszt Pobytu</button>
+              <button onclick="calculateCost()" class="calculator-button">Oblicz Koszt Pobytu</button>
               <div class="result" id="result"></div>
-              <span class="result-desc">Podana kwota nie uwzględnia indywidualnej opieki, suczek w cieczce, szczerniaków do 6 miesiąca oraz opieki indywidualnej. W tych przypadkach cena jest ustalana indywidualnie.</span>
+              <div class="result-desc">
+                  <p>
+                     Podana kwota nie uwzględnia indywidualnej opieki, suczek w cieczce, szczerniaków do 6 miesiąca oraz opieki indywidualnej. W tych przypadkach cena jest ustalana indywidualnie.
+                  </p>
+                  <a href="/kontakt/" class="calculator-button">
+                     Zarezerwuj pobyt
+                  </a>
+              </div>
           </div>
       </div>
   </div>

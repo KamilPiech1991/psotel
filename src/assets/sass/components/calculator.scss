@@ -1,23 +1,4 @@
 
-.calculator-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.calculator-button button {
-    background-color: #44ba30; /* tomato color */
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-.calculator-button button:hover {
-    background-color: #ff4500; /* orange-red color */
-}
 .calc-modal {
     display: none;
     position: fixed;
@@ -61,7 +42,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.calculator button {
+.calculator-button {
     background-color: var(--color-accent-1);
     color: white;
     padding: 10px;
@@ -70,9 +51,13 @@
     cursor: pointer;
     width: 100%;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
 }
-.calculator button:hover {
-    background-color: var(--color-accent-2) 
+.calculator-button:hover {
+    background-color: var(--color-accent-3) 
 }
 .result {
     margin-top: 20px;
@@ -82,6 +67,8 @@
 }
 .result-desc {
     display: none;
+}
+.result-desc p {
     font-size: 14px;
 }
 .result.show,
@@ -105,7 +92,8 @@
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 .button-group button:hover {
-    background-color: #ddd;
+    background-color: var(--color-accent-3);
+    color: #fff
 }
 .button-group button.active {
     background-color: var(--color-accent-1);
