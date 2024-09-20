@@ -4,7 +4,7 @@ postThumb: /blog/img/2149202486-1-.jpg
 date: 2024-09-20T08:27:13.147Z
 author: Psotel Gracja
 ---
-Adaptacja psa do nowego środowiska, takiego jak hotel dla psów, może być stresującym doświadczeniem, szczególnie dla zwierząt, które są przywiązane do swojego domu i rutyny. Jeśli Twój pies ma trudności z przystosowaniem się do pobytu w hotelu, istnieje kilka kroków, które mogą pomóc złagodzić stres i ułatwić proces adaptacji.
+Adaptacja psa do nowego środowiska, takiego jak [hotel dla psów](https://www.psotelgracja.pl/), może być stresującym doświadczeniem, szczególnie dla zwierząt, które są przywiązane do swojego domu i rutyny. Jeśli Twój pies ma trudności z przystosowaniem się do pobytu w hotelu, istnieje kilka kroków, które mogą pomóc złagodzić stres i ułatwić proces adaptacji.
 
 ### Próbny pobyt w hotelu
 
