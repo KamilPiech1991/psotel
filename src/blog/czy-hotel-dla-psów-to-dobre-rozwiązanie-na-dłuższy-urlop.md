@@ -38,6 +38,4 @@ Aby zminimalizować stres u psa, warto go odpowiednio przygotować na pobyt w ho
 
 Jeśli uważasz, że hotel nie będzie najlepszym rozwiązaniem dla Twojego psa, istnieją inne opcje. Można rozważyć pozostawienie psa pod opieką bliskiej osoby, która zna jego potrzeby i zwyczaje. Inną alternatywą jest zatrudnienie petsittera, który będzie regularnie odwiedzał psa w jego własnym domu, co może zminimalizować stres związany ze zmianą otoczenia.
 
-### Podsumowanie
-
-Hotel dla psów to często doskonałe rozwiązanie na czas dłuższego urlopu, pod warunkiem, że pies dobrze znosi nowe otoczenie i opiekę innych osób. Dla właścicieli to komfort psychiczny i pewność, że ich pupil jest w bezpiecznych rękach. Jednak kluczowe jest odpowiednie przygotowanie psa oraz wybór sprawdzonego hotelu, który spełni wszelkie potrzeby czworonoga.
+[Hotel dla psów](https://www.psotelgracja.pl/) to często doskonałe rozwiązanie na czas dłuższego urlopu, pod warunkiem, że pies dobrze znosi nowe otoczenie i opiekę innych osób. Dla właścicieli to komfort psychiczny i pewność, że ich pupil jest w bezpiecznych rękach. Jednak kluczowe jest odpowiednie przygotowanie psa oraz wybór sprawdzonego hotelu, który spełni wszelkie potrzeby czworonoga.
