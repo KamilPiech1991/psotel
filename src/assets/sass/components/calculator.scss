@@ -21,6 +21,7 @@
     width: 80%;
     max-width: 400px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 .close {
     color: #aaa;
@@ -34,6 +35,11 @@
     text-decoration: none;
     cursor: pointer;
 }
+.calculator {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+}
 .calculator input, .calculator select {
     width: 100%;
     padding: 10px;
@@ -41,6 +47,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 .calculator-button {
     background-color: var(--color-accent-1);
@@ -55,9 +62,10 @@
     text-align: center;
     font-size: 15px;
     font-weight: 500;
+    box-sizing: border-box;
 }
 .calculator-button:hover {
-    background-color: var(--color-accent-3) 
+    background-color: var(--color-accent-3)
 }
 .result {
     margin-top: 20px;
@@ -83,14 +91,17 @@
 }
 .button-group button {
     flex: 1;
-    margin: 5px;
-    padding: 10px;
+    margin: 3px;
+    padding: 8px 4px;
     border: 2px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    box-sizing: border-box;
+    min-width: 0;
 }
 .button-group button:hover {
     background-color: var(--color-accent-3);
@@ -105,11 +116,39 @@
     from {opacity: 0;}
     to {opacity: 1;}
 }
-label {
+.calculator label {
     display: block;
     margin-bottom: 5px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 5px;
     background-color: #fff;
+    box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+    .calc-modal-content {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .calculator h4 {
+        font-size: 16px;
+    }
+    .button-group button {
+        margin: 2px;
+        padding: 8px 2px;
+        font-size: 13px;
+    }
+    .calculator input {
+        padding: 8px;
+        margin: 6px 0;
+    }
+    .calculator label {
+        font-size: 14px;
+        padding: 4px;
+    }
+    .result {
+        font-size: 16px;
+    }
 }
