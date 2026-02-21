@@ -313,11 +313,11 @@
               <label for="arrival">Data Przybycia:</label>
               <input type="date" id="arrival">
               <label for="arrival-time">Godzina Przybycia:</label>
-              <input type="time" id="arrival-time">
+              <input type="time" id="arrival-time" step="1800">
               <label for="departure">Data Odbioru:</label>
               <input type="date" id="departure">
               <label for="departure-time">Godzina Odbioru:</label>
-              <input type="time" id="departure-time">
+              <input type="time" id="departure-time" step="1800">
               <button onclick="calculateCost()" class="calculator-button">Oblicz Koszt Pobytu</button>
               <div class="result" id="result"></div>
               <div class="result-desc">
