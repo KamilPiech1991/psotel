@@ -179,13 +179,13 @@ if (document.querySelector(".accordion")) {
 
         let dailyCost;
         if (accommodation === 'box') {
-            if (size === 'mały') dailyCost = 60;
-            else if (size === 'średni') dailyCost = 70;
-            else if (size === 'duży') dailyCost = 80;
-        } else if (accommodation === 'pokoj') {
-            if (size === 'mały') dailyCost = 80;
-            else if (size === 'średni') dailyCost = 90;
+            if (size === 'mały') dailyCost = 70;
+            else if (size === 'średni') dailyCost = 80;
             else if (size === 'duży') dailyCost = 100;
+        } else if (accommodation === 'pokoj') {
+            if (size === 'mały') dailyCost = 90;
+            else if (size === 'średni') dailyCost = 100;
+            else if (size === 'duży') dailyCost = 140;
         }
 
   const totalCost = numberOfDays * dailyCost;
