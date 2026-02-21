@@ -136,6 +136,62 @@ if (document.querySelector(".accordion")) {
         button.classList.add('active');
     }
 
+    // Obliczanie daty Wielkanocy (algorytm Meeus/Jones/Butcher)
+    function getEasterDate(year) {
+        const a = year % 19;
+        const b = Math.floor(year / 100);
+        const c = year % 100;
+        const d = Math.floor(b / 4);
+        const e = b % 4;
+        const f = Math.floor((b + 8) / 25);
+        const g = Math.floor((b - f + 1) / 3);
+        const h = (19 * a + b - d - g + 15) % 30;
+        const i = Math.floor(c / 4);
+        const k = c % 4;
+        const l = (32 + 2 * e + 2 * i - h - k) % 7;
+        const m = Math.floor((a + 11 * h + 22 * l) / 451);
+        const month = Math.floor((h + l - 7 * m + 114) / 31);
+        const day = ((h + l - 7 * m + 114) % 31) + 1;
+        return new Date(year, month - 1, day);
+    }
+
+    // Lista polskich dni świątecznych dla danego roku
+    function getPolishHolidays(year) {
+        const easter = getEasterDate(year);
+        const easterMs = easter.getTime();
+        const dayMs = 24 * 60 * 60 * 1000;
+
+        const easterMonday = new Date(easterMs + 1 * dayMs);   // Poniedziałek Wielkanocny
+        const whitSunday = new Date(easterMs + 49 * dayMs);    // Zesłanie Ducha Świętego
+        const corpusChristi = new Date(easterMs + 60 * dayMs); // Boże Ciało
+
+        const holidays = [
+            { date: new Date(year, 0, 1), name: 'Nowy Rok' },
+            { date: new Date(year, 0, 6), name: 'Trzech Króli' },
+            { date: easter, name: 'Wielkanoc' },
+            { date: easterMonday, name: 'Poniedziałek Wielkanocny' },
+            { date: new Date(year, 4, 1), name: 'Święto Pracy' },
+            { date: new Date(year, 4, 3), name: 'Święto Konstytucji 3 Maja' },
+            { date: whitSunday, name: 'Zesłanie Ducha Świętego' },
+            { date: corpusChristi, name: 'Boże Ciało' },
+            { date: new Date(year, 7, 15), name: 'Wniebowzięcie NMP' },
+            { date: new Date(year, 10, 1), name: 'Wszystkich Świętych' },
+            { date: new Date(year, 10, 11), name: 'Święto Niepodległości' },
+            { date: new Date(year, 11, 25), name: 'Boże Narodzenie' },
+            { date: new Date(year, 11, 26), name: 'Drugi dzień Bożego Narodzenia' }
+        ];
+
+        return holidays;
+    }
+
+    // Sprawdza czy data jest dniem świątecznym
+    function isPolishHoliday(date) {
+        const year = date.getFullYear();
+        const holidays = getPolishHolidays(year);
+        const dateStr = date.toISOString().split('T')[0];
+        return holidays.find(h => h.date.toISOString().split('T')[0] === dateStr) || null;
+    }
+
     function calculateCost() {
         const sizeButton = document.querySelector('#size-buttons button.active');
         const accommodationButton = document.querySelector('#accommodation-buttons button.active');
@@ -188,10 +244,30 @@ if (document.querySelector(".accordion")) {
             else if (size === 'duży') dailyCost = 140;
         }
 
-  const totalCost = numberOfDays * dailyCost;
-        
+        // Oblicz koszt dzień po dniu, uwzględniając dopłatę świąteczną
+        let totalCost = 0;
+        let holidayDays = [];
+        const startDate = new Date(arrivalDate);
+
+        for (let i = 0; i < numberOfDays; i++) {
+            const currentDay = new Date(startDate.getTime() + i * msInDay);
+            const holiday = isPolishHoliday(currentDay);
+            if (holiday) {
+                totalCost += dailyCost * 1.5;
+                holidayDays.push(holiday.name + ' (' + currentDay.toLocaleDateString('pl-PL') + ')');
+            } else {
+                totalCost += dailyCost;
+            }
+        }
+
+        totalCost = Math.round(totalCost);
+
         const resultDiv = document.getElementById('result');
-        resultDiv.textContent = `Koszt pobytu: ${totalCost} PLN`;
+        let resultText = `Koszt pobytu: ${totalCost} PLN`;
+        if (holidayDays.length > 0) {
+            resultText += `\n(w tym dni świąteczne z dopłatą +50%: ${holidayDays.join(', ')})`;
+        }
+        resultDiv.textContent = resultText;
         resultDiv.classList.add('show');
         resultDesc.classList.add('show');
     }
