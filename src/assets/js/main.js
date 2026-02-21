@@ -118,11 +118,20 @@ if (document.querySelector(".accordion")) {
 
     openModalBtn.onclick = function() {
         modal.style.display = "flex";
+        calcReset();
     }
 
     closeModalBtn.onclick = function() {
         modal.style.display = "none";
     }
+
+    // Auto-advance listeners for step 2
+    ['arrival', 'arrival-time', 'departure', 'departure-time'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('change', checkStep2Complete);
+        }
+    });
 
     window.onclick = function(event) {
         if (event.target === modal) {
@@ -130,10 +139,108 @@ if (document.querySelector(".accordion")) {
         }
     }
 
+    let currentStep = 1;
+
     function selectButton(button, group) {
         const buttons = document.querySelectorAll(`#${group}-buttons button`);
         buttons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
+        checkStep1Complete();
+    }
+
+    function checkStep1Complete() {
+        const size = document.querySelector('#size-buttons button.active');
+        const accommodation = document.querySelector('#accommodation-buttons button.active');
+        if (size && accommodation) {
+            setTimeout(function() { goToStep(2); }, 300);
+        }
+    }
+
+    function checkStep2Complete() {
+        const arrival = document.getElementById('arrival').value;
+        const arrivalTime = document.getElementById('arrival-time').value;
+        const departure = document.getElementById('departure').value;
+        const departureTime = document.getElementById('departure-time').value;
+        if (arrival && arrivalTime && departure && departureTime) {
+            const arrivalDt = new Date(arrival + 'T' + arrivalTime);
+            const departureDt = new Date(departure + 'T' + departureTime);
+            if (departureDt > arrivalDt) {
+                setTimeout(function() {
+                    calculateCost();
+                    goToStep(3);
+                }, 300);
+            }
+        }
+    }
+
+    function goToStep(step) {
+        currentStep = step;
+        for (let i = 1; i <= 3; i++) {
+            var stepEl = document.getElementById('calc-step-' + i);
+            if (stepEl) {
+                if (i === step) {
+                    stepEl.classList.remove('hidden');
+                } else {
+                    stepEl.classList.add('hidden');
+                }
+            }
+        }
+        // Update step dots
+        var dots = document.querySelectorAll('.calc-step-dot');
+        dots.forEach(function(dot) {
+            var dotStep = parseInt(dot.getAttribute('data-step'));
+            dot.classList.remove('active', 'completed');
+            if (dotStep === step) {
+                dot.classList.add('active');
+            } else if (dotStep < step) {
+                dot.classList.add('completed');
+            }
+        });
+        // Update step lines
+        var lines = document.querySelectorAll('.calc-step-line');
+        lines.forEach(function(line, index) {
+            if (index < step - 1) {
+                line.classList.add('completed');
+            } else {
+                line.classList.remove('completed');
+            }
+        });
+        // Show/hide nav buttons
+        var prevBtn = document.getElementById('calc-prev');
+        var resetBtn = document.getElementById('calc-reset');
+        if (prevBtn) {
+            if (step > 1 && step < 3) {
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+        }
+        if (resetBtn) {
+            if (step === 3) {
+                resetBtn.classList.remove('hidden');
+            } else {
+                resetBtn.classList.add('hidden');
+            }
+        }
+    }
+
+    function calcPrevStep() {
+        if (currentStep > 1) {
+            goToStep(currentStep - 1);
+        }
+    }
+
+    function calcReset() {
+        // Reset selections
+        document.querySelectorAll('.button-group button').forEach(function(btn) {
+            btn.classList.remove('active');
+        });
+        document.getElementById('arrival').value = '';
+        document.getElementById('arrival-time').value = '';
+        document.getElementById('departure').value = '';
+        document.getElementById('departure-time').value = '';
+        document.getElementById('result').textContent = '';
+        goToStep(1);
     }
 
     // Obliczanie daty Wielkanocy (algorytm Meeus/Jones/Butcher)
@@ -195,40 +302,22 @@ if (document.querySelector(".accordion")) {
     function calculateCost() {
         const sizeButton = document.querySelector('#size-buttons button.active');
         const accommodationButton = document.querySelector('#accommodation-buttons button.active');
-        const resultDesc = document.querySelector('.result-desc');
-        
-        let size, accommodation;
 
-        if (sizeButton) {
-            size = sizeButton.value;
-        }
+        if (!sizeButton || !accommodationButton) return;
 
-        if (accommodationButton) {
-            accommodation = accommodationButton.value;
-        }
-
-        if (!size || !accommodation) {
-            alert('Proszę wybrać wielkość pieska i miejsce zakwaterowania.');
-            return;
-        }
-
+        const size = sizeButton.value;
+        const accommodation = accommodationButton.value;
         const arrivalDate = document.getElementById('arrival').value;
         const arrivalTime = document.getElementById('arrival-time').value;
         const departureDate = document.getElementById('departure').value;
         const departureTime = document.getElementById('departure-time').value;
 
-        if (!arrivalDate || !arrivalTime || !departureDate || !departureTime) {
-            alert('Proszę wprowadzić pełne daty i godziny przybycia oraz odbioru.');
-            return;
-        }
+        if (!arrivalDate || !arrivalTime || !departureDate || !departureTime) return;
 
         const arrival = new Date(arrivalDate + 'T' + arrivalTime);
         const departure = new Date(departureDate + 'T' + departureTime);
 
-        if (departure <= arrival) {
-            alert('Data i godzina odbioru muszą być późniejsze niż data i godzina przybycia.');
-            return;
-        }
+        if (departure <= arrival) return;
 
         const msInDay = 24 * 60 * 60 * 1000;
         let numberOfDays = Math.ceil((departure - arrival) / msInDay);
@@ -268,6 +357,4 @@ if (document.querySelector(".accordion")) {
             resultText += `\n(w tym dni świąteczne z dopłatą +50%: ${holidayDays.join(', ')})`;
         }
         resultDiv.textContent = resultText;
-        resultDiv.classList.add('show');
-        resultDesc.classList.add('show');
     }
