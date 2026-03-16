@@ -173,7 +173,7 @@ def upload_image_to_wordpress(image_url, alt_text, filename):
         )
 
         if r.status_code != 201:
-            log.warning(f"WordPress media upload failed: {r.status_code}")
+            log.warning(f"WordPress media upload failed: {r.status_code} - {r.text[:500]}")
             return None
 
         media = r.json()
