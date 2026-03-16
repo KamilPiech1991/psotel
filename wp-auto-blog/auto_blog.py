@@ -124,7 +124,7 @@ def fetch_pexels_photos(query, count=2):
         r = requests.get(
             "https://api.pexels.com/v1/search",
             headers={"Authorization": api_key},
-            params={"query": query, "per_page": count, "locale": "pl-PL"},
+            params={"query": query, "per_page": count, "orientation": "landscape", "locale": "pl-PL"},
             timeout=15,
         )
         if r.status_code != 200:
@@ -135,7 +135,7 @@ def fetch_pexels_photos(query, count=2):
         log.info(f"[PHOTOS] Pexels returned {len(photos)} photos")
         return [
             {
-                "url": p["src"]["large"],
+                "url": p["src"]["large2x"],
                 "alt": p.get("alt", query),
                 "photographer": p["photographer"],
             }
@@ -244,34 +244,37 @@ WYMAGANA STRUKTURA HTML (dokładnie w tej kolejności):
 <li><strong>AP Dent przy ul. Pelikanów 2D w Piasecznie</strong> — punkt z odniesieniem do kliniki.</li>
 </ul>
 
-2. Akapit wprowadzający — chwytający uwagę, z frazą kluczową.
+2. PLACEHOLDER na zdjęcie — od razu po sekcji TL;DR wstaw dokładnie ten znacznik:
+<!-- PHOTO_PLACEHOLDER_1 -->
 
-3. 4-6 sekcji tematycznych z nagłówkami H2 (class="wp-block-heading"):
+3. Akapit wprowadzający — chwytający uwagę, z frazą kluczową.
+
+4. 4-6 sekcji tematycznych z nagłówkami H2 (class="wp-block-heading"):
 <h2 class="wp-block-heading">Nagłówek sekcji z frazą kluczową</h2>
 - Każda sekcja 2-4 akapity
 - Używaj <strong> do wyróżnienia kluczowych fraz
 - Dodawaj listy <ul class="wp-block-list"> gdzie pasują
 - Wstawiaj linki wewnętrzne do usług AP Dent
 
-4. PLACEHOLDER na zdjęcie — po 2. sekcji wstaw dokładnie ten znacznik:
-<!-- PHOTO_PLACEHOLDER_1 -->
+5. PLACEHOLDER na drugie zdjęcie — po 3. sekcji tematycznej wstaw dokładnie ten znacznik:
+<!-- PHOTO_PLACEHOLDER_2 -->
 
-5. Sekcja CTA (call-to-action) — w środku artykułu, po 3-4 sekcji:
+6. Sekcja CTA (call-to-action) — w środku artykułu, po 4. sekcji:
 <p>Szukasz specjalisty w dziedzinie {topic['keyword']}?</p>
 <p>AP Dent przy ul. Pelikanów 2D to klinika, w której [dopasuj do tematu].</p>
 <p><strong>Zadzwoń: <a href="tel:+48227025470">22 702 54 70</a></strong><br />ul. Pelikanów 2D, 05-500 Piaseczno<br /><small>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00</small><br /><a href="https://apdentpiaseczno.pl/kontakt/">Umów wizytę online →</a></p>
 
-6. Kolejne 2-3 sekcje z nagłówkami H2.
+7. Kolejne 2-3 sekcje z nagłówkami H2.
 
-7. Podsumowanie — końcowy akapit z pogrubionym odniesieniem do AP Dent.
+8. Podsumowanie — końcowy akapit z pogrubionym odniesieniem do AP Dent.
 
-8. Sekcja FAQ — z nagłówkiem H2 i pytaniami jako H3:
+9. Sekcja FAQ — z nagłówkiem H2 i pytaniami jako H3:
 <h2 class="wp-block-heading">Najczęściej zadawane pytania</h2>
 <h3 class="wp-block-heading">Pytanie 1 z frazą kluczową?</h3>
 <p>Odpowiedź z odniesieniem do AP Dent...</p>
 (4 pytania FAQ)
 
-9. CTA końcowe:
+10. CTA końcowe:
 <p>Umów wizytę – już dziś</p>
 <p>AP Dent Piaseczno  |  ul. Pelikanów 2D, 05-500 Piaseczno</p>
 <p>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00<br /><a href="tel:+48227025470">Zadzwoń: 22 702 54 70</a>  <a href="https://apdentpiaseczno.pl/kontakt/">Formularz online →</a></p>
@@ -311,6 +314,7 @@ Zwróć TYLKO JSON w formacie:
     "meta_description": "Meta description (max 155 znaków, z frazą kluczową)",
     "slug": "slug-artykulu-po-polsku",
     "photo_search_query": "short English query for dental stock photo, e.g. 'child at dentist smiling'",
+    "photo_search_query_2": "DIFFERENT English query for a second dental photo matching a lower section of the article, e.g. 'dental tools close up'",
     "faq_schema": [
         {{"question": "Pytanie 1", "answer": "Krótka odpowiedź 1"}},
         {{"question": "Pytanie 2", "answer": "Krótka odpowiedź 2"}},
@@ -346,10 +350,13 @@ WAŻNE: Zwróć TYLKO JSON, bez żadnego tekstu."""
 
 
 def insert_photos(content_html, photos, slug):
-    """Replace photo placeholders with actual uploaded images."""
-    wp_url = os.environ["WP_URL"]
-    auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
+    """Upload photos and insert into content.
 
+    Photo layout:
+      photos[0] -> featured image only (not inserted into content)
+      photos[1] -> replaces PHOTO_PLACEHOLDER_1 (after TL;DR)
+      photos[2] -> replaces PHOTO_PLACEHOLDER_2 (mid-article)
+    """
     uploaded = []
     for i, photo in enumerate(photos):
         img_data = upload_image_to_wordpress(
@@ -357,44 +364,36 @@ def insert_photos(content_html, photos, slug):
             photo["alt"],
             f"{slug}-img-{i+1}",
         )
-        if img_data:
-            uploaded.append(img_data)
+        uploaded.append(img_data)  # Keep None to preserve index mapping
 
-    # Replace placeholder with first uploaded image
-    if uploaded and "<!-- PHOTO_PLACEHOLDER_1 -->" in content_html:
-        img = uploaded[0]
-        figure_html = (
+    def make_figure(img):
+        return (
             f'<figure class="wp-block-image size-full">'
             f'<img loading="lazy" decoding="async" '
             f'src="{img["url"]}" alt="{img["alt"]}" '
             f'class="wp-image-{img["id"]}" />'
             f'</figure>'
         )
+
+    # Photo after TL;DR (index 1)
+    if len(uploaded) > 1 and uploaded[1]:
         content_html = content_html.replace(
-            "<!-- PHOTO_PLACEHOLDER_1 -->", figure_html
+            "<!-- PHOTO_PLACEHOLDER_1 -->", make_figure(uploaded[1])
         )
+    else:
+        content_html = content_html.replace("<!-- PHOTO_PLACEHOLDER_1 -->", "")
 
-    # If we have a second image, insert before FAQ section
-    if len(uploaded) > 1:
-        img = uploaded[1]
-        figure_html = (
-            f'<figure class="wp-block-image size-full">'
-            f'<img loading="lazy" decoding="async" '
-            f'src="{img["url"]}" alt="{img["alt"]}" '
-            f'class="wp-image-{img["id"]}" />'
-            f'</figure>'
+    # Photo mid-article (index 2)
+    if len(uploaded) > 2 and uploaded[2]:
+        content_html = content_html.replace(
+            "<!-- PHOTO_PLACEHOLDER_2 -->", make_figure(uploaded[2])
         )
-        faq_marker = '<h2 class="wp-block-heading">Najczęściej zadawane pytania'
-        if faq_marker in content_html:
-            content_html = content_html.replace(
-                faq_marker, figure_html + "\n" + faq_marker
-            )
+    else:
+        content_html = content_html.replace("<!-- PHOTO_PLACEHOLDER_2 -->", "")
 
-    # Set featured image (first uploaded image)
-    if uploaded:
-        return content_html, uploaded[0]["id"]
-
-    return content_html, None
+    # Featured image = first photo (index 0)
+    featured_id = uploaded[0]["id"] if uploaded and uploaded[0] else None
+    return content_html, featured_id
 
 
 def build_faq_schema_html(faq_items):
@@ -516,25 +515,30 @@ def main():
     log.info(f"Meta: {post_data['meta_description']}")
     log.info(f"Slug: {post_data['slug']}")
 
-    # Fetch and upload photos
+    # Fetch and upload photos (3 total: featured + 2 inline)
     featured_image_id = None
     photo_query = post_data.get("photo_search_query", f"dentist {topic['keyword']}")
-    log.info(f"[PHOTOS] Searching Pexels for: '{photo_query}'")
+    photo_query_2 = post_data.get("photo_search_query_2", f"dental clinic {topic['keyword']}")
+
+    log.info(f"[PHOTOS] Searching Pexels for: '{photo_query}' (2 photos)")
     photos = fetch_pexels_photos(photo_query, count=2)
+
+    log.info(f"[PHOTOS] Searching Pexels for: '{photo_query_2}' (1 photo)")
+    photos_2 = fetch_pexels_photos(photo_query_2, count=1)
+    photos.extend(photos_2)
 
     if photos:
         log.info(f"[PHOTOS] Found {len(photos)} stock photos, uploading to WordPress...")
-        has_placeholder = "<!-- PHOTO_PLACEHOLDER_1 -->" in post_data["content_html"]
-        log.info(f"[PHOTOS] Content has PHOTO_PLACEHOLDER_1: {has_placeholder}")
+        log.info(f"[PHOTOS] Content has PHOTO_PLACEHOLDER_1: {'<!-- PHOTO_PLACEHOLDER_1 -->' in post_data['content_html']}")
+        log.info(f"[PHOTOS] Content has PHOTO_PLACEHOLDER_2: {'<!-- PHOTO_PLACEHOLDER_2 -->' in post_data['content_html']}")
         post_data["content_html"], featured_image_id = insert_photos(
             post_data["content_html"], photos, post_data["slug"]
         )
         log.info(f"[PHOTOS] Featured image ID: {featured_image_id}")
     else:
-        # Remove placeholder if no photos available
         post_data["content_html"] = post_data["content_html"].replace(
             "<!-- PHOTO_PLACEHOLDER_1 -->", ""
-        )
+        ).replace("<!-- PHOTO_PLACEHOLDER_2 -->", "")
         log.warning("[PHOTOS] No stock photos found - publishing without images")
 
     if args.dry_run:
