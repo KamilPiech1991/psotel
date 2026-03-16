@@ -29,12 +29,17 @@ from pathlib import Path
 import anthropic
 import requests
 
+SCRIPT_VERSION = "2.0"
+
 # --- Config ---
 SCRIPT_DIR = Path(__file__).parent
 TOPICS_FILE = SCRIPT_DIR / "topics.json"
 STATE_FILE = SCRIPT_DIR / "state.json"
 LOG_FILE = SCRIPT_DIR / "auto_blog.log"
-ENV_FILE = Path.home() / ".env"
+
+# .env: first check script directory, then home directory
+ENV_FILE_LOCAL = SCRIPT_DIR / ".env"
+ENV_FILE_HOME = Path.home() / ".env"
 
 CLAUDE_MODEL = "claude-sonnet-4-20250514"
 MAX_TOKENS = 8192
@@ -52,20 +57,36 @@ log = logging.getLogger(__name__)
 
 
 def load_env():
-    """Load environment variables from ~/.env file."""
-    if ENV_FILE.exists():
-        for line in ENV_FILE.read_text().splitlines():
+    """Load environment variables from .env file (local dir first, then home dir)."""
+    env_file = None
+    if ENV_FILE_LOCAL.exists():
+        env_file = ENV_FILE_LOCAL
+    elif ENV_FILE_HOME.exists():
+        env_file = ENV_FILE_HOME
+
+    if env_file:
+        log.info(f"Loading .env from: {env_file}")
+        for line in env_file.read_text().splitlines():
             line = line.strip()
             if line and not line.startswith("#") and "=" in line:
                 key, _, value = line.partition("=")
                 os.environ.setdefault(key.strip(), value.strip())
+    else:
+        log.warning(f"No .env file found in {SCRIPT_DIR} or {ENV_FILE_HOME.parent}")
 
     required = ["WP_URL", "WP_USER", "WP_PASSWORD", "ANTHROPIC_API_KEY"]
     missing = [k for k in required if not os.environ.get(k)]
     if missing:
         log.error(f"Missing environment variables: {', '.join(missing)}")
-        log.error(f"Add them to {ENV_FILE}")
+        log.error(f"Create .env in {SCRIPT_DIR} or {ENV_FILE_HOME}")
         sys.exit(1)
+
+    # Log Pexels API status
+    if os.environ.get("PEXELS_API_KEY"):
+        log.info("PEXELS_API_KEY: found")
+    else:
+        log.warning("PEXELS_API_KEY: NOT SET - posts will be published WITHOUT images")
+        log.warning(f"Add PEXELS_API_KEY=your_key to {env_file or SCRIPT_DIR / '.env'}")
 
 
 def load_state():
@@ -95,10 +116,11 @@ def fetch_pexels_photos(query, count=2):
     """Fetch dental stock photos from Pexels API."""
     api_key = os.environ.get("PEXELS_API_KEY")
     if not api_key:
-        log.warning("PEXELS_API_KEY not set - skipping stock photos")
+        log.warning("[PHOTOS] PEXELS_API_KEY not set - skipping stock photos")
         return []
 
     try:
+        log.info(f"[PHOTOS] Calling Pexels API: query='{query}', count={count}")
         r = requests.get(
             "https://api.pexels.com/v1/search",
             headers={"Authorization": api_key},
@@ -106,10 +128,11 @@ def fetch_pexels_photos(query, count=2):
             timeout=15,
         )
         if r.status_code != 200:
-            log.warning(f"Pexels API error {r.status_code}")
+            log.warning(f"[PHOTOS] Pexels API error {r.status_code}: {r.text[:200]}")
             return []
 
         photos = r.json().get("photos", [])
+        log.info(f"[PHOTOS] Pexels returned {len(photos)} photos")
         return [
             {
                 "url": p["src"]["large"],
@@ -452,6 +475,8 @@ def main():
     parser.add_argument("--publish", action="store_true", help="Publish immediately (not as draft)")
     args = parser.parse_args()
 
+    log.info(f"=== AP Dent Auto Blog v{SCRIPT_VERSION} ===")
+
     load_env()
 
     # Load topics and state
@@ -483,19 +508,23 @@ def main():
     # Fetch and upload photos
     featured_image_id = None
     photo_query = post_data.get("photo_search_query", f"dentist {topic['keyword']}")
+    log.info(f"[PHOTOS] Searching Pexels for: '{photo_query}'")
     photos = fetch_pexels_photos(photo_query, count=2)
 
     if photos:
-        log.info(f"Found {len(photos)} stock photos for: {photo_query}")
+        log.info(f"[PHOTOS] Found {len(photos)} stock photos, uploading to WordPress...")
+        has_placeholder = "<!-- PHOTO_PLACEHOLDER_1 -->" in post_data["content_html"]
+        log.info(f"[PHOTOS] Content has PHOTO_PLACEHOLDER_1: {has_placeholder}")
         post_data["content_html"], featured_image_id = insert_photos(
             post_data["content_html"], photos, post_data["slug"]
         )
+        log.info(f"[PHOTOS] Featured image ID: {featured_image_id}")
     else:
         # Remove placeholder if no photos available
         post_data["content_html"] = post_data["content_html"].replace(
             "<!-- PHOTO_PLACEHOLDER_1 -->", ""
         )
-        log.info("No stock photos - publishing without images")
+        log.warning("[PHOTOS] No stock photos found - publishing without images")
 
     if args.dry_run:
         output_file = SCRIPT_DIR / f"draft_{post_data['slug']}.json"
