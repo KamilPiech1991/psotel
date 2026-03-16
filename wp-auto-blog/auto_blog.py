@@ -2,6 +2,7 @@
 """
 Auto Blog Publisher for AP Dent Piaseczno
 Generates SEO-optimized dental blog posts using Claude API and publishes to WordPress.
+Includes stock photos from Pexels and styled HTML matching AP Dent blog design.
 
 Usage:
     python3 auto_blog.py              # Publish next post from topics.json
@@ -13,6 +14,7 @@ Requires .env file with:
     WP_USER=your_username
     WP_PASSWORD=your_app_password
     ANTHROPIC_API_KEY=sk-ant-...
+    PEXELS_API_KEY=your_pexels_key (optional, for stock photos)
 """
 
 import json
@@ -22,6 +24,7 @@ import argparse
 import logging
 from datetime import datetime
 from pathlib import Path
+from io import BytesIO
 
 import anthropic
 import requests
@@ -34,7 +37,7 @@ LOG_FILE = SCRIPT_DIR / "auto_blog.log"
 ENV_FILE = Path.home() / ".env"
 
 CLAUDE_MODEL = "claude-sonnet-4-20250514"
-MAX_TOKENS = 4096
+MAX_TOKENS = 8192
 
 # --- Logging ---
 logging.basicConfig(
@@ -86,8 +89,94 @@ def get_next_topic(topics, state):
     return None
 
 
+# --- Pexels Integration ---
+
+def fetch_pexels_photos(query, count=2):
+    """Fetch dental stock photos from Pexels API."""
+    api_key = os.environ.get("PEXELS_API_KEY")
+    if not api_key:
+        log.warning("PEXELS_API_KEY not set - skipping stock photos")
+        return []
+
+    try:
+        r = requests.get(
+            "https://api.pexels.com/v1/search",
+            headers={"Authorization": api_key},
+            params={"query": query, "per_page": count, "locale": "pl-PL"},
+            timeout=15,
+        )
+        if r.status_code != 200:
+            log.warning(f"Pexels API error {r.status_code}")
+            return []
+
+        photos = r.json().get("photos", [])
+        return [
+            {
+                "url": p["src"]["large"],
+                "alt": p.get("alt", query),
+                "photographer": p["photographer"],
+            }
+            for p in photos
+        ]
+    except requests.RequestException as e:
+        log.warning(f"Pexels request failed: {e}")
+        return []
+
+
+def upload_image_to_wordpress(image_url, alt_text, filename):
+    """Download image from URL and upload to WordPress media library."""
+    wp_url = os.environ["WP_URL"]
+    auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
+
+    try:
+        img_resp = requests.get(image_url, timeout=30)
+        if img_resp.status_code != 200:
+            log.warning(f"Failed to download image: {image_url}")
+            return None
+
+        content_type = img_resp.headers.get("Content-Type", "image/jpeg")
+        ext = "webp" if "webp" in content_type else "jpg"
+        full_filename = f"{filename}.{ext}"
+
+        r = requests.post(
+            f"{wp_url}/wp-json/wp/v2/media",
+            auth=auth,
+            headers={
+                "Content-Disposition": f'attachment; filename="{full_filename}"',
+                "Content-Type": content_type,
+            },
+            data=img_resp.content,
+            timeout=30,
+        )
+
+        if r.status_code != 201:
+            log.warning(f"WordPress media upload failed: {r.status_code}")
+            return None
+
+        media = r.json()
+        media_id = media["id"]
+        media_url = media["source_url"]
+        log.info(f"Uploaded image ID {media_id}: {media_url}")
+
+        # Set alt text
+        requests.post(
+            f"{wp_url}/wp-json/wp/v2/media/{media_id}",
+            auth=auth,
+            json={"alt_text": alt_text},
+            timeout=10,
+        )
+
+        return {"id": media_id, "url": media_url, "alt": alt_text}
+
+    except requests.RequestException as e:
+        log.warning(f"Image upload failed: {e}")
+        return None
+
+
+# --- Content Generation ---
+
 def generate_post(topic):
-    """Generate a blog post using Claude API."""
+    """Generate a blog post using Claude API with enhanced formatting."""
     client = anthropic.Anthropic()
 
     prompt = f"""Napisz artykuł blogowy dla kliniki stomatologicznej AP Dent w Piasecznie.
@@ -96,25 +185,70 @@ TEMAT: {topic['title_hint']}
 FRAZA KLUCZOWA: {topic['keyword']}
 KĄT ARTYKUŁU: {topic['angle']}
 
-WYMAGANIA:
-1. Artykuł 1200-1800 słów, w języku polskim
-2. Struktura: wstęp, 4-6 sekcji z nagłówkami H2/H3, podsumowanie
-3. Naturalnie wpleć frazę kluczową "{topic['keyword']}" 5-8 razy (w nagłówkach, pierwszym akapicie, podsumowaniu)
-4. Dodaj na końcu sekcję FAQ z 3-4 pytaniami zoptymalizowanymi pod "{topic['keyword']}"
-5. Ton: profesjonalny ale przystępny, empatyczny wobec pacjentów
-6. Wspominaj o AP Dent Piaseczno (ul. Pelikanów 2D) naturalnie, nie nachalnie
-7. Godziny: pon-pt 8:00-20:00, sob 8:00-14:00, tel. 22 702 54 70
+WYMAGANIA DOTYCZĄCE TREŚCI:
+1. Artykuł 1500-2200 słów, w języku polskim
+2. Naturalnie wpleć frazę kluczową "{topic['keyword']}" 6-10 razy (w nagłówkach H2, pierwszym akapicie, CTA, FAQ, podsumowaniu)
+3. Ton: profesjonalny ale przystępny, empatyczny wobec pacjentów
+4. Wspominaj o AP Dent Piaseczno (ul. Pelikanów 2D) naturalnie, 3-4 razy w artykule
+5. Godziny: pon-pt 8:00-20:00, sob 8:00-14:00, tel. 22 702 54 70
+6. Dodawaj linki wewnętrzne do usług AP Dent tam, gdzie pasują (format: <a href="https://apdentpiaseczno.pl/uslugi/NAZWA/">tekst</a>). Dostępne usługi: implanty, ortodoncja, protetyka, endodoncja, chirurgia, stomatologia-estetyczna, stomatologia-dziecieca, higiena, radiologia, periodontologia
+
+WYMAGANA STRUKTURA HTML (dokładnie w tej kolejności):
+
+1. **TL;DR na początku** — sekcja ze skrótem najważniejszych informacji:
+<p><strong>TL;DR – najważniejsze w skrócie:</strong></p>
+<ul class="wp-block-list">
+<li>Punkt 1...</li>
+<li>Punkt 2...</li>
+<li>Punkt 3...</li>
+<li><strong>AP Dent przy ul. Pelikanów 2D w Piasecznie</strong> — punkt z odniesieniem do kliniki.</li>
+</ul>
+
+2. **Akapit wprowadzający** — chwytający uwagę, z frazą kluczową.
+
+3. **4-6 sekcji tematycznych** z nagłówkami H2 (class="wp-block-heading"):
+<h2 class="wp-block-heading">Nagłówek sekcji z frazą kluczową</h2>
+- Każda sekcja 2-4 akapity
+- Używaj <strong> do wyróżnienia kluczowych fraz
+- Dodawaj listy <ul class="wp-block-list"> gdzie pasują
+- Wstawiaj linki wewnętrzne do usług AP Dent
+
+4. **PLACEHOLDER na zdjęcie** — po 2. sekcji wstaw dokładnie ten znacznik:
+<!-- PHOTO_PLACEHOLDER_1 -->
+
+5. **Sekcja CTA (call-to-action)** — w środku artykułu, po 3-4 sekcji:
+<p>Szukasz specjalisty w dziedzinie {topic['keyword']}?</p>
+<p>AP Dent przy ul. Pelikanów 2D to klinika, w której [dopasuj do tematu].</p>
+<p><strong>Zadzwoń: <a href="tel:+48227025470">22 702 54 70</a></strong><br />ul. Pelikanów 2D, 05-500 Piaseczno<br /><small>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00</small><br /><a href="https://apdentpiaseczno.pl/kontakt/">Umów wizytę online →</a></p>
+
+6. **Kolejne 2-3 sekcje** z nagłówkami H2.
+
+7. **Podsumowanie** — końcowy akapit z pogrubionym odniesieniem do AP Dent.
+
+8. **Sekcja FAQ** — z nagłówkiem H2 i pytaniami jako H3:
+<h2 class="wp-block-heading">Najczęściej zadawane pytania</h2>
+<h3 class="wp-block-heading">Pytanie 1 z frazą kluczową?</h3>
+<p>Odpowiedź z odniesieniem do AP Dent...</p>
+(4 pytania FAQ)
+
+9. **CTA końcowe**:
+<p>Umów wizytę – już dziś</p>
+<p>AP Dent Piaseczno  |  ul. Pelikanów 2D, 05-500 Piaseczno</p>
+<p>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00<br /><a href="tel:+48227025470">Zadzwoń: 22 702 54 70</a>  <a href="https://apdentpiaseczno.pl/kontakt/">Formularz online →</a></p>
 
 ZWRÓĆ odpowiedź w formacie JSON:
 {{
-    "title": "Tytuł artykułu (max 70 znaków)",
+    "title": "Tytuł artykułu (max 70 znaków, z frazą kluczową)",
     "meta_description": "Meta description (max 155 znaków, z frazą kluczową)",
-    "content_html": "Pełna treść artykułu w HTML (h2, h3, p, ul, li, strong)",
+    "content_html": "Pełna treść artykułu w HTML zgodna z powyższą strukturą",
     "faq_schema": [
         {{"question": "Pytanie 1", "answer": "Odpowiedź 1"}},
-        {{"question": "Pytanie 2", "answer": "Odpowiedź 2"}}
+        {{"question": "Pytanie 2", "answer": "Odpowiedź 2"}},
+        {{"question": "Pytanie 3", "answer": "Odpowiedź 3"}},
+        {{"question": "Pytanie 4", "answer": "Odpowiedź 4"}}
     ],
-    "slug": "slug-artykulu-po-polsku"
+    "slug": "slug-artykulu-po-polsku",
+    "photo_search_query": "krótkie zapytanie po angielsku do wyszukania zdjęcia stockowego pasującego do tematu, np. 'dental clinic patient smiling'"
 }}
 
 WAŻNE: Zwróć TYLKO JSON, bez żadnego tekstu przed ani po."""
@@ -137,6 +271,58 @@ WAŻNE: Zwróć TYLKO JSON, bez żadnego tekstu przed ani po."""
         text = text.strip()
 
     return json.loads(text)
+
+
+def insert_photos(content_html, photos, slug):
+    """Replace photo placeholders with actual uploaded images."""
+    wp_url = os.environ["WP_URL"]
+    auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
+
+    uploaded = []
+    for i, photo in enumerate(photos):
+        img_data = upload_image_to_wordpress(
+            photo["url"],
+            photo["alt"],
+            f"{slug}-img-{i+1}",
+        )
+        if img_data:
+            uploaded.append(img_data)
+
+    # Replace placeholder with first uploaded image
+    if uploaded and "<!-- PHOTO_PLACEHOLDER_1 -->" in content_html:
+        img = uploaded[0]
+        figure_html = (
+            f'<figure class="wp-block-image size-full">'
+            f'<img loading="lazy" decoding="async" '
+            f'src="{img["url"]}" alt="{img["alt"]}" '
+            f'class="wp-image-{img["id"]}" />'
+            f'</figure>'
+        )
+        content_html = content_html.replace(
+            "<!-- PHOTO_PLACEHOLDER_1 -->", figure_html
+        )
+
+    # If we have a second image, insert before FAQ section
+    if len(uploaded) > 1:
+        img = uploaded[1]
+        figure_html = (
+            f'<figure class="wp-block-image size-full">'
+            f'<img loading="lazy" decoding="async" '
+            f'src="{img["url"]}" alt="{img["alt"]}" '
+            f'class="wp-image-{img["id"]}" />'
+            f'</figure>'
+        )
+        faq_marker = '<h2 class="wp-block-heading">Najczęściej zadawane pytania'
+        if faq_marker in content_html:
+            content_html = content_html.replace(
+                faq_marker, figure_html + "\n" + faq_marker
+            )
+
+    # Set featured image (first uploaded image)
+    if uploaded:
+        return content_html, uploaded[0]["id"]
+
+    return content_html, None
 
 
 def build_faq_schema_html(faq_items):
@@ -163,7 +349,7 @@ def build_faq_schema_html(faq_items):
     )
 
 
-def publish_to_wordpress(post_data):
+def publish_to_wordpress(post_data, featured_image_id=None):
     """Publish post to WordPress via REST API."""
     wp_url = os.environ["WP_URL"]
     auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
@@ -178,8 +364,11 @@ def publish_to_wordpress(post_data):
         "title": post_data["title"],
         "content": content,
         "slug": post_data["slug"],
-        "status": "draft",  # Publish as draft for review
+        "status": "draft",
     }
+
+    if featured_image_id:
+        payload["featured_media"] = featured_image_id
 
     log.info(f"Publishing to WordPress: {post_data['title']}")
     r = requests.post(
@@ -253,22 +442,33 @@ def main():
     log.info(f"Meta: {post_data['meta_description']}")
     log.info(f"Slug: {post_data['slug']}")
 
+    # Fetch and upload photos
+    featured_image_id = None
+    photo_query = post_data.get("photo_search_query", f"dentist {topic['keyword']}")
+    photos = fetch_pexels_photos(photo_query, count=2)
+
+    if photos:
+        log.info(f"Found {len(photos)} stock photos for: {photo_query}")
+        post_data["content_html"], featured_image_id = insert_photos(
+            post_data["content_html"], photos, post_data["slug"]
+        )
+    else:
+        # Remove placeholder if no photos available
+        post_data["content_html"] = post_data["content_html"].replace(
+            "<!-- PHOTO_PLACEHOLDER_1 -->", ""
+        )
+        log.info("No stock photos - publishing without images")
+
     if args.dry_run:
-        # Save to file for review
         output_file = SCRIPT_DIR / f"draft_{post_data['slug']}.json"
         output_file.write_text(json.dumps(post_data, ensure_ascii=False, indent=2))
         log.info(f"Dry run - saved to {output_file}")
         return
 
     # Publish
-    if args.publish:
-        # Override status to publish immediately
-        pass
-
-    post_id = publish_to_wordpress(post_data)
+    post_id = publish_to_wordpress(post_data, featured_image_id)
 
     if post_id:
-        # Update state
         state["published"].append(topic["keyword"])
         state["last_run"] = datetime.now().isoformat()
         state["last_post_id"] = post_id
