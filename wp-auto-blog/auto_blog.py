@@ -152,14 +152,25 @@ def upload_image_to_wordpress(image_url, alt_text, filename):
     auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
 
     try:
-        img_resp = requests.get(image_url, timeout=30)
+        img_resp = requests.get(
+            image_url,
+            timeout=30,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; APDentBot/1.0)"},
+        )
         if img_resp.status_code != 200:
-            log.warning(f"Failed to download image: {image_url}")
+            log.warning(f"Failed to download image ({img_resp.status_code}): {image_url}")
+            return None
+
+        if len(img_resp.content) == 0:
+            log.warning(f"Downloaded image is empty: {image_url}")
             return None
 
         content_type = img_resp.headers.get("Content-Type", "image/jpeg")
+        # Strip charset or extra params from content type
+        content_type = content_type.split(";")[0].strip()
         ext = "webp" if "webp" in content_type else "jpg"
         full_filename = f"{filename}.{ext}"
+        log.info(f"[PHOTOS] Downloaded {len(img_resp.content)} bytes, type={content_type}")
 
         r = requests.post(
             f"{wp_url}/wp-json/wp/v2/media",
