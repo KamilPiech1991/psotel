@@ -18,13 +18,13 @@ Requires .env file with:
 """
 
 import json
+import re
 import os
 import sys
 import argparse
 import logging
 from datetime import datetime
 from pathlib import Path
-from io import BytesIO
 
 import anthropic
 import requests
@@ -176,10 +176,16 @@ def upload_image_to_wordpress(image_url, alt_text, filename):
 # --- Content Generation ---
 
 def generate_post(topic):
-    """Generate a blog post using Claude API with enhanced formatting."""
+    """Generate a blog post using Claude API with enhanced formatting.
+
+    Uses a two-step approach to avoid JSON parsing issues with long HTML content:
+    Step 1: Generate HTML content as raw text
+    Step 2: Generate metadata (title, slug, FAQ, etc.) as JSON
+    """
     client = anthropic.Anthropic()
 
-    prompt = f"""Napisz artykuł blogowy dla kliniki stomatologicznej AP Dent w Piasecznie.
+    # --- Step 1: Generate HTML content ---
+    content_prompt = f"""Napisz artykuł blogowy dla kliniki stomatologicznej AP Dent w Piasecznie.
 
 TEMAT: {topic['title_hint']}
 FRAZA KLUCZOWA: {topic['keyword']}
@@ -195,7 +201,7 @@ WYMAGANIA DOTYCZĄCE TREŚCI:
 
 WYMAGANA STRUKTURA HTML (dokładnie w tej kolejności):
 
-1. **TL;DR na początku** — sekcja ze skrótem najważniejszych informacji:
+1. TL;DR na początku — sekcja ze skrótem najważniejszych informacji:
 <p><strong>TL;DR – najważniejsze w skrócie:</strong></p>
 <ul class="wp-block-list">
 <li>Punkt 1...</li>
@@ -204,73 +210,105 @@ WYMAGANA STRUKTURA HTML (dokładnie w tej kolejności):
 <li><strong>AP Dent przy ul. Pelikanów 2D w Piasecznie</strong> — punkt z odniesieniem do kliniki.</li>
 </ul>
 
-2. **Akapit wprowadzający** — chwytający uwagę, z frazą kluczową.
+2. Akapit wprowadzający — chwytający uwagę, z frazą kluczową.
 
-3. **4-6 sekcji tematycznych** z nagłówkami H2 (class="wp-block-heading"):
+3. 4-6 sekcji tematycznych z nagłówkami H2 (class="wp-block-heading"):
 <h2 class="wp-block-heading">Nagłówek sekcji z frazą kluczową</h2>
 - Każda sekcja 2-4 akapity
 - Używaj <strong> do wyróżnienia kluczowych fraz
 - Dodawaj listy <ul class="wp-block-list"> gdzie pasują
 - Wstawiaj linki wewnętrzne do usług AP Dent
 
-4. **PLACEHOLDER na zdjęcie** — po 2. sekcji wstaw dokładnie ten znacznik:
+4. PLACEHOLDER na zdjęcie — po 2. sekcji wstaw dokładnie ten znacznik:
 <!-- PHOTO_PLACEHOLDER_1 -->
 
-5. **Sekcja CTA (call-to-action)** — w środku artykułu, po 3-4 sekcji:
+5. Sekcja CTA (call-to-action) — w środku artykułu, po 3-4 sekcji:
 <p>Szukasz specjalisty w dziedzinie {topic['keyword']}?</p>
 <p>AP Dent przy ul. Pelikanów 2D to klinika, w której [dopasuj do tematu].</p>
 <p><strong>Zadzwoń: <a href="tel:+48227025470">22 702 54 70</a></strong><br />ul. Pelikanów 2D, 05-500 Piaseczno<br /><small>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00</small><br /><a href="https://apdentpiaseczno.pl/kontakt/">Umów wizytę online →</a></p>
 
-6. **Kolejne 2-3 sekcje** z nagłówkami H2.
+6. Kolejne 2-3 sekcje z nagłówkami H2.
 
-7. **Podsumowanie** — końcowy akapit z pogrubionym odniesieniem do AP Dent.
+7. Podsumowanie — końcowy akapit z pogrubionym odniesieniem do AP Dent.
 
-8. **Sekcja FAQ** — z nagłówkiem H2 i pytaniami jako H3:
+8. Sekcja FAQ — z nagłówkiem H2 i pytaniami jako H3:
 <h2 class="wp-block-heading">Najczęściej zadawane pytania</h2>
 <h3 class="wp-block-heading">Pytanie 1 z frazą kluczową?</h3>
 <p>Odpowiedź z odniesieniem do AP Dent...</p>
 (4 pytania FAQ)
 
-9. **CTA końcowe**:
+9. CTA końcowe:
 <p>Umów wizytę – już dziś</p>
 <p>AP Dent Piaseczno  |  ul. Pelikanów 2D, 05-500 Piaseczno</p>
 <p>Pon.–Pt. 8:00–20:00  |  Sob. 8:00–14:00<br /><a href="tel:+48227025470">Zadzwoń: 22 702 54 70</a>  <a href="https://apdentpiaseczno.pl/kontakt/">Formularz online →</a></p>
 
-ZWRÓĆ odpowiedź w formacie JSON:
-{{
-    "title": "Tytuł artykułu (max 70 znaków, z frazą kluczową)",
-    "meta_description": "Meta description (max 155 znaków, z frazą kluczową)",
-    "content_html": "Pełna treść artykułu w HTML zgodna z powyższą strukturą",
-    "faq_schema": [
-        {{"question": "Pytanie 1", "answer": "Odpowiedź 1"}},
-        {{"question": "Pytanie 2", "answer": "Odpowiedź 2"}},
-        {{"question": "Pytanie 3", "answer": "Odpowiedź 3"}},
-        {{"question": "Pytanie 4", "answer": "Odpowiedź 4"}}
-    ],
-    "slug": "slug-artykulu-po-polsku",
-    "photo_search_query": "krótkie zapytanie po angielsku do wyszukania zdjęcia stockowego pasującego do tematu, np. 'dental clinic patient smiling'"
-}}
-
-WAŻNE: Zwróć TYLKO JSON, bez żadnego tekstu przed ani po."""
+WAŻNE: Zwróć TYLKO czysty HTML artykułu. Bez żadnych komentarzy, wyjaśnień, bloków kodu — TYLKO HTML."""
 
     log.info(f"Generating post for: {topic['keyword']}")
 
-    response = client.messages.create(
+    # Step 1: Get HTML content
+    response1 = client.messages.create(
         model=CLAUDE_MODEL,
         max_tokens=MAX_TOKENS,
-        messages=[{"role": "user", "content": prompt}],
+        messages=[{"role": "user", "content": content_prompt}],
+    )
+    content_html = response1.content[0].text.strip()
+
+    # Strip markdown code fences if present
+    if content_html.startswith("```"):
+        lines = content_html.split("\n")
+        # Remove first line (```html) and last line (```)
+        lines = [l for l in lines if not l.strip().startswith("```")]
+        content_html = "\n".join(lines).strip()
+
+    log.info(f"Generated HTML content ({len(content_html)} chars)")
+
+    # --- Step 2: Generate metadata ---
+    meta_prompt = f"""Na podstawie poniższego artykułu HTML, wygeneruj metadane w formacie JSON.
+
+FRAZA KLUCZOWA: {topic['keyword']}
+
+ARTYKUŁ:
+{content_html[:500]}...
+
+Zwróć TYLKO JSON w formacie:
+{{
+    "title": "Tytuł artykułu (max 70 znaków, z frazą kluczową)",
+    "meta_description": "Meta description (max 155 znaków, z frazą kluczową)",
+    "slug": "slug-artykulu-po-polsku",
+    "photo_search_query": "short English query for dental stock photo, e.g. 'child at dentist smiling'",
+    "faq_schema": [
+        {{"question": "Pytanie 1", "answer": "Krótka odpowiedź 1"}},
+        {{"question": "Pytanie 2", "answer": "Krótka odpowiedź 2"}},
+        {{"question": "Pytanie 3", "answer": "Krótka odpowiedź 3"}},
+        {{"question": "Pytanie 4", "answer": "Krótka odpowiedź 4"}}
+    ]
+}}
+
+Pytania FAQ powinny być zoptymalizowane pod frazę "{topic['keyword']}".
+Odpowiedzi w faq_schema powinny być KRÓTKIE (1-2 zdania).
+WAŻNE: Zwróć TYLKO JSON, bez żadnego tekstu."""
+
+    response2 = client.messages.create(
+        model=CLAUDE_MODEL,
+        max_tokens=2048,
+        messages=[{"role": "user", "content": meta_prompt}],
     )
 
-    text = response.content[0].text.strip()
+    meta_text = response2.content[0].text.strip()
 
-    # Extract JSON if wrapped in code block
-    if text.startswith("```"):
-        text = text.split("```")[1]
-        if text.startswith("json"):
-            text = text[4:]
-        text = text.strip()
+    # Extract JSON from possible code fences
+    if meta_text.startswith("```"):
+        meta_text = meta_text.split("```")[1]
+        if meta_text.startswith("json"):
+            meta_text = meta_text[4:]
+        meta_text = meta_text.strip()
 
-    return json.loads(text)
+    meta = json.loads(meta_text)
+    meta["content_html"] = content_html
+
+    log.info(f"Generated metadata: {meta['title']}")
+    return meta
 
 
 def insert_photos(content_html, photos, slug):
