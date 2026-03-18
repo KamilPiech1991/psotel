@@ -109,12 +109,62 @@ def save_state(state):
     STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False))
 
 
-def get_next_topic(topics, state):
-    """Get the next unpublished topic."""
+def fetch_existing_posts():
+    """Fetch all existing post titles from WordPress to avoid duplicate topics."""
+    wp_url = os.environ["WP_URL"]
+    auth = (os.environ["WP_USER"], os.environ["WP_PASSWORD"])
+    all_titles = []
+    page = 1
+
+    while True:
+        try:
+            r = requests.get(
+                f"{wp_url}/wp-json/wp/v2/posts",
+                auth=auth,
+                params={"per_page": 100, "page": page, "status": "publish,draft,pending,private"},
+                timeout=15,
+            )
+            if r.status_code != 200:
+                log.warning(f"Failed to fetch posts page {page}: {r.status_code}")
+                break
+
+            posts = r.json()
+            if not posts:
+                break
+
+            for post in posts:
+                all_titles.append(post["title"]["rendered"].lower())
+
+            if len(posts) < 100:
+                break
+            page += 1
+        except requests.RequestException as e:
+            log.warning(f"Error fetching existing posts: {e}")
+            break
+
+    log.info(f"Fetched {len(all_titles)} existing posts from WordPress")
+    return all_titles
+
+
+def is_topic_duplicate(topic, existing_titles):
+    """Check if a topic's keyword already appears in existing post titles."""
+    keyword_lower = topic["keyword"].lower()
+    for title in existing_titles:
+        if keyword_lower in title:
+            return True
+    return False
+
+
+def get_next_topic(topics, state, existing_titles=None):
+    """Get the next unpublished topic, skipping duplicates found on WordPress."""
     published_keywords = set(state["published"])
     for topic in topics:
-        if topic["keyword"] not in published_keywords:
-            return topic
+        if topic["keyword"] in published_keywords:
+            continue
+        if existing_titles and is_topic_duplicate(topic, existing_titles):
+            log.info(f"Skipping '{topic['keyword']}' — similar post already exists on WordPress")
+            continue
+        return topic
     return None
 
 
@@ -527,9 +577,12 @@ def main():
     topics = json.loads(TOPICS_FILE.read_text())
     state = load_state()
 
-    topic = get_next_topic(topics, state)
+    log.info("Checking existing posts on WordPress to avoid duplicates...")
+    existing_titles = fetch_existing_posts()
+
+    topic = get_next_topic(topics, state, existing_titles)
     if not topic:
-        log.info("All topics have been published! Add more to topics.json")
+        log.info("All topics have been published or already exist on WordPress! Add more to topics.json")
         return
 
     if args.preview:
