@@ -43,6 +43,8 @@ ENV_FILE_HOME = Path.home() / ".env"
 
 CLAUDE_MODEL = "claude-sonnet-4-20250514"
 MAX_TOKENS = 8192
+AUTHOR_NAME = "Dr Marcin Puchniarz"
+READING_SPEED_WPM = 200  # average reading speed in Polish (words per minute)
 
 # --- Logging ---
 logging.basicConfig(
@@ -205,6 +207,26 @@ def upload_image_to_wordpress(image_url, alt_text, filename):
     except requests.RequestException as e:
         log.warning(f"Image upload failed: {e}")
         return None
+
+
+def estimate_reading_time(html_content):
+    """Estimate reading time in minutes from HTML content."""
+    text = re.sub(r"<[^>]+>", "", html_content)
+    word_count = len(text.split())
+    minutes = max(1, round(word_count / READING_SPEED_WPM))
+    return minutes
+
+
+def inject_reading_time_and_author(content_html):
+    """Insert author and reading time bar at the very beginning of the article."""
+    minutes = estimate_reading_time(content_html)
+    info_html = (
+        f'<p style="color:#555; font-size:0.95em; margin-bottom:1.2em;">'
+        f'Autor: <strong>{AUTHOR_NAME}</strong> · '
+        f'Czas czytania: ok. {minutes} min'
+        f'</p>'
+    )
+    return info_html + content_html
 
 
 # --- Content Generation ---
