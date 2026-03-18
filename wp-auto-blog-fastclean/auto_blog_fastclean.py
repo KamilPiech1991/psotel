@@ -122,7 +122,7 @@ def fetch_existing_posts():
                 f"{wp_url}/wp-json/wp/v2/posts",
                 auth=auth,
                 params={"per_page": 100, "page": page, "status": "publish,draft,pending,private"},
-                timeout=15,
+                timeout=30,
             )
             if r.status_code != 200:
                 log.warning(f"Failed to fetch posts page {page}: {r.status_code}")
@@ -232,12 +232,10 @@ def upload_image_to_wordpress(image_url, alt_text, filename):
         r = requests.post(
             f"{wp_url}/wp-json/wp/v2/media",
             auth=auth,
-            headers={
-                "Content-Disposition": f'attachment; filename="{full_filename}"',
-                "Content-Type": content_type,
+            files={
+                "file": (full_filename, img_resp.content, content_type),
             },
-            data=img_resp.content,
-            timeout=30,
+            timeout=60,
         )
 
         if r.status_code != 201:
