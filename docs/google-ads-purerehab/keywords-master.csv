@@ -1,0 +1,109 @@
+campaign,ad_group,keyword,match_type,avg_monthly_searches,competition,competition_indexed,cpc_low,cpc_high,trend_yoy,priority,source,notes
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż piaseczno",Phrase,880,Wysoki,76,0.95,3.31,0%,P1,klient,Główna fraza lokalna - najwyższy wolumen
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż piaseczno",Exact,880,Wysoki,76,0.95,3.31,0%,P1,klient,Exact match dla precyzji
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż leczniczy piaseczno",Phrase,70,Niski,15,1.04,1.86,+175%,P1,klient,EKSPLOZJA - niski CPC wysoki wzrost
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż leczniczy piaseczno",Exact,70,Niski,15,1.04,1.86,+175%,P1,klient,Exact match
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż relaksacyjny piaseczno",Phrase,40,Wysoki,100,0.86,3.51,-57%,P2,klient,Spadek YoY ale wciąż wolumen
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż relaksacyjny piaseczno",Exact,40,Wysoki,100,0.86,3.51,-57%,P2,klient,Exact match
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"piaseczno masaż",Phrase,40,Wysoki,93,0.91,3.50,+40%,P1,klient,Odwrócona kolejność - rosnąca
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż klasyczny piaseczno",Phrase,10,Wysoki,100,0.96,2.34,+100%,P2,klient,Niski wolumen ale rośnie
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż kręgosłupa piaseczno",Phrase,10,Średni,41,,,0%,P2,klient,Wysoka intencja medyczna
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż sportowy piaseczno",Phrase,10,Wysoki,100,0.90,2.18,0%,P2,klient,Niszowe - NIKT nie targetuje
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"gabinet masażu piaseczno",Phrase,10,Niski,21,,,0%,P2,klient,Niski CPC szansa
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"salon masażu piaseczno",Phrase,30,Niski,7,,,+350%,P1,klient,EKSPLOZJA wzrostu - tania fraza
+Search-Lokalne-Piaseczno,Masaż Piaseczno,"masaż piaseczno warszawska",Phrase,10,Wysoki,86,,,0%,P3,klient,Specyficzna ulica
+Search-Lokalne-Piaseczno,Drenaż Limfatyczny Piaseczno,"drenaż limfatyczny piaseczno",Phrase,50,Niski,33,0.78,1.64,+250%,P1,klient,EKSPLOZJA - nikt nie targetuje - OKAZJA
+Search-Lokalne-Piaseczno,Drenaż Limfatyczny Piaseczno,"drenaż limfatyczny piaseczno",Exact,50,Niski,33,0.78,1.64,+250%,P1,klient,Exact match
+Search-Lokalne-Piaseczno,Drenaż Limfatyczny Piaseczno,"masaż limfatyczny piaseczno",Phrase,,,,,,,,expansion,Wariant bez danych - zweryfikuj w KP
+Search-Lokalne-Piaseczno,Drenaż Limfatyczny Piaseczno,"presoterapia piaseczno",Phrase,,,,,,,,expansion,Wariant bez danych - zweryfikuj w KP
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"fizjoterapia piaseczno",Phrase,,,,,,,,expansion,Brak w arkuszu klienta - TOP fraza lokalna
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"rehabilitacja piaseczno",Phrase,,,,,,,,expansion,j.w.
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"fizjoterapeuta piaseczno",Phrase,,,,,,,,expansion,j.w.
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"terapia manualna piaseczno",Phrase,,,,,,,,expansion,j.w.
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"fizjoterapia nowa iwiczna",Phrase,,Nieznany,,,,--,P1,klient,Brak danych wolumenu ale bezpośrednia lokalizacja
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"rehabilitacja nowa iwiczna",Phrase,,,,,,,,expansion,Wariant lokalizacyjny
+Search-Lokalne-Piaseczno,Fizjoterapia Piaseczno,"rehabilitacja dla dziecka piaseczno",Phrase,,Nieznany,,,,--,P2,klient,Brak danych ale istotna nisza
+Search-Specjalistyczne,Terapia manualna,"terapia manualna",Phrase,3600,Niski,19,0.61,2.57,+22%,P1,klient,Niski CPC! Dużo wyszukiwań
+Search-Specjalistyczne,Terapia manualna,"manualna terapia",Phrase,110,Niski,20,0.70,2.01,-57%,P3,klient,Odwrócona kolejność - spadek
+Search-Specjalistyczne,Terapia manualna,"ortopedyczna terapia manualna",Phrase,90,Niski,2,1.41,3.95,+143%,P1,klient,EKSPLOZJA - zerowa konkurencja
+Search-Specjalistyczne,Terapia manualna,"rehabilitacja manualna",Phrase,110,Niski,24,0.50,1.76,0%,P2,klient,Niski CPC
+Search-Specjalistyczne,Terapia manualna,"masaż terapia manualna",Phrase,20,Średni,46,0.88,1.43,0%,P3,klient,Niski wolumen
+Search-Specjalistyczne,Terapia manualna,"terapia manualna stóp",Phrase,20,Niski,2,,,+100%,P2,klient,Rośnie - brak konkurencji
+Search-Specjalistyczne,Terapia manualna,"fizykoterapia manualna",Phrase,20,Niski,21,0.02,1.44,-50%,P3,klient,Spadek
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaż limfatyczny",Phrase,27100,Wysoki,100,0.46,3.01,+22%,P1,klient,Ogromny wolumen - targetuj z geo
+Search-Specjalistyczne,Drenaż limfatyczny,"masaż limfatyczny",Phrase,8100,Wysoki,100,0.38,2.22,+22%,P1,klient,Wariant - duży wolumen
+Search-Specjalistyczne,Drenaż limfatyczny,"masaz limfatyczny",Phrase,8100,Wysoki,100,0.38,2.22,+22%,P1,klient,Bez polskich znaków
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaż limfatyczny nóg",Phrase,4400,Wysoki,100,0.33,2.45,+50%,P1,klient,GORĄCA FRAZA - silny wzrost
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaz limfatyczny nóg",Phrase,4400,Wysoki,100,0.33,2.45,+50%,P1,klient,Bez polskich znaków
+Search-Specjalistyczne,Drenaż limfatyczny,"masaż drenaż limfatyczny",Phrase,390,Wysoki,98,0.51,2.24,0%,P2,klient,Cross-fraza
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaż limfatyczny masaż",Phrase,170,Wysoki,100,0.78,2.24,+53%,P2,klient,Odwrócona - rośnie
+Search-Specjalistyczne,Drenaż limfatyczny,"rehabilitacja drenaż limfatyczny",Phrase,20,Wysoki,100,0.34,1.13,0%,P3,klient,Niski wolumen
+Search-Specjalistyczne,Drenaż limfatyczny,"presoterapia drenaż limfatyczny",Phrase,140,Wysoki,99,0.85,4.51,+27%,P2,klient,Cross-sell
+Search-Specjalistyczne,Drenaż limfatyczny,"zabieg drenaż limfatyczny",Phrase,40,Wysoki,100,0.21,1.23,+25%,P2,klient,Niski CPC
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaż limfatyczny pleców",Phrase,30,Wysoki,72,0.55,2.00,+33%,P3,klient,Niszowe
+Search-Specjalistyczne,Drenaż limfatyczny,"drenaż limfatyczny stóp",Phrase,30,Wysoki,99,0.39,1.15,0%,P3,klient,Niszowe
+Search-Specjalistyczne,Drenaż limfatyczny,"limfatyczny masaż",Phrase,170,Wysoki,100,0.51,2.37,+55%,P2,klient,Odwrócona - rośnie
+Search-Specjalistyczne,Drenaż limfatyczny,"rehabilitacja limfatyczna",Phrase,30,Średni,56,0.27,1.88,-25%,P3,klient,Spadek
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaż leczniczy",Phrase,70,Niski,15,1.04,1.86,+175%,P1,klient,CPC niski - wzrost silny
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz rehabilitacja",Phrase,590,Niski,32,0.89,3.13,0%,P1,klient,Dobry wolumen
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz rehabilitacyjny",Phrase,590,Niski,32,0.89,3.13,0%,P1,klient,Wariant
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaż fizjoterapeutyczny",Phrase,480,Średni,36,0.91,3.46,+23%,P1,klient,Rośnie
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz fizjoterapeutyczny",Phrase,480,Średni,36,0.91,3.46,+23%,P1,klient,Bez polskich znaków
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaże lecznicze",Phrase,210,Niski,12,0.98,2.52,0%,P2,klient,Liczba mnoga
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaż kręgosłupa",Phrase,1300,Średni,42,0.80,2.65,-19%,P1,klient,Duży wolumen mimo spadku
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaż kręgosłupa lędźwiowego",Phrase,210,Średni,59,0.74,2.31,-18%,P2,klient,Konkretny problem
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz leczniczy kregoslupa ledzwiowego",Phrase,50,Niski,21,0.70,1.80,0%,P2,klient,Bez polskich znaków
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"leczniczy masaż kręgosłupa",Phrase,40,Niski,12,0.61,1.67,+400%,P1,klient,EKSPLOZJA!
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaż karku",Phrase,880,Wysoki,100,0.65,2.99,0%,P1,klient,Duży wolumen
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz medyczny",Phrase,110,Niski,26,0.86,2.80,+27%,P2,klient,Rośnie
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz terapeutyczny",Phrase,260,Niski,23,1.09,2.92,0%,P2,klient,Stabilny
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaze lecznicze kręgosłupa",Phrase,20,Średni,58,0.83,2.89,-25%,P3,klient,Niski wolumen
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaże lecznicze na kręgosłup",Phrase,10,Niski,33,0.72,1.37,+200%,P2,klient,Rośnie
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaże pleców",Phrase,2400,Średni,59,0.94,3.16,0%,P1,klient,Duży wolumen
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz relaksacyjny plecow",Phrase,70,Średni,46,1.04,2.34,+29%,P3,klient,Cross-kategoria
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz nóg",Phrase,720,Wysoki,100,0.46,2.07,-18%,P2,klient,Duży ale spadek
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz klasyczny kregoslupa",Phrase,70,Niski,17,0.73,1.56,+29%,P2,klient,Niski CPC
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"masaz reczny kregoslupa",Phrase,30,Średni,42,1.13,2.38,0%,P3,klient,Niszowe
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"fizjoterapeuta masaz plecow",Phrase,30,Średni,43,1.12,2.42,-33%,P3,klient,Spadek
+Search-Specjalistyczne,Masaż leczniczy rehabilitacyjny,"kręgosłup masaż",Phrase,110,Niski,31,,,+200%,P2,klient,Silny wzrost
+Search-Specjalistyczne,Rehabilitacja sportowa,"fizjoterapia biegacza",Phrase,480,Niski,10,0.43,1.47,+23%,P1,klient,OKAZJA - niski CPC nikt nie targetuje
+Search-Specjalistyczne,Rehabilitacja sportowa,"masaż sportowy",Phrase,1900,Średni,54,1.14,3.69,-17%,P1,klient,Duży wolumen
+Search-Specjalistyczne,Rehabilitacja sportowa,"masaż dla sportowców",Phrase,40,Wysoki,97,0.82,2.49,-20%,P3,klient,Niszowe
+Search-Specjalistyczne,Rehabilitacja sportowa,"masaż sportowy nóg",Phrase,10,Wysoki,83,,,,-50%,P3,klient,Niszowe
+Search-Specjalistyczne,Rehabilitacja sportowa,"masaż w sporcie",Phrase,10,Niski,12,,,+100%,P3,klient,Rośnie
+Search-Specjalistyczne,Rehabilitacja dzieci,"rehabilitacja niemowlat",Phrase,390,Niski,8,1.44,3.43,+85%,P1,klient,GORĄCA NISZA - silny wzrost
+Search-Specjalistyczne,Rehabilitacja dzieci,"fizykoterapia dla dzieci",Phrase,10,Niski,25,0.78,5.47,0%,P3,klient,Wysoki max CPC!
+Search-Specjalistyczne,Rehabilitacja dzieci,"fizykoterapia dzieci",Phrase,10,Niski,6,,,0%,P3,klient,Wariant
+Search-Specjalistyczne,Rehabilitacja dzieci,"masaż dziecięcy",Phrase,40,Niski,4,,,0%,P3,klient,Niszowe
+Search-Specjalistyczne,Rehabilitacja dzieci,"masaż terapeutyczny dla dzieci",Phrase,10,Niski,0,,,-50%,P3,klient,Spadek
+Search-Specjalistyczne,Fizykoterapia,"fizykoterapia",Phrase,4400,Niski,9,0.78,2.97,-19%,P1,klient,Duży wolumen niski CPC
+Search-Specjalistyczne,Fizykoterapia,"fizykoterapia zabiegi",Phrase,260,Niski,12,0.65,2.19,0%,P2,klient,Intencja informacyjna/zakupowa
+Search-Specjalistyczne,Fizykoterapia,"zabiegi fizykoterapii",Phrase,70,Niski,22,0.97,1.52,0%,P3,klient,Wariant
+Search-Specjalistyczne,Fizykoterapia,"zabiegi fizykoterapia",Phrase,70,Niski,9,0.74,1.37,+120%,P2,klient,Silny wzrost!
+Search-Specjalistyczne,Fizykoterapia,"pole magnetyczne rehabilitacja",Phrase,880,Niski,20,0.04,1.81,0%,P1,klient,Bardzo niski CPC!
+Search-Specjalistyczne,Fizykoterapia,"pole magnetyczne fizjoterapia",Phrase,880,Niski,28,0.24,1.65,0%,P1,klient,Wariant
+Search-Specjalistyczne,Fizykoterapia,"pole magnetyczne fizykoterapia",Phrase,320,Niski,9,0.07,2.12,+22%,P2,klient,Niski CPC rośnie
+Search-Specjalistyczne,Fizykoterapia,"fizjoterapia pole magnetyczne",Phrase,90,Niski,17,0.40,2.57,0%,P2,klient,Wariant
+Search-Specjalistyczne,Fizykoterapia,"fizykoterapia pole magnetyczne",Phrase,90,Niski,8,0.45,1.49,-18%,P3,klient,Spadek
+Search-Specjalistyczne,Fizykoterapia,"pole elektromagnetyczne fizjoterapia",Phrase,70,Niski,27,0.45,2.74,+133%,P2,klient,Silny wzrost
+Search-Specjalistyczne,Fizykoterapia,"ultradźwięki rehabilitacja",Phrase,590,Wysoki,96,0.04,1.10,+14%,P1,klient,Bardzo niski CPC!
+Search-Specjalistyczne,Fizykoterapia,"ultradżwięki rehabilitacja",Phrase,590,Wysoki,96,0.04,1.10,+14%,P1,klient,Bez polskich znaków
+Search-Specjalistyczne,Fizykoterapia,"ultradzwieki fizykoterapia",Phrase,70,Niski,18,0.19,1.47,-22%,P3,klient,Spadek
+Search-Specjalistyczne,Fizykoterapia,"ultradźwięki fizykoterapia",Phrase,170,Średni,51,0.07,0.86,+89%,P2,klient,Niski CPC silny wzrost
+Search-Specjalistyczne,Fizykoterapia,"elektroterapia",Phrase,1000,Średni,62,0.43,2.10,-19%,P2,klient,Średni wolumen
+Search-Specjalistyczne,Fizykoterapia,"elektroterapia zabiegi",Phrase,50,Niski,33,0.33,0.76,0%,P3,klient,Bardzo niski CPC
+Search-Specjalistyczne,Fizykoterapia,"nowoczesna fizykoterapia",Phrase,10,Średni,40,,,-50%,P3,klient,Spadek
+Search-Specjalistyczne,Fizykoterapia,"nowoczesna rehabilitacja",Phrase,140,Niski,1,,,+271%,P1,klient,EKSPLOZJA - zero konkurencji
+Search-Specjalistyczne,Kinezyterapia,"kinezyterapia",Phrase,9900,Niski,4,0.23,1.22,0%,P1,klient,OKAZJA - ogromny wolumen ultraniski CPC
+Search-Specjalistyczne,Kinezyterapia,"kinezyterapia neurologiczna",Phrase,50,Niski,4,,,+120%,P2,klient,Niszowe ale rośnie silnie
+Search-Specjalistyczne,Kinezyterapia,"kinezyterapia zabiegi",Phrase,10,Niski,6,,,0%,P3,klient,Niski wolumen
+Search-Specjalistyczne,Kinezyterapia,"rehabilitacja kinezyterapia",Phrase,70,Niski,2,,,+29%,P2,klient,Rośnie
+Search-Specjalistyczne,Kinezyterapia,"terapia kinezyterapia",Phrase,10,Niski,0,,,0%,P3,klient,Niski wolumen
+Search-Specjalistyczne,Kinezyterapia,"kinezyterapia to leczenie",Phrase,110,Niski,1,,,+136%,P2,klient,Informacyjna ale rośnie
+Search-Specjalistyczne,Kinezyterapia,"kinezyterapia fizykoterapia",Phrase,10,Niski,29,,,0%,P3,klient,Cross-fraza
+Search-Brand,Brand,"pure rehab",Exact,,,,,,,,expansion,Brand - ochrona marki
+Search-Brand,Brand,"purerehab",Exact,,,,,,,,expansion,Brand
+Search-Brand,Brand,"pure rehab piaseczno",Phrase,,,,,,,,expansion,Brand + lokalizacja
+Search-Brand,Brand,"pure rehab nowa iwiczna",Phrase,,,,,,,,expansion,Brand + lokalizacja
+Search-Brand,Brand,"purerehab.pl",Exact,,,,,,,,expansion,Brand URL
+Search-Brand,Brand,"pure rehab fizjoterapia",Phrase,,,,,,,,expansion,Brand + usługa
