@@ -2,278 +2,400 @@
 
 **Źródło:** cominport.pl (WordPress, SSL, GTranslate PL/EN, Calameo)
 **Cel:** support.topstrony.pl (domena testowa)
-**Typ strony:** Informacyjna (~10-12 podstron, bez WooCommerce)
-**Data:** 15.05.2026
+**Dostęp:** FTP + baza danych (phpMyAdmin) — BEZ panelu WordPress
+**Uwaga:** Strona nieużywana od kilku lat — możliwy przestarzały WP i wtyczki
 
 ---
 
-## METODA A: Plugin (REKOMENDOWANA — najszybsza, ~30 min)
-
-### Krok 1: Zainstaluj Duplicator na cominport.pl
-
-1. Zaloguj się do panelu WordPress: `https://cominport.pl/wp-admin`
-2. Wtyczki → Dodaj nową → Szukaj: **"Duplicator"** (autor: Snap Creek)
-3. Zainstaluj i aktywuj
-4. Przejdź do: **Duplicator → Pakiety → Utwórz nowy**
-5. Kliknij **Dalej** → Poczekaj na skan (powinien przejść — mała strona)
-6. Kliknij **Buduj** → Poczekaj na zakończenie
-7. Pobierz **dwa pliki**:
-   - `installer.php`
-   - `[data]-[hash]_archive.zip`
-
-### Krok 2: Przygotuj support.topstrony.pl
-
-1. Utwórz pustą bazę danych MySQL na serwerze support.topstrony.pl:
-   - Nazwa bazy: np. `support_cominport`
-   - Użytkownik bazy: np. `support_user`
-   - Hasło: (zanotuj)
-   - Przypisz użytkownika do bazy z PEŁNYMI UPRAWNIENIAMI
-2. Upewnij się, że katalog docelowy na FTP jest pusty (np. `/public_html/` lub `/www/` dla support.topstrony.pl)
-   - Jeśli support.topstrony.pl jest subdomeną — sprawdź ścieżkę w panelu hostingu
-
-### Krok 3: Wgraj pliki na support.topstrony.pl
-
-1. Połącz się przez FTP do support.topstrony.pl
-2. Wgraj do katalogu głównego domeny:
-   - `installer.php`
-   - `[data]-[hash]_archive.zip`
-3. **Tylko te 2 pliki — nic więcej!**
-
-### Krok 4: Uruchom instalator
-
-1. Otwórz w przeglądarce: `https://support.topstrony.pl/installer.php`
-2. **Krok 1 — Deploy**: Zaakceptuj warunki, kliknij Next
-3. **Krok 2 — Install Database**:
-   - Action: `Create New Database` (lub `Connect and Remove All Data` jeśli baza już istnieje)
-   - Host: `localhost` (zwykle)
-   - Database: `support_cominport` (nazwa z kroku 2)
-   - User: `support_user`
-   - Password: (hasło z kroku 2)
-   - Kliknij **Test Database** → powinno pokazać zielone ✓
-   - Kliknij **Next**
-4. **Krok 3 — Update Data**:
-   - **New URL:** `https://support.topstrony.pl` (BEZ ukośnika na końcu!)
-   - **New Path:** zostaw automatycznie wypełnione (Duplicator wykryje ścieżkę)
-   - Title: można zmienić na np. "COMINPORT [TEST]"
-   - Kliknij **Next**
-5. **Krok 4 — Test**: Kliknij Admin Login → zaloguj się tymi samymi danymi co do cominport.pl
-
-### Krok 5: Sprzątanie po migracji
-
-1. Zaloguj się do WP Admin: `https://support.topstrony.pl/wp-admin`
-2. Duplicator automatycznie pokaże komunikat o usunięciu plików instalatora → **Kliknij „Remove Installation Files"**
-3. Jeśli nie — ręcznie usuń przez FTP:
-   - `installer.php`
-   - `installer-backup.php` (jeśli istnieje)
-   - `installer-data.sql` (jeśli istnieje)
-   - `dup-installer/` (katalog, jeśli istnieje)
-4. Przejdź do **Ustawienia → Bezpośrednie odnośniki** → Kliknij **Zapisz zmiany** (bez zmiany ustawień — to odświeża `.htaccess`)
-
-### Krok 6: Weryfikacja
-
-- [ ] Strona główna się ładuje
-- [ ] Menu nawigacyjne działa (START, O NAS, PRODUKTY, etc.)
-- [ ] Podstrony otwierają się (nie 404)
-- [ ] Obrazki się wyświetlają
-- [ ] GTranslate (przełącznik PL/EN) działa
-- [ ] Katalog Calameo się wyświetla
-- [ ] Formularz kontaktowy/newsletter działa
-- [ ] Panel admin dostępny
-- [ ] Brak odniesień do cominport.pl w treści (Ctrl+U → Ctrl+F → „cominport")
+## PROCEDURA KROK PO KROKU (~45–60 min)
 
 ---
 
-## METODA B: Manualna (pełna kontrola, ~60 min)
+### KROK 1: Eksport bazy danych cominport.pl
 
-### Krok 1: Eksport bazy danych cominport.pl
-
-**Przez phpMyAdmin:**
-1. Zaloguj się do phpMyAdmin na serwerze cominport.pl
-2. Wybierz bazę danych WordPress
-3. Kliknij **Eksport**
-4. Metoda: **Szybka** (lub Zaawansowana jeśli baza > 50 MB)
+1. Zaloguj się do **phpMyAdmin** na serwerze cominport.pl
+2. W panelu bocznym kliknij nazwę bazy danych WordPress (np. `cominport_db` lub podobna — jeśli nie wiesz która, poszukaj tabel z prefiksem `wp_`)
+3. Kliknij zakładkę **Eksport** (u góry)
+4. Metoda eksportu: **Szybka**
 5. Format: **SQL**
-6. Kliknij **Wykonaj** → pobierz plik `.sql`
+6. Kliknij **Wykonaj** → przeglądarka pobierze plik np. `cominport_db.sql`
 
-**Przez wiersz poleceń (jeśli masz SSH):**
-```bash
-mysqldump -u UŻYTKOWNIK -p NAZWA_BAZY > cominport_backup.sql
+**Jak znaleźć nazwę bazy?** Jeśli nie pamiętasz — podłącz się FTP do cominport.pl, pobierz plik `wp-config.php` i poszukaj linii:
+```php
+define( 'DB_NAME', 'tutaj_nazwa_bazy' );
+define( 'DB_USER', 'tutaj_uzytkownik' );
+define( 'DB_PASSWORD', 'tutaj_haslo' );
 ```
+Te dane potrzebujesz również do potwierdzenia, że łączysz się z właściwą bazą.
 
-### Krok 2: Pobierz pliki przez FTP
+---
 
-1. Połącz się FTP do cominport.pl
-2. Pobierz **cały katalog WordPress** (zwykle `/public_html/` lub `/www/`)
-3. Kluczowe katalogi:
-   - `wp-content/themes/` — motyw
-   - `wp-content/plugins/` — wtyczki
-   - `wp-content/uploads/` — media (zdjęcia, PDF-y, katalogi)
-   - `wp-config.php` — konfiguracja
-   - `.htaccess` — reguły serwera
+### KROK 2: Pobierz WSZYSTKIE pliki przez FTP z cominport.pl
 
-### Krok 3: Utwórz bazę danych na support.topstrony.pl
+1. Połącz się przez FTP (np. FileZilla) do cominport.pl
+2. Przejdź do katalogu głównego strony (zwykle `/public_html/`, `/www/` lub `/htdocs/`)
+3. Pobierz **cały katalog** na swój komputer — WSZYSTKO, łącznie z:
+   - `wp-admin/`
+   - `wp-content/` (motyw, wtyczki, media)
+   - `wp-includes/`
+   - `wp-config.php`
+   - `.htaccess`
+   - `index.php`
+   - Wszystkie pozostałe pliki
 
-(Jak w Metodzie A, Krok 2)
+**Wskazówka:** W FileZilla zaznacz wszystko (Ctrl+A) → prawym kliskiem → Pobierz. Dla strony ~10-12 podstron to pewnie 200–500 MB (głównie `wp-content/uploads/`).
 
-### Krok 4: Import bazy danych
+**Zanim pobierzesz** — zajrzyj do `wp-config.php` przez FTP i zanotuj:
+- `DB_NAME` — nazwa bazy
+- `DB_USER` — użytkownik
+- `DB_PASSWORD` — hasło
+- `DB_HOST` — host (zwykle `localhost`)
+- `$table_prefix` — prefiks tabel (zwykle `wp_`)
 
-**Przez phpMyAdmin:**
-1. Zaloguj się do phpMyAdmin na serwerze support.topstrony.pl
-2. Wybierz nową bazę danych
-3. Kliknij **Import**
-4. Wybierz plik `.sql` z kroku 1
-5. Kliknij **Wykonaj**
+---
 
-**Jeśli plik jest za duży (> limit phpMyAdmin):**
-- Podziel plik SQL na mniejsze części narzędziem BigDump
-- Lub użyj SSH: `mysql -u UŻYTKOWNIK -p NAZWA_BAZY < cominport_backup.sql`
+### KROK 3: Utwórz bazę danych na serwerze support.topstrony.pl
 
-### Krok 5: Wgraj pliki na support.topstrony.pl
+1. W panelu hostingu support.topstrony.pl utwórz:
+   - **Nową bazę danych**, np. `support_cominport`
+   - **Nowego użytkownika bazy**, np. `support_dbuser`
+   - **Hasło** — zanotuj
+   - **Przypisz użytkownika do bazy** z uprawnieniami **ALL PRIVILEGES**
+
+---
+
+### KROK 4: Import bazy danych na support.topstrony.pl
+
+1. Zaloguj się do **phpMyAdmin** na serwerze support.topstrony.pl
+2. Kliknij nazwę nowej bazy danych (z kroku 3)
+3. Kliknij zakładkę **Import**
+4. Kliknij **Wybierz plik** → wskaż plik `.sql` pobrany w kroku 1
+5. Kodowanie: **utf8** (lub utf8mb4)
+6. Kliknij **Wykonaj**
+
+**Jeśli plik jest za duży** (phpMyAdmin ma limit np. 50 MB):
+- Skompresuj plik `.sql` do `.sql.gz` (phpMyAdmin przyjmuje gzip)
+- Lub podziel na mniejsze części darmowym narzędziem **SQL Dump Splitter**
+- Lub poproś hosting o zwiększenie limitu importu
+
+**Weryfikacja:** Po imporcie powinieneś zobaczyć tabele WordPress (np. `wp_posts`, `wp_options`, `wp_users`, itp.)
+
+---
+
+### KROK 5: Wgraj pliki na support.topstrony.pl przez FTP
 
 1. Połącz się FTP do support.topstrony.pl
-2. Wgraj wszystkie pliki WordPress do katalogu głównego domeny
-
-### Krok 6: Edytuj wp-config.php
-
-Otwórz `wp-config.php` na serwerze support.topstrony.pl i zmień:
-
-```php
-// ZMIEŃ dane bazy danych:
-define( 'DB_NAME', 'support_cominport' );      // Nowa nazwa bazy
-define( 'DB_USER', 'support_user' );            // Nowy użytkownik
-define( 'DB_PASSWORD', 'TWOJE_NOWE_HASŁO' );    // Nowe hasło
-define( 'DB_HOST', 'localhost' );                // Zwykle localhost
-
-// OPCJONALNIE - wymuś nowy URL (zabezpieczenie):
-define( 'WP_HOME', 'https://support.topstrony.pl' );
-define( 'WP_SITEURL', 'https://support.topstrony.pl' );
-```
-
-### Krok 7: Search & Replace w bazie danych (KRYTYCZNE!)
-
-WordPress zapisuje pełne URL-e w bazie. Musisz zamienić WSZYSTKIE wystąpienia `cominport.pl` na `support.topstrony.pl`.
-
-**UWAGA:** NIE rób tego prostym SQL REPLACE — WordPress używa serializowanych danych (np. w opcjach widgetów, Elementor, GTranslate), a prosty REPLACE zepsuje serializację!
-
-**Użyj jednego z tych narzędzi:**
-
-#### Opcja A: Wtyczka Better Search Replace (najłatwiej)
-1. Zaloguj się do `https://support.topstrony.pl/wp-admin`
-   (Jeśli nie działa — dodaj linie WP_HOME/WP_SITEURL do wp-config.php jak w kroku 6)
-2. Wtyczki → Dodaj nową → **Better Search Replace**
-3. Zainstaluj i aktywuj
-4. Narzędzia → Better Search Replace:
-   - **Search for:** `cominport.pl`
-   - **Replace with:** `support.topstrony.pl`
-   - **Select tables:** ZAZNACZ WSZYSTKIE
-   - **Run as dry run:** ✅ NAJPIERW zaznacz (test bez zmian)
-   - Kliknij **Run** → sprawdź ile znaleziono
-   - Odznacz „dry run" → Kliknij **Run** (faktyczna zamiana)
-5. Powtórz dla wariantu z `https://`:
-   - Search: `https://cominport.pl`
-   - Replace: `https://support.topstrony.pl`
-6. Powtórz dla wariantu bez `www`:
-   - Search: `http://cominport.pl`
-   - Replace: `https://support.topstrony.pl`
-
-#### Opcja B: Skrypt interconnect/it Search Replace DB
-1. Pobierz: https://interconnectit.com/search-and-replace-for-wordpress-databases/
-2. Wgraj rozpakowany folder na FTP do: `support.topstrony.pl/search-replace-db/`
-3. Otwórz: `https://support.topstrony.pl/search-replace-db/`
-4. Search: `cominport.pl` → Replace: `support.topstrony.pl`
-5. Kliknij **Dry Run** → potem **Live Run**
-6. **KONIECZNIE usuń folder `search-replace-db/` po zakończeniu!** (bezpieczeństwo)
-
-### Krok 8: Permalinki i .htaccess
-
-1. WP Admin → Ustawienia → Bezpośrednie odnośniki → **Zapisz zmiany** (regeneruje .htaccess)
-
-### Krok 9: Weryfikacja
-
-(Taka sama jak w Metodzie A, Krok 6)
+2. Przejdź do katalogu głównego domeny (sprawdź w panelu hostingu jaka ścieżka obsługuje support.topstrony.pl — np. `/public_html/`, `/support/`, `/domains/support.topstrony.pl/public_html/`)
+3. Wgraj **WSZYSTKIE pliki** pobrane w kroku 2 do tego katalogu
 
 ---
 
-## DODATKOWE KROKI PO MIGRACJI
+### KROK 6: Edytuj wp-config.php na support.topstrony.pl
 
-### Zabezpieczenie strony testowej
+Przez FTP otwórz plik `wp-config.php` na serwerze support.topstrony.pl i zmień **4 rzeczy**:
 
-Ponieważ to domena **testowa**, warto ją zabezpieczyć przed indeksowaniem i nieautoryzowanym dostępem:
+```php
+// 1. ZMIEŃ DANE BAZY (na te z kroku 3):
+define( 'DB_NAME', 'support_cominport' );
+define( 'DB_USER', 'support_dbuser' );
+define( 'DB_PASSWORD', 'TWOJE_NOWE_HASŁO' );
+define( 'DB_HOST', 'localhost' );
 
-#### 1. Zablokuj indeksowanie przez Google
-WP Admin → Ustawienia → Czytanie → ✅ **„Proś wyszukiwarki o nieindeksowanie tej witryny"**
+// 2. DODAJ TE 2 LINIE (gdziekolwiek przed "That's all, stop editing!"):
+define( 'WP_HOME', 'https://support.topstrony.pl' );
+define( 'WP_SITEURL', 'https://support.topstrony.pl' );
 
-#### 2. Dodaj .htaccess basic auth (hasło na stronę)
-Utwórz plik `.htpasswd` (np. generatorem: htpasswd-generator.de):
+// 3. DODAJ DEBUG (tymczasowo, do diagnostyki — usuń po migracji):
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+
+// 4. ZWIĘKSZ PAMIĘĆ (stary WP może potrzebować):
+define( 'WP_MEMORY_LIMIT', '256M' );
 ```
-admin:$apr1$xyz...hasło...
+
+Zapisz plik i wgraj z powrotem na serwer.
+
+---
+
+### KROK 7: Search & Replace URL w bazie (KRYTYCZNY KROK!)
+
+WordPress trzyma pełne URL-e (`https://cominport.pl/...`) w setkach miejsc w bazie. **Bez zamiany strona będzie przekierowywać na cominport.pl.**
+
+Ponieważ nie masz panelu WP — użyjemy **skryptu PHP wgranego przez FTP**.
+
+#### Opcja A: Skrypt Search Replace DB (REKOMENDOWANE)
+
+1. Pobierz skrypt **Search Replace DB** z GitHub:
+   `https://github.com/interconnectit/Search-Replace-DB`
+   (kliknij zielony przycisk **Code → Download ZIP**)
+
+2. Rozpakuj ZIP na swoim komputerze
+
+3. Przez FTP wgraj cały rozpakowany folder do katalogu strony jako:
+   `support.topstrony.pl/srdb/`
+
+4. Otwórz w przeglądarce: `https://support.topstrony.pl/srdb/`
+
+5. Skrypt automatycznie wykryje bazę z wp-config.php. Wypełnij:
+   - **Search for:** `https://cominport.pl`
+   - **Replace with:** `https://support.topstrony.pl`
+
+6. Kliknij **Dry Run** (testowy przebieg — nic nie zmienia, tylko pokazuje co znajdzie)
+
+7. Sprawdź wyniki — powinno znaleźć kilkaset/kilka tysięcy wystąpień
+
+8. Kliknij **Live Run** (faktyczna zamiana)
+
+9. Powtórz dla dodatkowych wariantów:
+
+   | Search for | Replace with |
+   |---|---|
+   | `https://cominport.pl` | `https://support.topstrony.pl` |
+   | `http://cominport.pl` | `https://support.topstrony.pl` |
+   | `https://www.cominport.pl` | `https://support.topstrony.pl` |
+   | `http://www.cominport.pl` | `https://support.topstrony.pl` |
+   | `//cominport.pl` | `//support.topstrony.pl` |
+
+10. **KONIECZNIE USUŃ folder `srdb/` po zakończeniu!**
+    Przez FTP skasuj cały katalog `srdb/`. Pozostawienie go to **krytyczna luka bezpieczeństwa** — każdy kto trafi na ten URL może edytować bazę.
+
+#### Opcja B: Zapytania SQL w phpMyAdmin (szybsze ale ryzykowniejsze)
+
+Jeśli skrypt z Opcji A nie zadziała, otwórz phpMyAdmin → bazę support.topstrony.pl → zakładka **SQL** i wykonaj te zapytania **jedno po drugim**:
+
+```sql
+-- Zamiana URL w tabeli opcji
+UPDATE wp_options SET option_value = REPLACE(option_value, 'https://cominport.pl', 'https://support.topstrony.pl') WHERE option_value LIKE '%cominport.pl%';
+
+-- Zamiana URL w postach
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://cominport.pl', 'https://support.topstrony.pl');
+UPDATE wp_posts SET post_excerpt = REPLACE(post_excerpt, 'https://cominport.pl', 'https://support.topstrony.pl');
+UPDATE wp_posts SET guid = REPLACE(guid, 'https://cominport.pl', 'https://support.topstrony.pl');
+
+-- Zamiana URL w metadanych postów
+UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://cominport.pl', 'https://support.topstrony.pl') WHERE meta_value LIKE '%cominport.pl%';
+
+-- Zamiana URL w komentarzach
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'https://cominport.pl', 'https://support.topstrony.pl');
+UPDATE wp_comments SET comment_author_url = REPLACE(comment_author_url, 'https://cominport.pl', 'https://support.topstrony.pl');
+
+-- Powtórz dla wariantu http://
+UPDATE wp_options SET option_value = REPLACE(option_value, 'http://cominport.pl', 'https://support.topstrony.pl') WHERE option_value LIKE '%cominport.pl%';
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'http://cominport.pl', 'https://support.topstrony.pl');
+UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'http://cominport.pl', 'https://support.topstrony.pl') WHERE meta_value LIKE '%cominport.pl%';
+
+-- Wymuś prawidłowe URL-e w opcjach
+UPDATE wp_options SET option_value = 'https://support.topstrony.pl' WHERE option_name = 'siteurl';
+UPDATE wp_options SET option_value = 'https://support.topstrony.pl' WHERE option_name = 'home';
 ```
 
-Dodaj na początku `.htaccess`:
+**UWAGA:** Jeśli prefiks tabel to nie `wp_` tylko inny (np. `comi_`) — zamień `wp_` na właściwy prefiks we WSZYSTKICH zapytaniach.
+
+**UWAGA 2:** SQL REPLACE nie obsługuje serializowanych danych PHP. Jeśli po tej operacji widgety, menu lub ustawienia wtyczek (GTranslate!) będą zepsute — użyj Opcji A (skrypt Search Replace DB) który prawidłowo obsługuje serializację.
+
+---
+
+### KROK 8: Napraw .htaccess
+
+Przez FTP edytuj plik `.htaccess` w katalogu głównym support.topstrony.pl. Upewnij się, że zawiera standardowe reguły WordPress:
+
 ```apache
-# Zabezpieczenie hasłem — strona testowa
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+```
+
+Jeśli stary `.htaccess` miał przekierowania na `cominport.pl` lub reguły SSL specyficzne dla starej domeny — **usuń je** lub podmień na nową domenę.
+
+---
+
+### KROK 9: Reset hasła admina (nie znasz hasła do WP)
+
+Skoro nikt nie logował się od lat, prawdopodobnie nie pamiętasz hasła. Zresetuj je przez phpMyAdmin:
+
+1. Otwórz phpMyAdmin → baza support.topstrony.pl → tabela **`wp_users`**
+2. Kliknij **Edytuj** przy koncie admina (zwykle ID=1)
+3. W polu **`user_pass`**:
+   - Z rozwijanego menu funkcji wybierz **MD5**
+   - Wpisz nowe hasło, np. `TymczasoweHaslo2026!`
+4. Kliknij **Wykonaj**
+5. WordPress automatycznie przerobhashuje hasło na bezpieczniejszy algorytm przy pierwszym logowaniu
+
+Teraz możesz się zalogować: `https://support.topstrony.pl/wp-admin`
+- Login: (sprawdź kolumnę `user_login` w tabeli `wp_users`)
+- Hasło: `TymczasoweHaslo2026!` (lub co ustawiłeś)
+
+---
+
+### KROK 10: Weryfikacja po migracji
+
+Otwórz `https://support.topstrony.pl` i sprawdź:
+
+- [ ] Strona główna się ładuje (nie biały ekran, nie "Error establishing a database connection")
+- [ ] Nie przekierowuje na cominport.pl
+- [ ] Menu nawigacyjne (START, O NAS, PRODUKTY, NAJCZĘŚCIEJ KUPOWANE, AKTUALNOŚCI, KONTAKT, KATALOG)
+- [ ] Podstrony otwierają się (nie 404)
+- [ ] Obrazki/zdjęcia się wyświetlają
+- [ ] GTranslate (przełącznik PL/EN) działa
+- [ ] Katalog Calameo się wyświetla
+- [ ] WP Admin działa (`/wp-admin`)
+- [ ] Ctrl+U → Ctrl+F → szukaj "cominport" → NIE powinno nic znaleźć
+- [ ] F12 → Console → brak błędów "mixed content" lub 404 na zasobach
+
+---
+
+## ZABEZPIECZENIE STRONY TESTOWEJ
+
+### 1. Zablokuj indeksowanie (przez FTP — bez panelu WP)
+
+Edytuj plik `robots.txt` w katalogu głównym (utwórz jeśli nie istnieje):
+
+```
+User-agent: *
+Disallow: /
+```
+
+Dodatkowo, przez FTP edytuj plik aktywnego motywu `wp-content/themes/[NAZWA_MOTYWU]/header.php` — znajdź tag `<head>` i dodaj zaraz po nim:
+
+```html
+<meta name="robots" content="noindex, nofollow">
+```
+
+Albo prostsze — dodaj do `wp-config.php`:
+```php
+// Po zalogowaniu do WP Admin ustaw noindex w Ustawienia → Czytanie
+// Na razie blokujemy robotstxt
+```
+
+### 2. Zabezpiecz hasłem .htaccess (Basic Auth)
+
+Wygeneruj hasło na: https://www.htaccesstools.com/htpasswd-generator/
+- Username: `admin`
+- Password: (Twoje hasło)
+- Skopiuj wynikową linię, np.: `admin:$apr1$xyz...`
+
+Utwórz plik `.htpasswd` przez FTP **POZA katalogiem public** (np. `/home/user/.htpasswd`).
+Jeśli nie masz dostępu poza public — wstaw go do katalogu głównego.
+
+Wklej wygenerowaną linię do `.htpasswd`.
+
+Na początku `.htaccess` (PRZED regułami WordPress) dodaj:
+
+```apache
+# --- STRONA TESTOWA - ZABEZPIECZENIE HASŁEM ---
 AuthType Basic
-AuthName "Strona testowa — dostęp ograniczony"
-AuthUserFile /pełna/ścieżka/do/.htpasswd
+AuthName "Dostep ograniczony"
+AuthUserFile /pelna/sciezka/do/.htpasswd
 Require valid-user
 
-# Wyjątek dla wp-cron (potrzebny do zaplanowanych zadań)
+# Wyjątek dla wp-cron
 <Files wp-cron.php>
     Satisfy Any
     Allow from all
 </Files>
+# --- KONIEC ZABEZPIECZENIA ---
 ```
 
-#### 3. Wyłącz GTranslate na teście (opcjonalnie)
-Jeśli GTranslate korzysta z API z limitem — wyłącz go na domenie testowej, żeby nie zużywać limitu.
+**Ścieżkę do `.htpasswd`** musisz podać jako ścieżkę absolutną na serwerze (np. `/home/supporttop/public_html/.htpasswd`). Sprawdź ją w phpMyAdmin lub panelu hostingu, albo utwórz plik PHP:
 
-#### 4. Sprawdź, czy poczta nie idzie do klientów
-Jeśli strona ma formularze wysyłające maile — upewnij się, że maile testowe nie trafiają do realnych odbiorców.
+```php
+<?php echo __DIR__; ?>
+```
 
-### Zabezpieczenie WordPressa (ogólne)
+Wgraj go jako `path.php`, otwórz `https://support.topstrony.pl/path.php` — pokaże pełną ścieżkę. **Usuń plik po sprawdzeniu.**
 
-- [ ] Zaktualizuj WordPress do najnowszej wersji
-- [ ] Zaktualizuj wszystkie wtyczki
-- [ ] Zaktualizuj motyw
-- [ ] Zmień hasło admina (jeśli to samo co na produkcji)
-- [ ] Zainstaluj Wordfence lub Sucuri Security
-- [ ] Sprawdź, czy `wp-config.php` nie jest publicznie dostępny
-- [ ] Wyłącz edycję plików z panelu: dodaj do wp-config.php: `define('DISALLOW_FILE_EDIT', true);`
-- [ ] Zmień prefiks tabel (jeśli standardowy `wp_`) — na przyszłość
+### 3. Wyłącz debug po weryfikacji
+
+Po potwierdzeniu, że wszystko działa — w `wp-config.php` zmień:
+```php
+define( 'WP_DEBUG', false );
+```
 
 ---
 
 ## TROUBLESHOOTING
 
-### Problem: „Error establishing a database connection"
-- Sprawdź dane w wp-config.php (DB_NAME, DB_USER, DB_PASSWORD, DB_HOST)
-- Sprawdź, czy użytkownik ma uprawnienia do bazy
+### "Error establishing a database connection"
+→ Sprawdź dane w wp-config.php: DB_NAME, DB_USER, DB_PASSWORD, DB_HOST
 
-### Problem: Strona przekierowuje na cominport.pl
-- Sprawdź wp-config.php — czy dodałeś WP_HOME i WP_SITEURL
-- Wykonaj Search & Replace w bazie (krok 7)
-- Wyczyść cache przeglądarki
+### Strona przekierowuje na cominport.pl
+→ Sprawdź czy WP_HOME i WP_SITEURL są w wp-config.php
+→ Wykonaj Search & Replace (krok 7) — pewnie nie objął wszystkich tabel
+→ Wyczyść cache przeglądarki (Ctrl+Shift+Del) lub otwórz w trybie incognito
 
-### Problem: Białe strony / Error 500
-- Włącz debug: w wp-config.php ustaw `define('WP_DEBUG', true);`
-- Sprawdź logi błędów serwera (error_log)
-- Najczęściej: brak modułu PHP, za mały limit pamięci
-- Dodaj do wp-config.php: `define('WP_MEMORY_LIMIT', '256M');`
+### Biały ekran / Error 500
+→ Sprawdź `wp-content/debug.log` przez FTP (jeśli włączyłeś WP_DEBUG_LOG)
+→ Najczęściej: niekompatybilna wersja PHP (stary WP może wymagać PHP 7.x, a serwer ma 8.x)
+→ Sprawdź w panelu hostingu jaką wersję PHP ma support.topstrony.pl
+→ Spróbuj PHP 7.4 jeśli WP jest bardzo stary
 
-### Problem: Obrazki się nie wyświetlają
-- Search & Replace nie objął ścieżek do mediów
-- Powtórz Search & Replace (krok 7) z wariantami URL
+### Podstrony zwracają 404
+→ Sprawdź czy .htaccess ma reguły WordPress (krok 8)
+→ Sprawdź czy `mod_rewrite` jest włączony na serwerze
+→ Jeśli masz dostęp do WP Admin — Ustawienia → Bezpośrednie odnośniki → Zapisz
 
-### Problem: Podstrony zwracają 404
-- Przejdź do Ustawienia → Bezpośrednie odnośniki → Zapisz zmiany
-- Sprawdź, czy .htaccess ma poprawne reguły rewrite
-- Sprawdź, czy `mod_rewrite` jest włączony na serwerze
+### Obrazki się nie wyświetlają
+→ Ctrl+U → szukaj "cominport" — jeśli znajdziesz, Search & Replace nie objął mediów
+→ Powtórz krok 7 z wariantem `//cominport.pl`
 
-### Problem: GTranslate nie działa
-- Może wymagać ponownej konfiguracji na nowej domenie
-- Sprawdź ustawienia wtyczki w WP Admin → GTranslate
+### CSS/style się nie ładują
+→ F12 → Console → szukaj "mixed content" lub 404 na plikach .css/.js
+→ Prawdopodobnie Search & Replace nie objął ścieżek w motywniu
+→ Sprawdź czy SSL działa na support.topstrony.pl
 
-### Problem: CSS/style się nie ładują
-- Wyczyść cache (Ctrl+Shift+R)
-- Sprawdź czy Search & Replace objął ścieżki do motywu
-- Sprawdź konsolę przeglądarki (F12 → Console) pod kątem błędów mixed content (http vs https)
+### GTranslate nie działa
+→ Wtyczka może wymagać rekonfiguracji na nowej domenie
+→ Po zalogowaniu do WP Admin sprawdź Ustawienia → GTranslate
+
+### Baza za duża do importu w phpMyAdmin
+→ Skompresuj .sql do .gz (phpMyAdmin akceptuje gzip)
+→ Albo podziel plik narzędziem SQL Dump Splitter (darmowe online)
+
+### Stary WordPress nie uruchamia się na nowym serwerze
+→ Sprawdź wersję PHP na nowym serwerze — stary WP (sprzed 2022) może nie działać na PHP 8.x
+→ Przełącz PHP na 7.4 w panelu hostingu support.topstrony.pl (tymczasowo)
+→ Po migracji zaktualizuj WP do najnowszej wersji
+
+---
+
+## PO UDANEJ MIGRACJI — CO DALEJ
+
+1. **Zaktualizuj WordPress** do najnowszej wersji (WP Admin → Kokpit → Aktualizacje)
+2. **Zaktualizuj wtyczki** — szczególnie GTranslate, Calameo, i ewentualne pluginy bezpieczeństwa
+3. **Zaktualizuj motyw**
+4. **Zmień hasło admina** na silne (WP Admin → Użytkownicy → Twój profil)
+5. **Zainstaluj Wordfence** lub Sucuri Security (ochrona przed atakami)
+6. **Dodaj do wp-config.php:** `define('DISALLOW_FILE_EDIT', true);` (blokuje edycję plików z panelu)
+7. **Sprawdź, czy strona nie była zhakowana** — po kilku latach bez aktualizacji to realne ryzyko:
+   - Sprawdź `wp-content/` pod kątem podejrzanych plików PHP (np. `shell.php`, `backdoor.php`, pliki z losowymi nazwami)
+   - Sprawdź `wp-includes/` i `wp-admin/` czy nie ma dodatkowych plików
+   - Zrób skan Wordfence po instalacji
+
+---
+
+## CHECKLIST — PODSUMOWANIE KROKÓW
+
+```
+[ ] 1. Eksport bazy danych cominport.pl (phpMyAdmin → Eksport → SQL)
+[ ] 2. Pobierz WSZYSTKIE pliki z cominport.pl (FTP → cały katalog)
+[ ] 3. Zanotuj dane z wp-config.php (DB_NAME, DB_USER, DB_PASSWORD, prefix)
+[ ] 4. Utwórz bazę danych na support.topstrony.pl
+[ ] 5. Import bazy (phpMyAdmin → Import → plik .sql)
+[ ] 6. Wgraj pliki na support.topstrony.pl (FTP)
+[ ] 7. Edytuj wp-config.php (dane bazy + WP_HOME + WP_SITEURL + DEBUG)
+[ ] 8. Search & Replace URL (skrypt SRDB lub SQL w phpMyAdmin)
+[ ] 9. Napraw .htaccess
+[ ] 10. Reset hasła admina (phpMyAdmin → wp_users → MD5)
+[ ] 11. Test: strona się ładuje, podstrony, obrazki, tłumaczenia
+[ ] 12. Zabezpiecz: robots.txt + noindex + .htpasswd
+[ ] 13. Usuń skrypt SRDB jeśli użyty!
+[ ] 14. Wyłącz WP_DEBUG
+[ ] 15. Zaktualizuj WP + wtyczki + motyw
+```
