@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Strona główna -->
+  <url>
+    <loc>https://domiventura.pl/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://domiventura.pl/logo.png</image:loc>
+      <image:title>Domi Ventura FCI - Hodowla Chihuahua</image:title>
+      <image:caption>Logo hodowli chihuahua Domi Ventura FCI Piaseczno</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://domiventura.pl/dominika-z-chihuahua.jpg</image:loc>
+      <image:title>Dominika Piech z chihuahua</image:title>
+      <image:caption>Dominika Piech - właścicielka hodowli Domi Ventura FCI</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://domiventura.pl/opengraph.jpg</image:loc>
+      <image:title>Domi Ventura FCI - Hodowla Chihuahua Piaseczno</image:title>
+    </image:image>
+  </url>
+
+  <!-- O nas -->
+  <url>
+    <loc>https://domiventura.pl/o-nas.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://domiventura.pl/fci-logo.svg</image:loc>
+      <image:title>FCI - Fédération Cynologique Internationale</image:title>
+    </image:image>
+  </url>
+
+  <!-- Suczki -->
+  <url>
+    <loc>https://domiventura.pl/suczki.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://domiventura.pl/kleo.png</image:loc>
+      <image:title>Kleo - suczka chihuahua w hodowli Domi Ventura FCI</image:title>
+      <image:caption>Chihuahua Kleo - suczka hodowlana Domi Ventura</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Reproduktory -->
+  <url>
+    <loc>https://domiventura.pl/reproduktory.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Mioty -->
+  <url>
+    <loc>https://domiventura.pl/mioty.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Kontakt -->
+  <url>
+    <loc>https://domiventura.pl/kontakt.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

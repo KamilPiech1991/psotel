@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="FCI – Fédération Cynologique Internationale">
+  <rect width="120" height="80" rx="4" fill="#0a3d7c"/>
+  <text x="60" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="bold" fill="#ffffff" letter-spacing="3">FCI</text>
+  <text x="60" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="#c8d8f0" letter-spacing="0.5">FÉDÉRATION CYNOLOGIQUE</text>
+  <text x="60" y="66" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="#c8d8f0" letter-spacing="0.5">INTERNATIONALE</text>
+  <rect x="8" y="72" width="104" height="1" fill="#4a7fc0" opacity="0.5"/>
+</svg>
