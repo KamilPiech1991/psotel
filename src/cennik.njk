@@ -1,261 +1,201 @@
 ---
 title: Cennik
-layout: base.njk
-description: Cennik pobytu i usług dodatkowych Psotelu Gracja.
-heroImage: /assets/img/page/gallery/hero.png
+layout: second.njk
+description: Cennik hotelu dla psów Psotel Gracja w Żabieńcu. Doba w boksie od 70 zł, w pokoju od 90 zł. Dopłaty, rabaty dla dwóch psów i ceny groomera.
 ---
+{#
+  Cennik — page kind: place (hotel dla psów, Żabieniec k. Piaseczna).
+  Look: the site's own brand (Quicksand, navy #002D4C, accent #2E92D7, light blue grounds, 50px photo radius).
+  Sections: hero (centred type + 4-photo strip) · ceny za dobę (two photo cards) · dopłaty i rabaty (type-led rows + photo pair)
+            · grooming (photo + list) · rezerwacja (photo band).
+#}
 
-<section class="pb-xlarge">
-   <div class="container">
-      <div class="price-content pt-medium pb-medium">
-         <h2 class="text-center">
-            Cennik usług hotelowych
-         </h2>
-         <div class="tab-container px-xsmall px-lg-xlarge">
-            <!--  Tab Buttons  -->
-            <div class="tabs justify-content-center mb-5">
-               <button class="tab active">Pobyt dla psa</button>
-               <button class="tab non-active">Grooming</button>
-               <button class="tab non-active">Psie Taxi</button>
+<div class="pricing-page">
+
+   <section class="pr-hero" data-enter>
+      <div class="container">
+         <div class="pr-hero-text">
+            <p class="pr-eyebrow">Cennik hotelu dla psów w Żabieńcu</p>
+            <h1 class="pr-hero-title">
+               Ile kosztuje pobyt psa <span class="color-accent-1">w Psotelu Gracja</span>
+            </h1>
+            <p class="pr-hero-price">
+               <span class="pr-hero-price-num">od 70&nbsp;zł</span>
+               <span class="pr-hero-price-unit">za dobę</span>
+            </p>
+            <p class="pr-lead">
+               Cena zależy od wielkości psa i od tego, gdzie śpi: we własnym boksie albo w domowym pokoju. Przyjmujemy psy codziennie.
+            </p>
+            <div class="pr-actions">
+               <a href="tel:+48502194180" class="pt-button pr-btn"><span>Zadzwoń i zarezerwuj</span></a>
+               <a href="#ceny-za-dobe" class="pr-link">Zobacz ceny za dobę</a>
             </div>
-            <!-- Tab Content  -->
-            <div class="tab-content">
-
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-8 col-md-2">
-                     <svg width="60" height="54" viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M1.6584 44.2302C2.00905 44.2302 2.35036 44.1189 2.63477 43.9119C5.41976 41.8779 7.83531 39.37 9.77489 36.4988C11.1845 42.2673 17.0989 44.103 22.0541 42.6837C33.2579 39.7918 30.2142 24.3188 28.9153 17.7105V17.7113C28.7143 16.8124 27.8439 16.2397 26.9532 16.4206C26.0618 16.6007 25.475 17.468 25.6301 18.3756C27.4683 27.7311 28.3816 37.5447 21.2321 39.3915C19.122 39.9373 16.0766 39.9578 14.4333 38.2248C12.7899 36.4926 12.4345 33.2619 12.2047 31.1292C11.3257 23.0027 13.707 13.9167 18.1323 8.50975C24.508 0.722161 35.0791 3.54686 40.8096 5.92366C42.9922 6.82967 43.7333 10.6401 43.8338 12.0295H43.833C43.8579 12.3881 43.9943 12.7293 44.2218 13.0042C46.5899 15.862 53.5992 18.1891 56.5852 19.0809C56.551 19.3549 56.4754 19.6227 56.3616 19.8739C56.1411 20.1851 56.0304 20.5635 56.0491 20.9474C56.1551 22.757 55.7593 24.5603 54.9052 26.1535C54.052 27.7467 52.7747 29.065 51.2194 29.96H40.473C39.4288 29.9615 38.4095 30.2822 37.5477 30.8802C36.6867 31.4781 36.0228 32.3249 35.6425 33.3108C33.279 39.7911 33.6788 46.975 36.7475 53.1441C37.2033 53.9522 38.2155 54.2381 39.0182 53.7847C39.82 53.3313 40.113 52.3076 39.6743 51.49C37.1263 46.1907 36.7998 40.0721 38.7704 34.5255C39.0439 33.8161 39.7187 33.3501 40.4699 33.3501H51.6324C52.6213 33.309 59.3951 29.9677 59.4131 21.2592C59.7863 20.557 60.8266 16.6557 58.7141 16.1637C55.185 15.2127 49.1553 13.0713 47.1044 11.1581C46.8667 9.36351 45.8755 4.35714 42.0776 2.77827C19.0053 -6.96895 7.44721 10.4607 8.85357 31.2962L8.85201 31.297C7.00446 35.2355 4.19148 38.628 0.680166 41.1486C0.100426 41.5854 -0.140371 42.3477 0.0817146 43.0443C0.303022 43.741 0.938095 44.2173 1.65967 44.2292L1.6584 44.2302Z"
-                           fill="#002D4C" />
-                     </svg>
-                  </div>
-                  <div class="col-md-5">
-                     <hr>
-                  </div>
-                  <div class="col-4 offset-md-1 col-md-4 text-end">
-                     <h3>Ceny za dobę</h3>
-                  </div>
-               </div>
-
-
-               <div class="d-flex align-items-md-center justify-content-between">
-                  <div class="col-3">
-
-                  </div>
-                  <div class="col-3">
-                     <div class="d-flex align-items-md-end flex-wrap">
-                        <img src="/assets/img/page/pricing/small-dog.png" class="pricing-dog">
-                        <h4 class="mb-2">
-                           Psy małe
-                        </h4>
-                     </div>
-                     <p class="mt-0">
-                        <small>York, chihuahua, toy i inne</small>
-                     </p>
-                  </div>
-                  <div class="col-3">
-                     <div class="d-flex align-items-md-end flex-wrap">
-                        <img src="/assets/img/page/pricing/medium-dog.png" class="pricing-dog">
-                        <h4 class="mb-2">
-                           Psy średnie
-                        </h4>
-                     </div>
-                     <p class="mt-0">
-                        <small>Beagle, buldog  francuski i inne</small>
-                     </p>
-                  </div>
-                  <div class="col-3">
-                     <div class="d-flex align-items-md-end flex-wrap">
-                        <img src="/assets/img/page/pricing/big-dog.png" class="pricing-dog">
-                        <h4 class="mb-2">
-                           Psy duże
-                        </h4>
-                     </div>
-                     <p class="mt-0">
-                        <small>Labrador, dog niemiecki i inne</small>
-                     </p>
-                  </div>
-               </div>
-               
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-3">
-                     <h4>
-                        Box Standard
-                     </h4>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">70 ZŁ </p>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">80 ZŁ </p>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">100 ZŁ </p>
-                  </div>
-               </div>
-
-              
-
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-3">
-                     <h4>
-                        Salon / Pokój
-                     </h4>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">90 ZŁ </p>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">100 ZŁ </p>
-                  </div>
-                  <div class="col-3 text-center">
-                     <p class="h4">140 ZŁ </p>
-                  </div>
-               </div>
-
-
-               <div class="mt-5 mb-5">
-                  <p>
-                    <strong>
-                        Opieka indywidualna ( psy starsze, szczenięta do 7 miesiąca, suczki w cieczce oraz psy, które nie tolerują innych psów i muszą wychodzić na osobne spacery): + 20 zł/dobę do ceny podstawowej
-                    </strong>
-                  </p>
-               </div>
-
-
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Pobyt do 4 godzin
-                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-3 col-md-3 text-end">
-                     <p class="h4">20 ZŁ/godzina</p>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Pobyt dwóch psów z jednego domu w osobnych boksach
-                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-3 col-md-3 text-end">
-                     <p class="h4 mb-0">10% rabatu</p>
-                     <small>liczone od całej kwoty</small>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Pobyt dwóch psów z jednego domu w jednym boksie
-                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-3 col-md-3 text-end">
-                     <p class="h4 mb-0">50% rabatu</p>
-                     <small>liczone za każdego kolejnego psa nie licząc pierwszego</small>
-                  </div>
-               </div>
-                              
-               <div class="mt-5">
-                  <p>
-                     <strong>
-                        Opieka indywidualna ( psy starsze, szczenięta do 7 miesiąca, suczki w cieczce oraz psy, które nie tolerują innych psów i muszą wychodzić na osobne spacery): + 20 zł/dobę do ceny podstawowej
-                     </strong>
-                  </p>
-               </div>
-
-            </div>
-            <div class="tab-content hidden">
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-8 col-md-2">
-                     <svg width="60" height="54" viewBox="0 0 60 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M1.6584 44.2302C2.00905 44.2302 2.35036 44.1189 2.63477 43.9119C5.41976 41.8779 7.83531 39.37 9.77489 36.4988C11.1845 42.2673 17.0989 44.103 22.0541 42.6837C33.2579 39.7918 30.2142 24.3188 28.9153 17.7105V17.7113C28.7143 16.8124 27.8439 16.2397 26.9532 16.4206C26.0618 16.6007 25.475 17.468 25.6301 18.3756C27.4683 27.7311 28.3816 37.5447 21.2321 39.3915C19.122 39.9373 16.0766 39.9578 14.4333 38.2248C12.7899 36.4926 12.4345 33.2619 12.2047 31.1292C11.3257 23.0027 13.707 13.9167 18.1323 8.50975C24.508 0.722161 35.0791 3.54686 40.8096 5.92366C42.9922 6.82967 43.7333 10.6401 43.8338 12.0295H43.833C43.8579 12.3881 43.9943 12.7293 44.2218 13.0042C46.5899 15.862 53.5992 18.1891 56.5852 19.0809C56.551 19.3549 56.4754 19.6227 56.3616 19.8739C56.1411 20.1851 56.0304 20.5635 56.0491 20.9474C56.1551 22.757 55.7593 24.5603 54.9052 26.1535C54.052 27.7467 52.7747 29.065 51.2194 29.96H40.473C39.4288 29.9615 38.4095 30.2822 37.5477 30.8802C36.6867 31.4781 36.0228 32.3249 35.6425 33.3108C33.279 39.7911 33.6788 46.975 36.7475 53.1441C37.2033 53.9522 38.2155 54.2381 39.0182 53.7847C39.82 53.3313 40.113 52.3076 39.6743 51.49C37.1263 46.1907 36.7998 40.0721 38.7704 34.5255C39.0439 33.8161 39.7187 33.3501 40.4699 33.3501H51.6324C52.6213 33.309 59.3951 29.9677 59.4131 21.2592C59.7863 20.557 60.8266 16.6557 58.7141 16.1637C55.185 15.2127 49.1553 13.0713 47.1044 11.1581C46.8667 9.36351 45.8755 4.35714 42.0776 2.77827C19.0053 -6.96895 7.44721 10.4607 8.85357 31.2962L8.85201 31.297C7.00446 35.2355 4.19148 38.628 0.680166 41.1486C0.100426 41.5854 -0.140371 42.3477 0.0817146 43.0443C0.303022 43.741 0.938095 44.2173 1.65967 44.2292L1.6584 44.2302Z"
-                           fill="#002D4C" />
-                     </svg>
-                  </div>
-                  <div class="col-md-5">
-                     <hr>
-                  </div>
-                  <div class="col-4 offset-md-1 col-md-4 text-end">
-                     <h3>Ceny za Psie SPA</h3>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Kąpanie + Strzyenie - mały pies
-                     </h4>
-                     <p>
-                        York miniaturka, pinczer miniaturowy i inne podobne rozmiarem
-                     </p>
-                  </div>
-                  <div class="col-3 offset-md-4 col-md-2 text-end">
-                     <h3>100 - 120 zł</h3>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Kąpanie + Strzyenie - średni pies
-                     </h4>
-                     <p>
-                        Sznaucer mały, Jack Russel
-                     </p>
-                  </div>
-                  <div class="col-3 offset-md-4 col-md-2 text-end">
-                     <h3>120 - 150 ZŁ</h3>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Kąpanie + Strzyenie - due psy
-                     </h4>
-                     <p>
-                        Border Coli, Labrador
-                     </p>
-                  </div>
-                  <div class="col-3 offset-md-4 col-md-2 text-end">
-                     <h3>od 150zł </h3>
-                  </div>
-               </div>
-               
-   
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Kąpanie - mały
-                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-4 col-md-2 text-end">
-                     <h3>50 ZŁ</h3>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-                        Kąpanie - średni
-                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-3 col-md-3 text-end">
-                     <h3>70 ZŁ</h3>
-                  </div>
-               </div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <div class="col-9 col-md-6">
-                     <h4 class="mb-1">
-Kąpanie - duy                     </h4>
-                  </div>
-                  <div class="col-3 offset-md-3 col-md-3 text-end">
-                     <h3>od 100zł</h3>
-                  </div>
-               </div>
-               
-            </div>
-            
+            <p class="pr-hours">
+               <strong>Przyjazdy i odbiory:</strong> 8:30–10:00, 14:00–16:00, 19:00–20:30
+            </p>
+         </div>
+         <div class="pr-strip">
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-buldogi.jpg" width="1000" height="667" fetchpriority="high"
+               alt="Trzy buldogi francuskie na trawie w ogrodzie hotelu"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-opiekunka.jpg" width="1400" height="933"
+               alt="Opiekunka Psotelu Gracja ćwiczy z psem w ogrodzie"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-bokser.jpg" width="754" height="1100"
+               alt="Bokser w skoku za patykiem w jesiennym lesie"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-poslanie.jpg" width="1200" height="800"
+               alt="Mały pies odpoczywa na posłaniu w kropki"></div>
+         </div>
+         {% include 'breadcrumbs.njk' %}
       </div>
-   </div>
-</section>
+   </section>
 
-</main>
+   <section class="pr-section pr-stay" id="ceny-za-dobe">
+      <div class="container">
+         <div class="pr-head">
+            <h2>Doba w boksie albo w pokoju</h2>
+            <p class="pr-sub">Cena za jedną dobę pobytu jednego psa. Rozmiar określamy po rasie i wadze.</p>
+         </div>
+         <div class="row gx-4 gy-4">
+            <div class="col-md-6">
+               <article class="pr-card">
+                  <div class="pr-photo pr-photo--card">
+                     <img src="/assets/img/page/pricing/cennik-boks.jpg" width="933" height="700" loading="lazy"
+                        alt="Boksy w budynku hotelu z posłaniami i miskami">
+                  </div>
+                  <div class="pr-card-body">
+                     <h3 class="pr-card-title">Box Standard</h3>
+                     <p class="pr-card-text">Własny boks z posłaniem i miskami w budynku hotelu.</p>
+                     <ul class="pr-rows">
+                        <li><span>Pies mały<small>york, chihuahua, toy</small></span><strong>70&nbsp;zł</strong></li>
+                        <li><span>Pies średni<small>beagle, buldog francuski</small></span><strong>80&nbsp;zł</strong></li>
+                        <li><span>Pies duży<small>labrador, dog niemiecki</small></span><strong>100&nbsp;zł</strong></li>
+                     </ul>
+                  </div>
+               </article>
+            </div>
+            <div class="col-md-6">
+               <article class="pr-card">
+                  <div class="pr-photo pr-photo--card">
+                     <img src="/assets/img/page/pricing/cennik-pokoj.jpg" width="525" height="700" loading="lazy"
+                        alt="Pokój dla psów z kanapą i poduszkami">
+                  </div>
+                  <div class="pr-card-body">
+                     <h3 class="pr-card-title">Salon / Pokój</h3>
+                     <p class="pr-card-text">Domowe wnętrze z kanapą zamiast boksu.</p>
+                     <ul class="pr-rows">
+                        <li><span>Pies mały<small>york, chihuahua, toy</small></span><strong>90&nbsp;zł</strong></li>
+                        <li><span>Pies średni<small>beagle, buldog francuski</small></span><strong>100&nbsp;zł</strong></li>
+                        <li><span>Pies duży<small>labrador, dog niemiecki</small></span><strong>140&nbsp;zł</strong></li>
+                     </ul>
+                  </div>
+               </article>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="pr-section pr-extras" id="doplaty-i-rabaty">
+      <div class="container">
+         <div class="row gx-4 gx-lg-5 gy-5 align-items-start">
+            <div class="col-lg-7">
+               <h2>Dopłaty i rabaty do ceny doby</h2>
+               <ul class="pr-extra-list">
+                  <li>
+                     <span class="pr-extra-num">+20&nbsp;zł</span>
+                     <span class="pr-extra-text">
+                        <strong>Opieka indywidualna, za dobę</strong>
+                        Psy starsze, szczenięta do 7. miesiąca, suczki w cieczce i psy, które wychodzą na osobne spacery.
+                     </span>
+                  </li>
+                  <li>
+                     <span class="pr-extra-num">+50%</span>
+                     <span class="pr-extra-text">
+                        <strong>Doba w święto ustawowe</strong>
+                        Na przykład Boże Narodzenie, Wielkanoc czy 1 listopada.
+                     </span>
+                  </li>
+                  <li>
+                     <span class="pr-extra-num">20&nbsp;zł<small>/h</small></span>
+                     <span class="pr-extra-text">
+                        <strong>Pobyt do 4 godzin</strong>
+                        Gdy potrzebujesz opieki tylko na kilka godzin.
+                     </span>
+                  </li>
+                  <li>
+                     <span class="pr-extra-num">−10%</span>
+                     <span class="pr-extra-text">
+                        <strong>Dwa psy z jednego domu, osobne boksy</strong>
+                        Rabat liczony od całej kwoty.
+                     </span>
+                  </li>
+                  <li>
+                     <span class="pr-extra-num">−50%</span>
+                     <span class="pr-extra-text">
+                        <strong>Dwa psy z jednego domu, jeden boks</strong>
+                        Za każdego kolejnego psa, pierwszy płaci pełną cenę.
+                     </span>
+                  </li>
+               </ul>
+            </div>
+            <div class="col-lg-5">
+               <div class="pr-pair">
+                  <div class="pr-photo pr-photo--tall">
+                     <img src="/assets/img/page/pricing/cennik-dwa-psy.jpg" width="1000" height="667" loading="lazy"
+                        alt="Trzy buldogi francuskie przy balii z wodą w ogrodzie">
+                  </div>
+                  <div class="pr-photo pr-photo--wide">
+                     <img src="/assets/img/page/pricing/cennik-spacer.jpg" width="1400" height="933" loading="lazy"
+                        alt="Opiekunka na leśnej drodze z dwoma małymi psami">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="pr-section pr-groom" id="grooming">
+      <div class="container">
+         <div class="row gx-4 gx-lg-5 gy-5 align-items-center">
+            <div class="col-lg-5 order-lg-2">
+               <h2>Kąpiel i strzyżenie u groomera</h2>
+               <p class="pr-sub">Pielęgnację prowadzi nasz salon Studio Gracja. Psa możesz umówić także w trakcie pobytu w hotelu.</p>
+               <ul class="pr-rows pr-rows--groom">
+                  <li><span>Kąpiel i strzyżenie, pies mały<small>york miniaturka, pinczer miniaturowy</small></span><strong>100–120&nbsp;zł</strong></li>
+                  <li><span>Kąpiel i strzyżenie, pies średni<small>sznaucer miniaturowy, jack russell</small></span><strong>120–150&nbsp;zł</strong></li>
+                  <li><span>Kąpiel i strzyżenie, pies duży<small>border collie, labrador</small></span><strong>od 150&nbsp;zł</strong></li>
+                  <li><span>Kąpiel, pies mały</span><strong>50&nbsp;zł</strong></li>
+                  <li><span>Kąpiel, pies średni</span><strong>70&nbsp;zł</strong></li>
+                  <li><span>Kąpiel, pies duży</span><strong>od 100&nbsp;zł</strong></li>
+               </ul>
+               <a href="https://www.studio-gracja.pl/" class="pr-link" target="_blank" rel="noopener">Zobacz Studio Gracja</a>
+            </div>
+            <div class="col-lg-7 order-lg-1">
+               <div class="pr-photo pr-photo--groom">
+                  <img src="/assets/img/page/pricing/cennik-grooming.jpg" width="1400" height="933" loading="lazy"
+                     alt="Biały pies w różowych szelkach siedzi na trawie po pielęgnacji">
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="pr-section pr-close" id="rezerwacja">
+      <div class="container">
+         <div class="pr-close-band">
+            <img src="/assets/img/page/pricing/cennik-ogrod.jpg" width="1400" height="933" loading="lazy"
+               alt="Border collie leży w trawie w ogrodzie hotelu">
+            <div class="pr-close-card">
+               <h2>Zarezerwuj miejsce dla psa</h2>
+               <p>Zadzwoń i podaj daty pobytu oraz wielkość psa. Potwierdzimy wolny boks lub pokój i dokładną cenę.</p>
+               <p class="pr-close-meta">
+                  ul. Leśna, Żabieniec<br>
+                  Codziennie 8:30–20:30
+               </p>
+               <div class="pr-actions">
+                  <a href="tel:+48502194180" class="pt-button pr-btn"><span>Zadzwoń: 502 194 180</span></a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+</div>
