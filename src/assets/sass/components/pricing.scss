@@ -1,0 +1,380 @@
+// Cennik — /cennik
+// Uses the site's own tokens from base/global.scss.
+
+.pricing-page {
+    --pr-radius: 50px;
+    --pr-radius-sm: 28px;
+    --pr-ground: #F2F8FF;
+    --pr-line: rgba(0, 45, 76, .12);
+    --pr-ease: cubic-bezier(.2, .7, .2, 1);
+    color: var(--color-text);
+
+    h2 {
+        margin: 0 0 .4em;
+        font-size: clamp(32px, 3.4vw, 48px);
+        line-height: 1.15;
+    }
+}
+
+.pr-section {
+    padding: clamp(72px, 9vw, 128px) 0;
+}
+
+// ---------- Hero ----------
+.pr-hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 150px 0 72px;
+    background: linear-gradient(160deg, #EAF6FF 0%, #F6FAFF 45%, #E3F1FF 100%);
+
+    .breadcrumbs {
+        margin-top: 28px;
+    }
+}
+
+.pr-eyebrow {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--color-accent-3);
+}
+
+.pr-hero-title {
+    margin: 0;
+    font-size: clamp(38px, 4.4vw, 60px);
+    line-height: 1.1;
+}
+
+.pr-hero-price {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin: 28px 0 18px;
+}
+
+.pr-hero-price-num {
+    font-size: clamp(64px, 8vw, 112px);
+    font-weight: 700;
+    line-height: .95;
+    letter-spacing: -.02em;
+    color: var(--color-text);
+}
+
+.pr-hero-price-unit {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-accent-3);
+}
+
+.pr-lead {
+    max-width: 34em;
+    margin: 0 0 32px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.pr-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+}
+
+.pr-btn {
+    min-height: 52px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    transition: transform .2s var(--pr-ease), background .5s var(--animation-easing);
+
+    &:hover { transform: translateY(-2px); }
+    &:active { transform: translateY(0) scale(.97); }
+}
+
+.pr-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        height: 2px;
+        background: var(--color-accent-1);
+        transform: scaleX(.25);
+        transform-origin: left;
+        transition: transform .35s var(--pr-ease);
+    }
+
+    &:hover::after,
+    &:focus-visible::after { transform: scaleX(1); }
+}
+
+.pr-hours {
+    margin: 32px 0 0;
+    font-size: 15px;
+}
+
+// ---------- Photos ----------
+.pr-photo {
+    overflow: hidden;
+    border-radius: var(--pr-radius);
+    background: var(--color-accent-2);
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .7s var(--pr-ease);
+    }
+
+    &:hover img { transform: scale(1.03); }
+}
+
+.pr-photo--hero { aspect-ratio: 4 / 4.2; border-radius: var(--pr-radius) var(--pr-radius) var(--pr-radius) 0; }
+.pr-photo--card { aspect-ratio: 16 / 10; border-radius: var(--pr-radius-sm); }
+.pr-photo--tall { aspect-ratio: 4 / 3; }
+.pr-photo--wide { aspect-ratio: 16 / 9; }
+.pr-photo--groom { aspect-ratio: 5 / 4; border-radius: 0 var(--pr-radius) var(--pr-radius) var(--pr-radius); }
+
+.pr-photo--card img[src*="pokoj"] { object-position: center 70%; }
+
+// ---------- Stay prices ----------
+.pr-head {
+    max-width: 44em;
+    margin-bottom: 40px;
+}
+
+.pr-sub {
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.pr-card {
+    height: 100%;
+    padding: 14px;
+    border-radius: calc(var(--pr-radius-sm) + 14px);
+    background: var(--pr-ground);
+    border: 1px solid var(--pr-line);
+}
+
+.pr-card-body {
+    padding: 24px 14px 8px;
+}
+
+.pr-card-title {
+    margin: 0 0 6px;
+    font-size: 28px;
+}
+
+.pr-card-text {
+    margin: 0 0 18px;
+    font-size: 16px;
+}
+
+.pr-rows {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+        border-top: 1px solid var(--pr-line);
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    span {
+        display: flex;
+        flex-direction: column;
+    }
+
+    small {
+        margin-top: 2px;
+        font-size: 14px;
+        font-weight: 500;
+        opacity: .75;
+    }
+
+    strong {
+        flex: none;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--color-accent-3);
+        white-space: nowrap;
+    }
+}
+
+.pr-rows--groom {
+    margin-bottom: 24px;
+
+    strong { font-size: 22px; }
+}
+
+// ---------- Extras ----------
+.pr-extras {
+    background: var(--pr-ground);
+}
+
+.pr-extra-list {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: grid;
+        grid-template-columns: 9.5rem 1fr;
+        gap: 24px;
+        align-items: baseline;
+        padding: 22px 0;
+        border-top: 1px solid var(--pr-line);
+    }
+}
+
+.pr-extra-num {
+    font-size: clamp(34px, 3.2vw, 46px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent-1);
+    white-space: nowrap;
+
+    small { font-size: .5em; }
+}
+
+.pr-extra-text {
+    font-size: 16px;
+    line-height: 1.55;
+
+    strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 19px;
+    }
+}
+
+.pr-pair {
+    display: grid;
+    gap: 20px;
+}
+
+// ---------- Close ----------
+.pr-close-band {
+    position: relative;
+    display: grid;
+    min-height: min(78svh, 640px);
+    overflow: hidden;
+    border-radius: var(--pr-radius);
+
+    > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 40%;
+    }
+}
+
+.pr-close-card {
+    position: relative;
+    align-self: end;
+    max-width: 520px;
+    margin: 32px;
+    padding: 36px;
+    border-radius: var(--pr-radius-sm);
+    background: rgba(255, 255, 255, .94);
+
+    p { font-size: 17px; line-height: 1.6; }
+}
+
+.pr-close-meta {
+    font-weight: 600;
+}
+
+// ---------- Entrance (once, on load) ----------
+@keyframes pr-rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+}
+
+.pr-hero[data-enter] {
+    .pr-eyebrow, .pr-hero-title, .pr-hero-price, .pr-lead, .pr-actions, .pr-hours {
+        animation: pr-rise .8s var(--pr-ease) both;
+    }
+    .pr-hero-title { animation-delay: .06s; }
+    .pr-hero-price { animation-delay: .14s; }
+    .pr-lead { animation-delay: .2s; }
+    .pr-actions { animation-delay: .26s; }
+    .pr-hours { animation-delay: .32s; }
+    .pr-photo--hero { animation: pr-rise 1s var(--pr-ease) .1s both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pricing-page *,
+    .pricing-page *::before,
+    .pricing-page *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+// ---------- Phones ----------
+@media (max-width: 767px) {
+    .pr-hero {
+        min-height: 0;
+        padding: 130px 0 56px;
+    }
+
+    .pr-actions {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+
+        .pr-btn { width: 100%; }
+        .pr-link { justify-content: center; }
+        .pr-link::after { transform-origin: center; }
+    }
+
+    .pr-photo--hero { aspect-ratio: 4 / 3; }
+
+    .pr-extra-list li {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .pr-rows strong { font-size: 22px; }
+
+    .pr-close-band {
+        min-height: 0;
+
+        > img {
+            position: static;
+            aspect-ratio: 4 / 3;
+            height: auto;
+        }
+    }
+
+    .pr-close-card {
+        margin: 0;
+        padding: 28px 22px;
+        border-radius: 0;
+        background: var(--pr-ground);
+    }
+}

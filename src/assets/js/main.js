@@ -121,9 +121,17 @@ if (document.querySelector(".accordion")) {
         calcReset();
     }
 
+    // Extra triggers on content pages (e.g. /cennik): <button data-open-calc>
+    document.querySelectorAll('[data-open-calc]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            modal.style.display = "flex";
+            calcReset();
+        });
+    });
+
     closeModalBtn.onclick = function() {
         modal.style.display = "none";
-    }
+    };
 
     // Auto-advance listeners for step 2
     ['arrival', 'arrival-time', 'departure', 'departure-time'].forEach(function(id) {
@@ -295,8 +303,10 @@ if (document.querySelector(".accordion")) {
     function isPolishHoliday(date) {
         const year = date.getFullYear();
         const holidays = getPolishHolidays(year);
-        const dateStr = date.toISOString().split('T')[0];
-        return holidays.find(h => h.date.toISOString().split('T')[0] === dateStr) || null;
+        // Compare local calendar days (toISOString shifts dates by the UTC offset)
+        const key = d => d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+        const dateKey = key(date);
+        return holidays.find(h => key(h.date) === dateKey) || null;
     }
 
     function calculateCost() {
@@ -336,10 +346,11 @@ if (document.querySelector(".accordion")) {
         // Oblicz koszt dzień po dniu, uwzględniając dopłatę świąteczną
         let totalCost = 0;
         let holidayDays = [];
-        const startDate = new Date(arrivalDate);
+        const startDate = new Date(arrivalDate + 'T00:00');
 
         for (let i = 0; i < numberOfDays; i++) {
-            const currentDay = new Date(startDate.getTime() + i * msInDay);
+            const currentDay = new Date(startDate);
+            currentDay.setDate(startDate.getDate() + i);
             const holiday = isPolishHoliday(currentDay);
             if (holiday) {
                 totalCost += dailyCost * 1.5;
