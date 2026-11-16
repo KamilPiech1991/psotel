@@ -121,6 +121,13 @@ if (document.querySelector(".accordion")) {
         calcReset();
     }
 
+    document.querySelectorAll('.open-calculator-btn').forEach(function(btn) {
+        btn.onclick = function() {
+            modal.style.display = "flex";
+            calcReset();
+        }
+    });
+
     closeModalBtn.onclick = function() {
         modal.style.display = "none";
     }
@@ -150,8 +157,7 @@ if (document.querySelector(".accordion")) {
 
     function checkStep1Complete() {
         const size = document.querySelector('#size-buttons button.active');
-        const accommodation = document.querySelector('#accommodation-buttons button.active');
-        if (size && accommodation) {
+        if (size) {
             setTimeout(function() { goToStep(2); }, 300);
         }
     }
@@ -301,12 +307,10 @@ if (document.querySelector(".accordion")) {
 
     function calculateCost() {
         const sizeButton = document.querySelector('#size-buttons button.active');
-        const accommodationButton = document.querySelector('#accommodation-buttons button.active');
 
-        if (!sizeButton || !accommodationButton) return;
+        if (!sizeButton) return;
 
         const size = sizeButton.value;
-        const accommodation = accommodationButton.value;
         const arrivalDate = document.getElementById('arrival').value;
         const arrivalTime = document.getElementById('arrival-time').value;
         const departureDate = document.getElementById('departure').value;
@@ -323,15 +327,9 @@ if (document.querySelector(".accordion")) {
         let numberOfDays = Math.ceil((departure - arrival) / msInDay);
 
         let dailyCost;
-        if (accommodation === 'box') {
-            if (size === 'mały') dailyCost = 70;
-            else if (size === 'średni') dailyCost = 80;
-            else if (size === 'duży') dailyCost = 100;
-        } else if (accommodation === 'pokoj') {
-            if (size === 'mały') dailyCost = 90;
-            else if (size === 'średni') dailyCost = 100;
-            else if (size === 'duży') dailyCost = 140;
-        }
+        if (size === 'mały') dailyCost = 70;
+        else if (size === 'średni') dailyCost = 80;
+        else if (size === 'duży') dailyCost = 100;
 
         // Oblicz koszt dzień po dniu, uwzględniając dopłatę świąteczną
         let totalCost = 0;
