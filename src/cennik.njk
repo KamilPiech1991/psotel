@@ -6,46 +6,45 @@ description: Cennik hotelu dla psów Psotel Gracja w Żabieńcu. Doba w boksie o
 {#
   Cennik — page kind: place (hotel dla psów, Żabieniec k. Piaseczna).
   Look: the site's own brand (Quicksand, navy #002D4C, accent #2E92D7, light blue grounds, 50px photo radius).
-  Sections: hero (photo) · ceny za dobę (two photo cards) · dopłaty i rabaty (type-led rows + photo pair)
+  Sections: hero (centred type + 4-photo strip) · ceny za dobę (two photo cards) · dopłaty i rabaty (type-led rows + photo pair)
             · grooming (photo + list) · rezerwacja (photo band).
-  Prices match the calculator in assets/js/main.js — change both together.
 #}
 
 <div class="pricing-page">
 
    <section class="pr-hero" data-enter>
       <div class="container">
-         <div class="row align-items-center gy-5">
-            <div class="col-lg-6">
-               <p class="pr-eyebrow">Cennik hotelu dla psów</p>
-               <h1 class="pr-hero-title">
-                  Ile kosztuje pobyt psa <span class="color-accent-1">w Psotelu Gracja</span>
-               </h1>
-               <p class="pr-hero-price">
-                  <span class="pr-hero-price-num">od 70&nbsp;zł</span>
-                  <span class="pr-hero-price-unit">za dobę</span>
-               </p>
-               <p class="pr-lead">
-                  Cena zależy od wielkości psa i od tego, gdzie śpi: we własnym boksie albo w domowym pokoju. Hotel w Żabieńcu przyjmuje psy codziennie.
-               </p>
-               <div class="pr-actions">
-                  <button type="button" class="pt-button pr-btn" data-open-calc>
-                     <span>Wylicz koszt pobytu</span>
-                  </button>
-                  <a href="tel:+48502194180" class="pr-link">Zadzwoń i zarezerwuj</a>
-               </div>
-               <p class="pr-hours">
-                  <strong>Przyjazdy i odbiory:</strong> 8:30–10:00, 14:00–16:00, 19:00–20:30
-               </p>
-               {% include 'breadcrumbs.njk' %}
+         <div class="pr-hero-text">
+            <p class="pr-eyebrow">Cennik hotelu dla psów w Żabieńcu</p>
+            <h1 class="pr-hero-title">
+               Ile kosztuje pobyt psa <span class="color-accent-1">w Psotelu Gracja</span>
+            </h1>
+            <p class="pr-hero-price">
+               <span class="pr-hero-price-num">od 70&nbsp;zł</span>
+               <span class="pr-hero-price-unit">za dobę</span>
+            </p>
+            <p class="pr-lead">
+               Cena zależy od wielkości psa i od tego, gdzie śpi: we własnym boksie albo w domowym pokoju. Przyjmujemy psy codziennie.
+            </p>
+            <div class="pr-actions">
+               <a href="tel:+48502194180" class="pt-button pr-btn"><span>Zadzwoń i zarezerwuj</span></a>
+               <a href="#ceny-za-dobe" class="pr-link">Zobacz ceny za dobę</a>
             </div>
-            <div class="col-lg-6">
-               <div class="pr-photo pr-photo--hero">
-                  <img src="/assets/img/page/pricing/cennik-opiekunka.jpg" width="1400" height="933"
-                     alt="Opiekunka Psotelu Gracja ćwiczy z psem w ogrodzie hotelu" fetchpriority="high">
-               </div>
-            </div>
+            <p class="pr-hours">
+               <strong>Przyjazdy i odbiory:</strong> 8:30–10:00, 14:00–16:00, 19:00–20:30
+            </p>
          </div>
+         <div class="pr-strip">
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-buldogi.jpg" width="1000" height="667" fetchpriority="high"
+               alt="Trzy buldogi francuskie na trawie w ogrodzie hotelu"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-opiekunka.jpg" width="1400" height="933"
+               alt="Opiekunka Psotelu Gracja ćwiczy z psem w ogrodzie"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-bokser.jpg" width="754" height="1100"
+               alt="Bokser w skoku za patykiem w jesiennym lesie"></div>
+            <div class="pr-photo"><img src="/assets/img/page/pricing/cennik-poslanie.jpg" width="1200" height="800"
+               alt="Mały pies odpoczywa na posłaniu w kropki"></div>
+         </div>
+         {% include 'breadcrumbs.njk' %}
       </div>
    </section>
 
@@ -111,7 +110,7 @@ description: Cennik hotelu dla psów Psotel Gracja w Żabieńcu. Doba w boksie o
                      <span class="pr-extra-num">+50%</span>
                      <span class="pr-extra-text">
                         <strong>Doba w święto ustawowe</strong>
-                        Na przykład Boże Narodzenie, Wielkanoc czy 1 listopada. Kalkulator dolicza ją sam.
+                        Na przykład Boże Narodzenie, Wielkanoc czy 1 listopada.
                      </span>
                   </li>
                   <li>
@@ -186,16 +185,13 @@ description: Cennik hotelu dla psów Psotel Gracja w Żabieńcu. Doba w boksie o
                alt="Border collie leży w trawie w ogrodzie hotelu">
             <div class="pr-close-card">
                <h2>Zarezerwuj miejsce dla psa</h2>
-               <p>Policz koszt w kalkulatorze, a potem zadzwoń. Potwierdzimy wolny boks lub pokój na Twoje daty.</p>
+               <p>Zadzwoń i podaj daty pobytu oraz wielkość psa. Potwierdzimy wolny boks lub pokój i dokładną cenę.</p>
                <p class="pr-close-meta">
                   ul. Leśna, Żabieniec<br>
                   Codziennie 8:30–20:30
                </p>
                <div class="pr-actions">
-                  <button type="button" class="pt-button pr-btn" data-open-calc>
-                     <span>Wylicz koszt pobytu</span>
-                  </button>
-                  <a href="tel:+48502194180" class="pr-link">+48 502 194 180</a>
+                  <a href="tel:+48502194180" class="pt-button pr-btn"><span>Zadzwoń: 502 194 180</span></a>
                </div>
             </div>
          </div>

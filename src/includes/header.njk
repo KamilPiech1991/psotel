@@ -164,9 +164,9 @@
             </div>
 
             <div class="order-md-3 col-6 col-md-3 text-end">
-               <button id="openModalBtn" class="pt-button" title="Wylicz koszt pobytu">
-                  <span>Wylicz koszt pobytu</span>
-               </button>
+               <a href="tel:+48502194180" class="pt-button" title="Zadzwoń i zarezerwuj pobyt">
+                  <span>Zadzwoń i zarezerwuj</span>
+               </a>
             </div>
             <div class="order-md-2 col-3 col-md-8 text-end text-md-center">
                <div class="burger d-md-none">
@@ -293,60 +293,6 @@
          </div>
       </div>
    </header>
-
-   <div id="myModal" class="calc-modal">
-      <div class="calc-modal-content">
-          <span class="close" id="closeModalBtn">&times;</span>
-          <div class="calculator">
-              <h4>Kalkulator Pobytu dla Pieska</h4>
-              <div class="calc-steps">
-                  <span class="calc-step-dot active" data-step="1">1</span>
-                  <span class="calc-step-line"></span>
-                  <span class="calc-step-dot" data-step="2">2</span>
-                  <span class="calc-step-line"></span>
-                  <span class="calc-step-dot" data-step="3">3</span>
-              </div>
-              <div class="calc-step" id="calc-step-1">
-                  <label>Wielkość Pieska:</label>
-                  <div class="button-group" id="size-buttons">
-                      <button onclick="selectButton(this, 'size')" value="mały">Mały</button>
-                      <button onclick="selectButton(this, 'size')" value="średni">Średni</button>
-                      <button onclick="selectButton(this, 'size')" value="duży">Duży</button>
-                  </div>
-                  <label>Miejsce Zakwaterowania:</label>
-                  <div class="button-group" id="accommodation-buttons">
-                      <button onclick="selectButton(this, 'accommodation')" value="box">Box</button>
-                      <button onclick="selectButton(this, 'accommodation')" value="pokoj">Pokój</button>
-                  </div>
-              </div>
-              <div class="calc-step hidden" id="calc-step-2">
-                  <label for="arrival">Data Przybycia:</label>
-                  <input type="date" id="arrival">
-                  <label for="arrival-time">Godzina Przybycia:</label>
-                  <input type="time" id="arrival-time" step="1800">
-                  <label for="departure">Data Odbioru:</label>
-                  <input type="date" id="departure">
-                  <label for="departure-time">Godzina Odbioru:</label>
-                  <input type="time" id="departure-time" step="1800">
-              </div>
-              <div class="calc-step hidden" id="calc-step-3">
-                  <div class="result show" id="result"></div>
-                  <div class="result-desc show">
-                      <p>
-                         Podana kwota jest orientacyjna, nie uwzględnia kilku czynników. W celu rezerwacji miejsca skontaktuj się z nami.
-                      </p>
-                      <a href="https://www.psotelgracja.pl/kontakt/" class="calculator-button">
-                         Skontaktuj się z nami
-                      </a>
-                  </div>
-              </div>
-              <div class="calc-nav">
-                  <button class="calc-nav-btn" id="calc-prev" onclick="calcPrevStep()">Wstecz</button>
-                  <button class="calc-nav-btn hidden" id="calc-reset" onclick="calcReset()">Od nowa</button>
-              </div>
-          </div>
-      </div>
-  </div>
 
    <div class="fixed-button">
       <a href="tel:+48502194180" title="Zadzwoń">
