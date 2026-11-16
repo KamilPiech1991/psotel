@@ -21,6 +21,7 @@
     width: 80%;
     max-width: 400px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 .close {
     color: #aaa;
@@ -34,6 +35,11 @@
     text-decoration: none;
     cursor: pointer;
 }
+.calculator {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+}
 .calculator input, .calculator select {
     width: 100%;
     padding: 10px;
@@ -41,6 +47,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 .calculator-button {
     background-color: var(--color-accent-1);
@@ -55,15 +62,17 @@
     text-align: center;
     font-size: 15px;
     font-weight: 500;
+    box-sizing: border-box;
 }
 .calculator-button:hover {
-    background-color: var(--color-accent-3) 
+    background-color: var(--color-accent-3)
 }
 .result {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 18px;
     display: none;
+    white-space: pre-line;
 }
 .result-desc {
     display: none;
@@ -82,14 +91,17 @@
 }
 .button-group button {
     flex: 1;
-    margin: 5px;
-    padding: 10px;
+    margin: 3px;
+    padding: 8px 4px;
     border: 2px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    box-sizing: border-box;
+    min-width: 0;
 }
 .button-group button:hover {
     background-color: var(--color-accent-3);
@@ -101,14 +113,112 @@
     border-color: var(--color-accent-1)
 }
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
 }
-label {
+.calculator label {
     display: block;
     margin-bottom: 5px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 5px;
     background-color: #fff;
+    box-sizing: border-box;
+}
+// Step indicator
+.calc-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.calc-step-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    &.active {
+        background-color: var(--color-accent-1);
+    }
+    &.completed {
+        background-color: var(--color-accent-3);
+    }
+}
+.calc-step-line {
+    flex: 1;
+    height: 3px;
+    background-color: #ccc;
+    margin: 0 8px;
+    transition: background-color 0.3s ease;
+    &.completed {
+        background-color: var(--color-accent-3);
+    }
+}
+// Step content
+.calc-step {
+    animation: fadeIn 0.3s ease;
+    &.hidden {
+        display: none;
+    }
+}
+// Nav buttons
+.calc-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.calc-nav-btn {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+        background-color: #f0f0f0;
+    }
+    &.hidden {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .calc-modal-content {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .calculator h4 {
+        font-size: 16px;
+    }
+    .button-group button {
+        margin: 2px;
+        padding: 8px 2px;
+        font-size: 13px;
+    }
+    .calculator input {
+        padding: 8px;
+        margin: 6px 0;
+    }
+    .calculator label {
+        font-size: 14px;
+        padding: 4px;
+    }
+    .result {
+        font-size: 16px;
+    }
+    .calc-step-dot {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
 }
